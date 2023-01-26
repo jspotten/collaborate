@@ -16,3 +16,21 @@ Key Things Learned:
 - Committing changes to a readMe file from Github and its location on my computer and pulling those changes from either end.
 - Pushing changes made in the local directory to Github.
 - Merging changes when a commit is made in Github and in the local directory.
+
+
+Elevator Pitch:
+So often in our lives whether on our own or when working with others, we find it hard to keep our responsibilities in order. We try to maintain a list in our head and end up forgetting to something important. Or when working with a team, we lose track of all the current tasks being worked on and don't know what needs to be done. The solution to each of these dillemmas and many more can be described with one word: collaborate. Collaborate is a product which enables one to record tasks and check them off once they're done. It also encourages organization with the ability to group tasks together into lists. Lists which can be shared across a team to ensure collaboration and transparency. As soon as you choose to collaborate and organize yourself, what was a stress will be replaced with fulfillment and satisfaction.
+
+![CS 260 - Startup Sketch](https://user-images.githubusercontent.com/116193374/214912795-f10228db-c09d-4bcb-b283-5b87e9b6aee5.png)
+
+Startup Key Features:
+-Secure login with a profile for the person.
+-Ability to create task lists with a name.
+-Viewing screen for both the lists and for the tasks in each list.
+-Add a task with a description and due date.
+-Delete individual tasks.
+-Check a task off and have it move from in progress section to completed.
+-A way to transition a completed task back to in progress.
+-Scroll bar for both in progress and completed section for tasks.
+-Task list sharing with other people allowing for collaboration.
+-(Optional) Incorporate some way of creating task reminders.
