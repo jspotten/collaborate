@@ -10,16 +10,16 @@ Why did the blond fall out of the tree? She was raking leaves!
 =======
 Making a second change to this readme file.
 >>>>>>> ef6d3b2e20c250942dbc696d190569183d0adcf4
-
+  
 Key Things Learned:
 - How to create a new repository in Github and clone it into a specific directory.
 - Committing changes to a readMe file from Github and its location on my computer and pulling those changes from either end.
 - Pushing changes made in the local directory to Github.
 - Merging changes when a commit is made in Github and in the local directory.
-
-
+  
+  
 Elevator Pitch:
-So often in our lives whether on our own or when working with others, we find it hard to keep our responsibilities in order. We try to maintain a list in our head and end up forgetting to something important. Or when working with a team, we lose track of all the current tasks being worked on and don't know what needs to be done. The solution to each of these dillemmas and many more can be described with one word: collaborate. Collaborate is a product which enables one to record tasks and check them off once they're done. It also encourages organization with the ability to group tasks together into lists. Lists which can be shared across a team to ensure collaboration and transparency. As soon as you choose to collaborate and organize yourself, what was a stress will be replaced with fulfillment and satisfaction.
+So often in our lives, whether on our own or when working with others, we find it hard to keep our responsibilities in order. We try to maintain a list in our head and end up forgetting something important. Or when working with a team, we lose track of all the current tasks being worked on and don't know what needs to be done. The solution to each of these dillemmas and many more can be described with one word: collaborate. Collaborate is a product which enables one to record tasks and check them off once they're done. It also encourages organization with the ability to group tasks together into lists. Lists which can be shared across a team to ensure collaboration and transparency. As soon as you choose to collaborate and organize yourself, what was a stress will be replaced with fulfillment and satisfaction.
 
 ![CS 260 - Startup Sketch](https://user-images.githubusercontent.com/116193374/214912795-f10228db-c09d-4bcb-b283-5b87e9b6aee5.png)
 
