@@ -24,13 +24,13 @@ So often in our lives, whether on our own or when working with others, we find i
 ![CS 260 - Startup Sketch](https://user-images.githubusercontent.com/116193374/214912795-f10228db-c09d-4bcb-b283-5b87e9b6aee5.png)
 
 Startup Key Features:
--Secure login with a profile for the person.
--Ability to create task lists with a name.
--Viewing screen for both the lists and for the tasks in each list.
--Add a task with a description and due date.
--Delete individual tasks.
--Check a task off and have it move from in progress section to completed.
--A way to transition a completed task back to in progress.
--Scroll bar for both in progress and completed section for tasks.
--Task list sharing with other people allowing for collaboration.
--(Optional) Incorporate some way of creating task reminders.
+- Secure login with a profile for the person.
+- Ability to create task lists with a name.
+- Viewing screen for both the lists and for the tasks in each list.
+- Add a task with a description and due date.
+- Delete individual tasks.
+- Check a task off and have it move from in progress section to completed.
+- A way to transition a completed task back to in progress.
+- Scroll bar for both in progress and completed section for tasks.
+- Task list sharing with other people allowing for collaboration.
+- (Optional) Incorporate some way of creating task reminders.
