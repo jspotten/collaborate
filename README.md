@@ -33,4 +33,5 @@ Startup Key Features:
 - A way to transition a completed task back to in progress.
 - Scroll bar for both in progress and completed section for tasks.
 - Task list sharing with other people allowing for collaboration.
+- Notifies other users who have shared access to a list that a task was completed by a specific person or that someone accepted an invite to join the task list.
 - (Optional) Incorporate some way of creating task reminders.
