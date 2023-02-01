@@ -46,5 +46,5 @@ Server Startup:
    
 Route 53 Setup:
 - I learned how to purchase my own domain with a specified/available TLD and from there was able to associate it with my server's public IP address.
--In addition, I was also able to add a record to make sure that no matter what subdomain is tagged onto the front of my domain.TLD, that it will still route to my server.
--Website domain: http://cs-260.click
+- In addition, I was also able to add a record to make sure that no matter what subdomain is tagged onto the front of my domain.TLD, that it will still route to my server.
+- Website domain: http://cs-260.click
