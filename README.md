@@ -42,3 +42,9 @@ Server Startup:
 - ssh -i [key pair file] ubuntu@[ip address]
 - `chmod  600 [key pair file]`
 - I have been working as an intern for a Internet Security company so it has been cool to make some connections with the ISP things I have been doing there with this class. For example, understanding that 0.0.0.0 enables any IP to access something like a server or how an IP ended in .1 would be the network. I look forward to what will come next.
+   
+   
+Route 53 Setup:
+- I learned how to purchase my own domain with a specified/available TLD and from there was able to associate it with my server's public IP address.
+-In addition, I was also able to add a record to make sure that no matter what subdomain is tagged onto the front of my domain.TLD, that it will still route to my server.
+-Website domain: http://cs-260.click
