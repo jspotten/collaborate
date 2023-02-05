@@ -48,3 +48,12 @@ Route 53 Setup:
 - I learned how to purchase my own domain with a specified/available TLD and from there was able to associate it with my server's public IP address.
 - In addition, I was also able to add a record to make sure that no matter what subdomain is tagged onto the front of my domain.TLD, that it will still route to my server.
 - Website domain: http://cs-260.click
+   
+   
+Web Certificate Setup:
+- When trying to use an ssh key to access a webserver, make sure to either navigate to the directory where it exists or find the correct path to it.
+- On windows home doesn't exist so '~' doesn't work to bring you to the C drive.
+- Inside of a Caddyfile, when using vi, if you want to edit its contents make sure that you see INSERT the bottom. Otherwise, hit 'i' and it will enable that mode.
+- To leave a mode, hit ESC.
+- When saving and quiting, make sure you are not in some mode and type at the bottom :wq and then hit enter; another option is ZZ.
+- Once you're back in ubuntu, if you get the "There are stopped jobs" message preventing you from exiting, ctrl + z will terminate any ongoing stopped jobs.
