@@ -57,3 +57,7 @@ Web Certificate Setup:
 - To leave a mode, hit ESC.
 - When saving and quiting, make sure you are not in some mode and type at the bottom :wq and then hit enter; another option is ZZ.
 - Once you're back in ubuntu, if you get the "There are stopped jobs" message preventing you from exiting, ctrl + z will terminate any ongoing stopped jobs.
+   
+   
+HTML:
+- &nbsp; is the escape sequence for adding a blank space which doesn't add a new line.
