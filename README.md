@@ -61,3 +61,10 @@ Web Certificate Setup:
    
 HTML:
 - &nbsp; is the escape sequence for adding a blank space which doesn't add a new line.
+   
+   
+Simon Project:
+- I learned how to adjust the height and width of an image that I've inserted into a webpage with HTML.
+- After doing some googling, I figured out how to adjust the text size for certain pieces of text within in HTML tags.
+- Found out how to update some of ubuntu files through ssh.
+- Familiarized myself more with some of the unique HTML tags and their corresponding attributes.
