@@ -68,3 +68,10 @@ Simon Project:
 - After doing some googling, I figured out how to adjust the text size for certain pieces of text within in HTML tags.
 - Found out how to update some of ubuntu files through ssh.
 - Familiarized myself more with some of the unique HTML tags and their corresponding attributes.
+   
+   
+CSS Practice:
+- Learned how to remove a vertical scroll bar by doing the following: overflow-y: hidden;
+- Figured out how to rotate text x number of degrees around a point by using the rotate function in the transform class.
+- How to center text inside of a shape and how to create a circle element inside of CSS.
+- Changing the position using the relative keyword and adjusting the positioning using top, right, bottom, and left.
