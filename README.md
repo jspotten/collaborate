@@ -60,7 +60,7 @@ Web Certificate Setup:
    
    
 HTML:
-- &nbsp; is the escape sequence for adding a blank space which doesn't add a new line.
+- [&nbsp]; is the escape sequence for adding a blank space which doesn't add a new line.
    
    
 Simon Project:
