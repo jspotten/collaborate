@@ -75,3 +75,8 @@ CSS Practice:
 - Figured out how to rotate text x number of degrees around a point by using the rotate function in the transform class.
 - How to center text inside of a shape and how to create a circle element inside of CSS.
 - Changing the position using the relative keyword and adjusting the positioning using top, right, bottom, and left.
+   
+   
+CSS Flex:
+- Flex can be a bit difficult to use in combination with the margin and position properties.
+- Can use margin to make sure there is space between grid elements and the outer edge of a flex element when you use the grid option for display for a child which has   a parent using the flex option instead.
