@@ -79,4 +79,14 @@ CSS Practice:
    
 CSS Flex:
 - Flex can be a bit difficult to use in combination with the margin and position properties.
-- Can use margin to make sure there is space between grid elements and the outer edge of a flex element when you use the grid option for display for a child which has   a parent using the flex option instead.
+- Can use margin to make sure there is space between grid elements and the outer edge of a flex element when you use the grid option for display for a child which has a parent using the flex option instead.
+   
+   
+CSS Simon:
+- The hyperlinks in the navbar menu element are not blackend and appear somewhat lighter unless you add the "active" keyword to the     nav-item when you are currently at the hyperlink's webpage.
+- Margins can also have four directional values for top right left bottom.
+- border-radius determines how rounded shape elements or text boxes are.
+- You use row for flex-direction when you want the flex items to appear in one row and column if you want them to appear one after the other in a vertical column.
+- min/max-height and min/max-width are used to restrict a an element from surpassing either a lower or upper size bound.
+- If you want to restrict a paragraph line from extending to far on one line, you can set a max-wdith and add a character max(ch).
+- Applying a theme to the thread tag doesn't necessarily work, so you can instead apply it to the tr tag for the info row.
