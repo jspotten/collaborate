@@ -3,22 +3,38 @@ body
     display: flex;
     flex-direction: column;
     height: 100vh;
-    padding: 0.5em;
 }
 
 header
 {
     display: flex;
-    flex-direction: row;
-    height: 60px;
+    flex: 1;
+    flex-direction: column;
 }
 
 main
 {
     display: flex;
-    flex: 1;
+    flex: 5;
     flex-direction: column;
-    height: 500vh;
+    align-items: center !important;background-color: cyan;
+    margin: 20px 0 10px 0;
+    width: 100%;
+}
+
+#button-nav
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#list-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+    background-color:
 }
 
 
