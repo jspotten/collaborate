@@ -1,0 +1,33 @@
+body
+{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 0.5em;
+}
+
+header
+{
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+}
+
+main
+{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 500vh;
+}
+
+
+footer
+{
+    flex: 0 30px;
+}
+
+footer a
+{
+    float: right;
+}
