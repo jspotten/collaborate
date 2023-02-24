@@ -67,27 +67,34 @@ main h2
 
 main .d-flex
 {
-    width: 25vw;
+    width: 26vw;
     text-align: center !important;
+    margin: 0;
+    padding: 0;
+}
+
+#form-input
+{
+    margin: 0px !important;
+    border: 2px solid gray;
 }
 
 ::-webkit-input-placeholder
 {
-    text-align: center;
-    font-size: 17px;
+    text-align: center !important;
     color: black;
     font-weight: 600;
 }
 
 .cursor-center
 {
-    text-align: center;
+    text-align: center !important;
 }
 
 main .btn
 {
     border: 2px solid rgb(75, 75, 75);
-    width: 25vw;
+    width: 26vw;
 }
 
 footer
