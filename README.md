@@ -90,3 +90,11 @@ CSS Simon:
 - min/max-height and min/max-width are used to restrict a an element from surpassing either a lower or upper size bound.
 - If you want to restrict a paragraph line from extending to far on one line, you can set a max-wdith and add a character max(ch).
 - Applying a theme to the thread tag doesn't necessarily work, so you can instead apply it to the tr tag for the info row.
+
+   
+CSS/HTML Startup:
+- You can change just about any property, if not every property, using media for a change in the webpages size.
+- The "card" class is very useful for creating a background box to contain and provide a backdrop for other elements.
+- Use "::-webkit-input-placeholder" as a block in CSS to adjust the input placeholder alignment, text size, weight, etc.
+- .cursor-center CSS class with text alignment set to center starts the cursor at the center of an input box.
+- The following is used to link button clicks to other webpages: onclick = "window.location.href = '[nameOfFile].html';".
