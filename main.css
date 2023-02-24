@@ -86,7 +86,7 @@ main
     background-color: cyan;
     margin: 10px 0 10px 0;
     max-width: 96vw;
-    border-radius: 1.5%;
+    border-radius: 6px;
 }
 
 #list-container
