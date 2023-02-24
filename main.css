@@ -104,6 +104,30 @@ main
     font-weight: bold;
 }
 
+#task_sections
+{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#in-progress
+{
+    display: flex;
+    flex: 1;
+    padding: 0 3.5vw 0 3.5vw;
+    overflow-y: scroll;
+}
+
+#completed
+{
+    display: flex;
+    flex: 1;
+    padding: 0 3.5vw 0 3.5vw;
+    overflow-y: scroll;
+    direction: ltr;
+}
+
 main .btn
 {
     width: 80vw;
