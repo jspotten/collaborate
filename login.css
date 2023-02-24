@@ -1,0 +1,42 @@
+body
+{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header
+{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    max-width: 96vw;
+    padding: 0 !important;
+}
+
+main
+{
+    border: 4px solid darkcyan;
+    display: flex;
+    flex: 5;
+    flex-direction: column;
+    align-items: center;
+    background-color: cyan;
+    margin: 10px 0 10px 0;
+    max-width: 96vw;
+    border-radius: 6px;
+}
+
+footer
+{
+    flex: 0 28px;
+    font-size: 18px;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+footer a
+{
+    float: right;
+    color: whitesmoke;
+}
