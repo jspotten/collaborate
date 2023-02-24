@@ -3,33 +3,97 @@ body
     display: flex;
     flex-direction: column;
     height: 100vh;
-}
-
-header
-{
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    max-width: 96vw;
-    padding: 0 !important;
+    justify-content: center !important;
 }
 
 main
 {
-    border: 4px solid darkcyan;
-    display: flex;
-    flex: 5;
+    flex: 1;
     flex-direction: column;
     align-items: center;
-    background-color: cyan;
-    margin: 10px 0 10px 0;
-    max-width: 96vw;
-    border-radius: 6px;
+    background-color: rgb(230, 230, 230); 
+    justify-content: center;
+}
+
+main h1
+{
+    display: flex;
+    font-size:4em;
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+main h2
+{
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.login-panel
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center;
+    margin-top: 12vh;
+    gap: 20px;
+    text-align: center;
+}
+
+.login
+{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(220, 53, 69);
+    border: 4px solid darkred;
+    gap: 5px !important;
+    width: 40vw;
+    align-items: center;
+    padding: 5px 5px 10px 5px;
+}
+
+.signup
+{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(220, 53, 69);
+    border: 4px solid darkred;
+    gap: 5px !important;
+    width: 40vw;
+    align-items: center;
+    padding: 5px 5px 10px 5px;
+}
+
+main .d-flex
+{
+    width: 25vw;
+    text-align: center !important;
+}
+
+::-webkit-input-placeholder
+{
+    text-align: center;
+    font-size: 17px;
+    color: black;
+    font-weight: 600;
+}
+
+.cursor-center
+{
+    text-align: center;
+}
+
+main .btn
+{
+    border: 2px solid rgb(75, 75, 75);
+    width: 25vw;
 }
 
 footer
 {
-    flex: 0 28px;
+    flex: 0;
+    max-height: 28px;
     font-size: 18px;
     padding-left: 1vw;
     padding-right: 1vw;
