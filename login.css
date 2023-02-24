@@ -77,6 +77,7 @@ main .d-flex
 {
     margin: 0px !important;
     border: 2px solid gray;
+    background-color: whitesmoke;
 }
 
 ::-webkit-input-placeholder
