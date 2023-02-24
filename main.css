@@ -10,16 +10,49 @@ header
     display: flex;
     flex: 1;
     flex-direction: column;
+    max-width: 96vw;
+    padding: 0 !important;
 }
 
-main
+#title-nav-user
 {
-    display: flex;
-    flex: 5;
-    flex-direction: column;
-    align-items: center !important;background-color: cyan;
-    margin: 20px 0 10px 0;
-    width: 100%;
+    padding: 0 !important;
+}
+
+.navbar_brand
+{
+    padding: 0;
+}
+
+body h1
+{
+    font-size:3em;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#nav-bar
+{
+    background-color: orange;
+    border: 4px solid darkorange;
+    width: 26vw;
+    margin-bottom: 7px;
+    font-size: x-large;
+    font-weight: 600;
+    padding: 0;
+    min-width: 180px;
+}
+
+#user
+{
+    background-color: orange;
+    border: 4px solid darkorange;
+    border-radius: 50%;
+    width: 110px;
+    height: 110px;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 0px;
 }
 
 #button-nav
@@ -27,6 +60,33 @@ main
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: 0;
+    padding: 0;
+    max-width: 98vw;
+}
+
+
+body .container button
+{
+    border: 4px solid darkred;
+    margin: 0;
+    font-size: x-large;
+    font-weight: 600;
+    width: 26vw;
+    min-width: 180px;
+}
+
+main
+{
+    border: 4px solid darkcyan;
+    display: flex;
+    flex: 5;
+    flex-direction: column;
+    align-items: center;
+    background-color: cyan;
+    margin: 10px 0 10px 0;
+    max-width: 96vw;
+    border-radius: 1.5%;
 }
 
 #list-container
@@ -34,16 +94,50 @@ main
     display: flex;
     flex-direction: column;
     align-items: center !important;
-    background-color:
+    margin: 10px 10px 10px 10px;
+    gap: 15px;
 }
 
+#tasks-title
+{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+main .btn
+{
+    width: 80vw;
+    height: 50px;
+    border: 4px solid black;
+    font-size: x-large;
+    padding: 0;
+}
 
 footer
 {
-    flex: 0 30px;
+    flex: 0 28px;
+    font-size: 18px;
+    padding-left: 1vw;
+    padding-right: 1vw;
 }
 
 footer a
 {
     float: right;
+    color: whitesmoke;
+}
+
+@media (max-width: 600px)
+{
+    #button-nav
+    {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    body .container button
+    {
+        width: 96vw;
+    }
 }
