@@ -35,9 +35,9 @@ body h1
 {
     background-color: orange;
     border: 4px solid darkorange;
-    width: 26vw;
+    width: 61vw;
     margin-bottom: 7px;
-    font-size: x-large;
+    font-size: large;
     font-weight: 600;
     padding: 0;
     min-width: 180px;
@@ -108,29 +108,32 @@ main
 {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100vh - 100px;
 }
 
 #in-progress
 {
     display: flex;
     flex: 1;
-    padding: 0 3.5vw 0 3.5vw;
+    padding: 0 3vw 0 3.4vw;
+    width: 89vw;
     overflow-y: scroll;
+    margin-bottom: 20px !important;
 }
 
 #completed
 {
     display: flex;
     flex: 1;
-    padding: 0 3.5vw 0 3.5vw;
+    padding: 0 3vw 0 3.4vw;
+    width: 89vw;
     overflow-y: scroll;
-    direction: ltr;
+    margin-bottom: 20px !important;
 }
 
 main .btn
 {
-    width: 80vw;
+    width: 80vw !important;
     height: 50px;
     border: 4px solid black;
     font-size: x-large;
