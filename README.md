@@ -98,3 +98,11 @@ CSS/HTML Startup:
 - Use "::-webkit-input-placeholder" as a block in CSS to adjust the input placeholder alignment, text size, weight, etc.
 - .cursor-center CSS class with text alignment set to center starts the cursor at the center of an input box.
 - The following is used to link button clicks to other webpages: onclick = "window.location.href = '[nameOfFile].html';".
+   
+   
+JS Functions, Arrow Functions, Arrays, and Objects/Classes:
+- Functions are used with the keyword function followed by the name of the function and parentheses with no or some parameters.
+- Arrow functions must have curly brackets if they have more than one line otherwise they can be as simple as () = > [one line of code];.
+- To get the output of an arrow function do the following: (() => [line of code])().
+- Class member variables and functions are made private using a #.
+- Classes do not declare their member variables outside of the constructor. They are defined and initialized in the constructor using this. followed by the name that you want to give it and set equal to either a specific value or a corresponding input.
