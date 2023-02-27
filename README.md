@@ -106,3 +106,11 @@ JS Functions, Arrow Functions, Arrays, and Objects/Classes:
 - To get the output of an arrow function do the following: (() => [line of code])().
 - Class member variables and functions are made private using a #.
 - Classes do not declare their member variables outside of the constructor. They are defined and initialized in the constructor using this. followed by the name that you want to give it and set equal to either a specific value or a corresponding input.
+   
+   
+JS Regex, Rest, Spread, and Destructuring:
+- Regular expressions: textual pattern matchers; patterns used to match character combinations in strings. You can use them to find text in a string so that you can replace it, or simply know that it exists.
+- Regex can be created either by using either the RegExp class constructor or a regular expression literal.
+- Rest: prefixing the last parameter for a function with three dots allows for any number of parameters to be received and then converted into an array.
+- Spread: prefixing an object or array with three dots before passing it to a function will match up each member variable or element to the function's parameters.
+- Destructuring: the process of pulling individual items out of an existing one, or removing structure. This can be done with either arrays or objects.
