@@ -114,3 +114,20 @@ JS Regex, Rest, Spread, and Destructuring:
 - Rest: prefixing the last parameter for a function with three dots allows for any number of parameters to be received and then converted into an array.
 - Spread: prefixing an object or array with three dots before passing it to a function will match up each member variable or element to the function's parameters.
 - Destructuring: the process of pulling individual items out of an existing one, or removing structure. This can be done with either arrays or objects.
+   
+   
+Simon JavaScript:
+- To store something locally, create a new variable to store an HTML element, and then write following: localStorage.setItem("[referenceName]", varEl.value).
+- Once loaded to a local storage, call .getItem on localStorage with the given reference name to get the data stored.
+- This will enable you to have a local reference to the value associated with an HTML element and be able to adjust it with a JavaScript.
+- To retrive an element, you can either use querySelector("[#idName]") or getElementByClass("[classname]") if you want to reference its' class.
+- querySelectAll with retrieve all elements with a certain id or class name.
+- Use [nameOfElement].textContent to get a textual representation of a specific element.
+- Buttons can be pressed with .press for a specified amount of time when applied to a button in a given moment.
+- await allows us to enable things to run in the background even while the user may be on another page or is doing something else.
+- JavaScript has built in capabilities for deserializing JSON strings and serializing JS code.
+- [someArray].splice makes it possible to insert or disect arrays as you please.
+- If you plan to initialize class member variables without using a variable with an identical name, then the member variables must be declared outside of constructor.
+- It seems that you can include just an object in an if statement, and if the object has data, then it will return true, otherwise false.
+- HTML elements can have be filled with other children with appendChild or by setting its innerHTML to a string of HTML code which builds the structures.
+- Having const [var1, var2. ...] enables one to have variables that update as one iterates through an array of objects using a for loop.
