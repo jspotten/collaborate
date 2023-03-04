@@ -98,3 +98,36 @@ CSS/HTML Startup:
 - Use "::-webkit-input-placeholder" as a block in CSS to adjust the input placeholder alignment, text size, weight, etc.
 - .cursor-center CSS class with text alignment set to center starts the cursor at the center of an input box.
 - The following is used to link button clicks to other webpages: onclick = "window.location.href = '[nameOfFile].html';".
+   
+   
+JS Functions, Arrow Functions, Arrays, and Objects/Classes:
+- Functions are used with the keyword function followed by the name of the function and parentheses with no or some parameters.
+- Arrow functions must have curly brackets if they have more than one line otherwise they can be as simple as () = > [one line of code];.
+- To get the output of an arrow function do the following: (() => [line of code])().
+- Class member variables and functions are made private using a #.
+- Classes do not declare their member variables outside of the constructor. They are defined and initialized in the constructor using this. followed by the name that you want to give it and set equal to either a specific value or a corresponding input.
+   
+   
+JS Regex, Rest, Spread, and Destructuring:
+- Regular expressions: textual pattern matchers; patterns used to match character combinations in strings. You can use them to find text in a string so that you can replace it, or simply know that it exists.
+- Regex can be created either by using either the RegExp class constructor or a regular expression literal.
+- Rest: prefixing the last parameter for a function with three dots allows for any number of parameters to be received and then converted into an array.
+- Spread: prefixing an object or array with three dots before passing it to a function will match up each member variable or element to the function's parameters.
+- Destructuring: the process of pulling individual items out of an existing one, or removing structure. This can be done with either arrays or objects.
+   
+   
+Simon JavaScript:
+- To store something locally, create a new variable to store an HTML element, and then write following: localStorage.setItem("[referenceName]", varEl.value).
+- Once loaded to a local storage, call .getItem on localStorage with the given reference name to get the data stored.
+- This will enable you to have a local reference to the value associated with an HTML element and be able to adjust it with a JavaScript.
+- To retrive an element, you can either use querySelector("[#idName]") or getElementByClass("[classname]") if you want to reference its' class.
+- querySelectAll with retrieve all elements with a certain id or class name.
+- Use [nameOfElement].textContent to get a textual representation of a specific element.
+- Buttons can be pressed with .press for a specified amount of time when applied to a button in a given moment.
+- await allows us to enable things to run in the background even while the user may be on another page or is doing something else.
+- JavaScript has built in capabilities for deserializing JSON strings and serializing JS code.
+- [someArray].splice makes it possible to insert or disect arrays as you please.
+- If you plan to initialize class member variables without using a variable with an identical name, then the member variables must be declared outside of constructor.
+- It seems that you can include just an object in an if statement, and if the object has data, then it will return true, otherwise false.
+- HTML elements can have be filled with other children with appendChild or by setting its innerHTML to a string of HTML code which builds the structures.
+- Having const [var1, var2. ...] enables one to have variables that update as one iterates through an array of objects using a for loop.
