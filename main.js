@@ -56,8 +56,9 @@ class Task
 
 class TaskList
 {
-    constructor(pinned, ...tasks)
+    constructor(title, pinned, ...tasks)
     {
+        this.title = title;
         this.tasks = tasks;
         this.pinned = pinned;
     }
