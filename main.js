@@ -21,7 +21,7 @@ class User
     }
 }
 
-class Users extends User
+class Users
 {
     constructor(...users)
     {
