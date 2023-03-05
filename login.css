@@ -73,7 +73,7 @@ main .d-flex
     padding: 0;
 }
 
-#form-input
+.form-input
 {
     margin: 0px !important;
     border: 2px solid gray;

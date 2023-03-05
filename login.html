@@ -21,31 +21,31 @@
                 <div class = "card login">
                     <h2>Existing User</h2>
                     <form class="d-flex">
-                        <input id = "form-input" class="form-control me-2 cursor-center" type="search" placeholder="Username or Email Address" aria-label="" aria-describedby="basic-addon1">
+                        <input id = "userOrEmail" class="form-control me-2 cursor-center form-input" type="search" placeholder="Username or Email Address" aria-label="" aria-describedby="basic-addon1">
                     </form>
                     <form class="d-flex">
-                        <input id = "form-input" class="form-control me-2 cursor-center" type="search" placeholder="Password" aria-label="" aria-describedby="basic-addon1">
+                        <input id = "exUserPassword" class="form-control me-2 cursor-center form-input" type="search" placeholder="Password" aria-label="" aria-describedby="basic-addon1">
                     </form>
                     <button class = "btn btn-secondary cursor-center" onclick = "window.location.href = 'index.html';">Login</button>
                 </div>
                 <div class = "card signup">
                     <h2>New User</h2>
                     <form class = "d-flex">
-                        <input id = "form-input" class="form-control me-2 cursor-center" type="search" placeholder="First Name" aria-label="" aria-describedby="basic-addon1">
+                        <input id = "firstName" class="form-control me-2 cursor-center form-input" type="search" placeholder="First Name" aria-label="" aria-describedby="basic-addon1">
                     </form>
                     <form class = "d-flex">
-                        <input id = "form-input" class="form-control me-2 cursor-center" type="search" placeholder="Lastname" aria-label="" aria-describedby="basic-addon1">
+                        <input id = "lastName" class="form-control me-2 cursor-center form-input" type="search" placeholder="Lastname" aria-label="" aria-describedby="basic-addon1">
                     </form>
                     <form class = "d-flex">
-                        <input id = "form-input" class="form-control me-2 cursor-center" type="search" placeholder="Email Address" aria-label="" aria-describedby="basic-addon1">
+                        <input id = "email" class="form-control me-2 cursor-center form-input" type="search" placeholder="Email Address" aria-label="" aria-describedby="basic-addon1">
                     </form>
                     <form class = "d-flex">
-                        <input id = "form-input" class="form-control me-2 cursor-center" type="search" placeholder="Username" aria-label="" aria-describedby="basic-addon1">
+                        <input id = "username" class="form-control me-2 cursor-center form-input" type="search" placeholder="Username" aria-label="" aria-describedby="basic-addon1">
                     </form>
                     <form class = "d-flex">
-                        <input id = "form-input" class="form-control me-2 cursor-center" type="search" placeholder="Password" aria-label="" aria-describedby="basic-addon1">
+                        <input id = "password" class="form-control me-2 cursor-center form-input" type="search" placeholder="Password" aria-label="" aria-describedby="basic-addon1">
                     </form>
-                    <button class = "btn btn-secondary cursor-center" onclick = "window.location.href = 'index.html';">Signup</button>
+                    <button class = "btn btn-secondary cursor-center" onclick = "existingUserLogin()">Signup</button>
                 </div>
             </div>
         </main>
@@ -56,5 +56,6 @@
                 <a href = "https://github.com/jespotten/startup">Github</a>                
             </div>
         </footer>
+        <script src = "login.js"></script>
     </body>
 </html>
