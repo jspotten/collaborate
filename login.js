@@ -6,20 +6,21 @@ const user1 = new User('Billy', 'Bob', 'billyBob', 'billyBob@gmail.com', 'Bobbyb
 const user2 = new User('Jackie', 'Chan', 'jackieC', 'jackie.chan@hotmail.com', 'jackieR0cks!', [new TaskList("MSC", false)]);
 const user3 = new User('Lizia', 'Stuart', 'lizia99', 'lizia.stuart@outlook.com', '\$myPassw0rd', []);
 const existingUsers = new Users(user1, user2, user3);
-localStorage.setItem("allUsers", existingUsers);
+localStorage.setItem('allUsers', JSON.stringify(existingUsers));
 
 function existingUserLogin()
 {
     const loginKey = document.getElementById('userOrEmail').value;
     const password = document.getElementById('exUserPassword').value;
-    const usersOnFile = localStorage.getItem("allUsers");
+    const usersOnFile = JSON.parse(localStorage.getItem('allUsers'));
+    console.log(usersOnFile);
     for(const user of usersOnFile.users)
     {
         if(user.username === loginKey || user.email === loginKey)
         {
             if(user.password === password)
             {
-                localStorage.setItem("currentUser", user);
+                sessionStorage.setItem('currentUser', JSON.stringify(user));
                 window.location.href = 'index.html';
                 break;
             }
@@ -51,10 +52,11 @@ function newUserCreation()
 
     if(complete)
     {
-        const usersOnFile = localStorage.getItem("allUsers");
+        let usersData = (JSON.parse(localStorage.getItem('allUsers')));
+        let usersOnFile = new Users(...usersData.users);
         usersOnFile.addUser(newUser);
-        console.log(usersOnFile);
-        localStorage.setItem("currentUser", newUser);
+        localStorage.setItem('allUsers', JSON.stringify(usersOnFile));
+        sessionStorage.setItem("currentUser", JSON.stringify(newUser));
         window.location.href = 'index.html';
     }
 }

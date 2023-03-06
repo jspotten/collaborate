@@ -1,6 +1,6 @@
 class User
 {
-    constructor(firstName, lastName, email, username, password, taskLists)
+    constructor(firstName, lastName, email, username, password, taskLists = [])
     {
         this.firstName = firstName;
         this.lastName = lastName;
