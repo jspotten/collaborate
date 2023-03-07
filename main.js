@@ -78,10 +78,11 @@ class Task
 
 class TaskList
 {
-    constructor(title, ...tasks)
+    constructor(title, id, ...tasks)
     {
         this.title = title;
         this.tasks = tasks;
+        this.id = id;
         if(tasks === [])
         {
             this.numTasks = 0;
@@ -90,24 +91,32 @@ class TaskList
         {
             this.numTasks = tasks.length;    
         }
-        createBlankTaskList();
+        this.taskCard = createBlankTaskList();
     }
 
-    async createBlankTaskList()
+    createBlankTaskList()
     {
-        const listContainer = document.querySelector('list-container');
         const taskCard = document.createElement('div');
         taskCard.className = "card";
         
         taskCard.innerHTML += pinIcon;
         
-        taskCard.innerHTML += taskListForm
-
-        const taskListName = document.createElement('a');
-        taskListName.setAttribute('href', 'cs260-task-last.html');
+        taskCard.innerHTML += taskListForm;
+        const input = taskCard.getElementsByTagName('input');
+        input[0].addEventListener('keypress', function(e)
+        {
+            if(e.key === "Enter" && (input[0].textContent !== null || input.textContent !== ''))
+            {
+                e.preventDefault();
+                const taskListTitle = document.createElement('a');
+                taskListTitle.setAttribute('href', 'cs260-task-last.html');
+                taskListTitle = input[0].textContent;
+                taskCard.replaceChild(taskListTitle, input[0].parentElement)
+            }
+        })
 
         taskCard.innerHTML += deleteIcon;
-        listContainer.appendChild(taskCard);
+        return taskCard.innerHTML;
     }
 
     addTask(newTask)
