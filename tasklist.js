@@ -10,3 +10,5 @@ function addTaskList()
     taskListContainer.appendChild(newTaskList);
     taskListCounter++;
 }
+
+document.getElementById('#addList').addEventListener('click', addTaskList);
