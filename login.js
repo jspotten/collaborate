@@ -1,7 +1,7 @@
 import {User, Users, Task, TaskList} from './main.js';
 export {existingUserLogin, newUserCreation};
 
-const taskList = new TaskList("CS 260 HW", false, new Task("Startup JS", new Date('March 10, 2023 11:59:59')))
+const taskList = new TaskList("CS 260 HW", new Task("Startup JS", new Date('March 10, 2023 11:59:59')));
 const user1 = new User('Billy', 'Bob', 'billyBob', 'billyBob@gmail.com', 'Bobbybill', [taskList]);
 const user2 = new User('Jackie', 'Chan', 'jackieC', 'jackie.chan@hotmail.com', 'jackieR0cks!', [new TaskList("MSC", false)]);
 const user3 = new User('Lizia', 'Stuart', 'lizia99', 'lizia.stuart@outlook.com', '\$myPassw0rd', []);
