@@ -6,7 +6,6 @@ let taskListContainer;
 
 function addTaskList()
 {
-    console.log('In addTaskList');
     taskListContainer = document.getElementById('list-container');
     let newTaskList = new TaskList("CS 260 Exams", taskListCounter, []);
     taskListContainer.appendChild(newTaskList.taskCard);
