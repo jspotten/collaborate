@@ -126,3 +126,35 @@ Simon JavaScript:
 <br></br>
 <h3>MIDTERM EXAM NOTES</h3>
 <h4>Development Essentials<h4>
+<h5>Internet History<h5>
+- Three Distinct Phases of Web Programming:
+  - Formation of the internet that supports the communication of web applications.
+  - The creation of HTML and HTTP that made it possible to share hyperlinked documents.
+  - Creation of CSS and JavaScript that enabled interactive web applications.
+- Internet Management Controlled by Two Major Organizations:
+  - Internet Engineering Task Force (IETF): defines the technical standards that specify how the physical network communicates.
+  - Internet Corporation for Assigned Names and Numbers (ICANN): oversees both the Internet Protocol (IP) address space and the Domain Name System (DNS)
+    - These two databases form the address book of the internet.
+- Hypertext Markup Language (HTML):
+  - Key innovations of HTML was the idea that documents could be interconnected with what are called hyperlinks which enable immediate access to related docs.
+  - Contains over 100 elements or tags at the moment.
+- Hypertext Transfer Protocol (HTTP):
+  - Example: http://info.cern.ch/hypertext/WWW/Helping.html
+- Uniform Resource Locator (URL):
+  - Example: GET /hypertext/WWW/Helping.html HTTP/1.1
+             Host: info.cern.ch
+             Accept: text/html
+- These two definitions specify how web documents are addressed and transmitted across the internet.
+- Cascading Style Sheets (CSS): designed to give HTML documents visual styling independent of the content's structure.
+- JavaScript (JS): gave the ability to script web pages.
+  - Turns a static web into an interactive experience where a web page could dynamically change based upon a user's interaction.
+  - Node.js: first successful application for deploying JS outside of a browser.
+  - Standardization of common object notation JSON, a typed variant named TypeScript and other transpilers for converting languages into ECMAScript(JS).  
+<h5>Technology Stack</h5>
+- 
+
+  
+  
+  
+  
+  
