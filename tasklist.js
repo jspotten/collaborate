@@ -20,7 +20,13 @@ function addTaskList()
         });
         divEl.replaceChild(filledStarIcon, starIcon);
     });
-    
+
+    newTaskList.taskListCard.getElementsByClassName('trash')[0].addEventListener('click', (e) => {
+        const divEl = e.target.parentElement.parentElement;
+        const listsDivEl = divEl.parentElement;
+        listsDivEl.removeChild(divEl);
+    })
+
     taskListCounter++;
 }
 
