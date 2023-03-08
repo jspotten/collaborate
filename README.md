@@ -122,3 +122,7 @@ Simon JavaScript:
 - It seems that you can include just an object in an if statement, and if the object has data, then it will return true, otherwise false.
 - HTML elements can have be filled with other children with appendChild or by setting its innerHTML to a string of HTML code which builds the structures.
 - Having const [var1, var2. ...] enables one to have variables that update as one iterates through an array of objects using a for loop.
+<br></br>
+<br></br>
+<h3>MIDTERM EXAM NOTES</h3>
+<h4>Development Essentials<h4>
