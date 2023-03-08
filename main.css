@@ -149,7 +149,7 @@ main .d-flex
     text-align: center !important;
 }
 
-#trash
+.trash
 {
     flex: 1;
     text-align: right;
