@@ -91,7 +91,7 @@ class TaskList
         {
             this.numTasks = tasks.length;    
         }
-        this.taskCard = createBlankTaskList();
+        this.taskCard = this.createBlankTaskList();
     }
 
     createBlankTaskList()
@@ -111,12 +111,12 @@ class TaskList
                 const taskListTitle = document.createElement('a');
                 taskListTitle.setAttribute('href', 'cs260-task-last.html');
                 taskListTitle = input[0].textContent;
-                taskCard.replaceChild(taskListTitle, input[0].parentElement)
+                taskCard.replaceChild(taskListTitle, input[0].parentElement);
             }
-        })
+        });
 
         taskCard.innerHTML += deleteIcon;
-        return taskCard.innerHTML;
+        return taskCard;
     }
 
     addTask(newTask)
