@@ -272,7 +272,21 @@ Simon JavaScript:
  - Every network device allows for separate network connections by referring to a unique port number.
  - To resolve the issue of remembering a port number, a service gateway (reverse proxy) is introduced which is a simple web service that listens on the common HTTPS port 443. The gateway then looks at the request and maps it to other services running on different ports.
  - Web services that provide a single functional purpose are referred to as microservices.
- 
+
+<h5>Amazon Web Services - EC2</h5>
+
+- How to remote shell into a server hosted on AWS:
+  - ➜  ssh -i [key pair file] ubuntu@[ip address]
+  - Example: ➜  ssh -i ~/keys/production.pem ubuntu@53.104.2.123
+- The chmod (short for change mode) command is used to manage file system access permissions on Unix and Unix-like systems. 
+- There are three basic file system permissions, or modes, to files and directories:
+  -read (r), write (w), and execute (x).
+- To restrict the permissions on your file so that they are not accessible to all uses run the 'chmod' command:
+  - 'chmod  600 [key pair file]'
+- The Caddyfile is the configuration file for your web service gateway.
+- public_html directory contains all of the static files that you are serving up through Caddy when using it as a web service.
+- Use the 'exit' command to exit a remote shell.
+- Assigning an Elastic IP address to a server keeps the same address even if the server is stopped.
  
   
   
