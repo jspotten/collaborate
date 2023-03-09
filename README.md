@@ -470,6 +470,13 @@ Simon JavaScript:
                 border-left: solid 1em purple;
              }
 
+<h5>CSS Fonts</h5>
+
+- Importing Fonts:
+  - In order to have the browser load a font you use the @font-face rule and provide the font name and source location.
+  - If you do not want to host font files on your server, then you can load them from a font provider.
+    - Example: @import url('https://fonts.googleapis.com/css2?family=Rubik Microbe&display=swap');
+
 
 
 
