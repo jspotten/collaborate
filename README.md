@@ -306,6 +306,11 @@ Simon JavaScript:
   - (CNAME): maps one domain name to another domain name; this acts as a domain name alias.
     - You would use CNAME to do things like map byu.com to the same IP address as byu.edu so that either one could be used.
 
-  
+<h5>Amazon Web Services - Route 53</h5>
+
+- Using a domain name in place of an IP address makes it easy to remember and secure.
+- Route 53 is an AWS service that handles everything DNS related: buying domain names, hosting domain on their DNS servers, and creating DNS records.
+- (NS) Name Server Record: contains names of the authoritative name servers that authorize you to place DNS records in this DNS server.
+- (SOA) Start of Authority Record: provides contact information about the owner of this domain name.
   
   
