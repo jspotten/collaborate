@@ -668,5 +668,26 @@ Simon JavaScript:
   - Text: selection	When text is selected
 - You can also add event listeners directly in the HTML using the onclick handler.
 
+<h5>Promises</h5>
+
+- You can asynchronously execute code with the use of a JavaScript Promise.
+- Because the execution is asynchronous the promise object can be in one of three states at any given point in time:
+  - pending - Currently running asynchronously
+  - fulfilled - Completed successfully
+  - rejected - Failed to complete
+- You create a promise by calling the Promise object constructor and passing it an executor function that runs the asynchronous operation.
+- Executing asynchronously means that promise constructor may return before the promise executor function runs.
+- The setTimeout function takes the number of milliseconds to wait and a function to call after that amount of time has expired.
+- The promise executor function takes two functions as parameters, resolve and reject.
+- Calling resolve sets the promise to the fulfilled state, and calling reject sets the promise to the rejected state.
+- The promise object has three functions: then, catch, and finally.
+  - The then function is called if the promise is fulfilled.
+  - The catch is called if the promise is rejected.
+  - The finally is always called after all the processing is completed.
+
+
+
+
+
 
 
