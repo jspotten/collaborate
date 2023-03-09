@@ -390,12 +390,13 @@ Simon JavaScript:
   - input:	User input field
   - audio:	Audio content
   - video:	Video content
-  - svg:	Scalable vector graphic content
+  - svg:	Scalable vector graphic content; render graphics inline in HTML.
   - iframe:	Inline frame of another HTML page
   - label: individual input label
   - option: selection option
   - select: selection dropdown
   - optgroup: grouped selection dropdown
+  - canvas: facilitates 2D drawing and animation.
 - Comments for HTML files are created by the placing the comment inbetween '<!-- -->'.
 - Special Characters:
   - &	&amp;
