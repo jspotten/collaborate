@@ -127,7 +127,6 @@ Simon JavaScript:
 <h3>MIDTERM EXAM NOTES</h3>
 <h4>Development Essentials</h4>
 <h5>Internet History</h5>
-
 - Three Distinct Phases of Web Programming:
   - Formation of the internet that supports the communication of web applications.
   - The creation of HTML and HTTP that made it possible to share hyperlinked documents.
@@ -150,15 +149,15 @@ Simon JavaScript:
 - JavaScript (JS): gave the ability to script web pages.
   - Turns a static web into an interactive experience where a web page could dynamically change based upon a user's interaction.
   - Node.js: first successful application for deploying JS outside of a browser.
-  - Standardization of common object notation JSON, a typed variant named TypeScript and other transpilers for converting languages into ECMAScript(JS).  
+  - Standardization of common object notation JSON, a typed variant named TypeScript and other transpilers for converting languages into ECMAScript(JS).
+ 
 <h5>Technology Stack</h5>
-
 - Collection of technologies used to create or deliever a web application is called a technology stack.
 - At the top is generally the web framework (Angular, React, Vue, Svelte): it communicates with one or more web services to provide authentication, business data, and persistent storage. It then uses backend services such as caching, database, logging, and monitoring.
 - Example Technology Stack: React for the web framework, talking to Caddy as the web server hosted on AWS, running web services with Node.js, and MongoDB as the database hosted on MongoDB Atlas.
-- Be careful when building a commercial stack as you will need to think about dependability, support, scalability, performance, security, and development productivity factors such as documentation, ease of use, common acceptance, community support, build times, and testing integration.  
+- Be careful when building a commercial stack as you will need to think about dependability, support, scalability, performance, security, and development productivity factors such as documentation, ease of use, common acceptance, community support, build times, and testing integration.
+
 <h5>The Console</h5>
-  
 - Also known as the command line, shell, or terminal the console window provides access to the file system and allows for the execution of command line applications.
 - POSIX compliance: supports a standard set of console commands. (any necssary console commansd work on the operating systems with that compliance)
 - A primary purpose for a console application is to view files on the computer. The files are organized into a tree structure of nodes called directories.
