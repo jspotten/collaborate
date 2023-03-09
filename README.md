@@ -313,4 +313,16 @@ Simon JavaScript:
 - (NS) Name Server Record: contains names of the authoritative name servers that authorize you to place DNS records in this DNS server.
 - (SOA) Start of Authority Record: provides contact information about the owner of this domain name.
   
-  
+<h5>Caddy</h5>
+
+- Caddy is a webservice that listens for incoming HTTP requests:
+  - Handles all of the creation and rotation of web certificates allowing support of HTTPS.
+  - Serves up all of the static HTML, CSS and JS files.
+  - Acts as a gateway for subdomain requests to application services such as the Simon or Startup project.
+    - Example: when a request is made to simon.yourdomain Caddy will proxy the request to the Simon application running with node.js as an internal web service.
+
+
+   
+   
+   
+   
