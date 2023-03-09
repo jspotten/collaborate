@@ -386,12 +386,16 @@ Simon JavaScript:
   - a:	Anchor the text to a hyperlink
   - img:	Graphical image reference
   - dialog:	Interactive component such as a confirmation
-  - form:	A collection of user input
+  - form:	A collection of user input; input container and submission
   - input:	User input field
   - audio:	Audio content
   - video:	Video content
   - svg:	Scalable vector graphic content
   - iframe:	Inline frame of another HTML page
+  - label: individual input label
+  - option: selection option
+  - select: selection dropdown
+  - optgroup: grouped selection dropdown
 - Comments for HTML files are created by the placing the comment inbetween '<!-- -->'.
 - Special Characters:
   - &	&amp;
@@ -407,6 +411,29 @@ Simon JavaScript:
 - A block element is meant to be a distinct block in the flow of the content structure.
 - An inline element is meant to be inline with the content flow of a block element. They don't disrupt the flow of a block element's content.
 
+<h5>HTML Structure Elements</h5>
 
-   
-   
+- Type of input for 'input' element set with 'type' attribute:
+  - text:	Single line textual value
+  - password:	Obscured password
+  - email:	Email address
+  - tel:	Telephone number
+  - url:	URL address
+  - number:	Numerical value
+  - checkbox:	Inclusive selection
+  - radio:	Exclusive selection
+  - range:	Range limited number
+  - date:	Year, month, day
+  - datetime-local:	Date and time
+  - month:	Year, month
+  - week:	Week of year
+  - color:	Color
+  - file:	Local file
+  - submit:	button to trigger form submission
+- Most input elements share some common attributes:
+  - name:	The name of the input. This is submitted as the name of the input if used in a form
+  - disabled:	Disables the ability for the user to interact with the input
+  - value:	The initial value of the input
+  - required:	Signifies that a value is required in order to be valid
+- You can also specify the required attribute on an input element to mark it as requiring a value before it can be submitted.
+- When pattern attribute is present, it provides a regular expression that must match for the input to be considered as valid.
