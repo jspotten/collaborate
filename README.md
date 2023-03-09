@@ -438,3 +438,17 @@ Simon JavaScript:
   - required:	Signifies that a value is required in order to be valid
 - You can also specify the required attribute on an input element to mark it as requiring a value before it can be submitted.
 - When pattern attribute is present, it provides a regular expression that must match for the input to be considered as valid.
+
+<h5>Cascading Style Sheets</h5>
+
+- CSS is primarily concerned with defining rulesets, or simply a rules.
+- Rule: comprised of a selector that selects elements to apply the rule to, & one or more declarations that represent the property to style with given property value.
+- A number followed by em for font-size will be the default size multiplied by the number.
+- CSS can be associated with HTML by using the style attribute of an element and explicitly assign one or more declarations, define CSS rules in the HTML document, or by using the HTML link element to create a hyperlink reference to an external file containing CSS rules. (must appear inthe head element of the document).
+- Within an element's box there are several internal boxes:
+  - The innermost box holds the element's content. This is where things like the text or image of an element is displayed.
+  - Next comes the padding. The padding will inherit things like the background color.
+  - After padding is the border, which has properties like color, thickness and line style.
+  - The final box is the margin. The margin is considered external to the actual styling of the box and therefore only represents whitespace.
+- You can change the box-sizing CSS property from the default value of content-box to border-box in order to redefine the width and height to also include the padding and the border.
+
