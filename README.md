@@ -533,6 +533,13 @@ Simon JavaScript:
   - endsWith:	True if the string has a given suffix
   - toLowerCase:	Converts all characters to lowercase
 
+<h5>Functions</h5>
+
+- JavaScript functions are first class objects: they can be assigned a name, passed as a parameter, returned as a result, and referenced from an object or array.
+- If a parameter isn't provided to the function when called, then the parameter is undefined.
+- A function can assign default values to its parameters by appending '=' and the value desired after the name of the parameter(s).
+- Functions can be defined anonymously, or without a name, by including them inside of other things like function calls, variable declarations, or returns.
+- They can also be placed inside of other functions so that you can modularize your code without exposing private details.
 
 
 
