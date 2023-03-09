@@ -512,13 +512,29 @@ Simon JavaScript:
   - Array:	An ordered sequence of any type.	[3, 'fish']
   - Map:	A collection of key value pairs that support efficient lookups.	new Map()
   - JSON:	A lightweight data-interchange format used to share information across programs.	{"a":3, "b":"fish"}
- - JS supports concatenation with '+' and equality with '==='.
- - JavaScript is a weakly typed language. That means that a variable always has a type, but the variable can change type when it is assigned a new value, or that types can be automatically converted based upon the context that they are used in.
+- JS supports concatenation with '+' and equality with '==='.
+- JavaScript is a weakly typed language. That means that a variable always has a type, but the variable can change type when it is assigned a new value, or that types can be automatically converted based upon the context that they are used in.
 - Also supports loops used in other languages like for, while, and do while.
 - But it has some other loops that are similar:
   - The for in statement iterates over an object's property names.
     - For arrays the object's name is the array index.
   - The for of statement iterates over an iterable's (Array, Map, Set, ...) property values.
+
+<h5>JavaScript String</h5>
+
+- A string variable is specified by surround a sequence of characters with single quotes ('), double quotes ("), or backticks.
+- Single and double quotes have an equivalent meaning while backticks define string literals that may contain JavaScript which is evaluated in place and concatenated into the string. 
+- A string literal is declared with a dollar sign followed by a curly brace pair.
+- Useful String Functions:
+  - length:	The number of characters in the string
+  - indexOf:	The starting index of a given substring
+  - split:	Split the string into an array on the given delimiter string
+  - startsWith:	True if the string has a given prefix
+  - endsWith:	True if the string has a given suffix
+  - toLowerCase:	Converts all characters to lowercase
+
+
+
 
 
 
