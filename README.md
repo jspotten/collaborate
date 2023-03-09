@@ -616,7 +616,10 @@ Simon JavaScript:
   - m: Multi-line search
   - y: "sticky" search match starting at current position in target string
 
+<h5>JavaScript Rest and Spread</h5>
 
-
-
+- Rest Syntax: prefix the last parameter of any function with three periods to make it a rest parameter.
+- This enables you to call it with any number of parameters which are all automatically combined into an array.
+- Spread: prefix an array or string with three dots when sending it to a function.
+- It takes an object that is iterable (e.g. array or string) and expands it into a function's parameters.
 
