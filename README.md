@@ -643,6 +643,16 @@ Simon JavaScript:
   - Function - When this is referenced in a function it refers to the object that owns the function. That is either an object you defined or globalThis if the function is defined outside of an object. Note that when running is JavaScript strict mode, a global function's this variable is undefined instead of globalThis.
   - Object - When this is referenced in a object it refers to the object.
 - A closure is defined as a function and its surrounding state; whatever variables are accessible when a function is created are available inside of that function.
-- 
+
+<h5>JavaScript Modules</h5>
+
+- Because modules create a file-based scope for the code they represent, you must explicitly export the objects that you want to be visible outside the module.
+- You can import a module’s exported function into another module using “import”.
+  - Example: import { alertDisplay } from './alert.js';
+- The key thing to understand is that modules can only be called from other modules. You cannot import a module object into a globally scoped JavaScript file.
+
+
+
+
 
 
