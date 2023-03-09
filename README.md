@@ -126,7 +126,8 @@ Simon JavaScript:
 <br></br>
 <h3>MIDTERM EXAM NOTES</h3>
 <h4>Development Essentials<h4>
-<h5>Internet History</h5>   
+<h5>Internet History</h5>
+
 - Three Distinct Phases of Web Programming:
   - Formation of the internet that supports the communication of web applications.
   - The creation of HTML and HTTP that made it possible to share hyperlinked documents.
