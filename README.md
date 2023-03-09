@@ -582,6 +582,19 @@ Simon JavaScript:
 - Classes can be extended by using the extends keyword to define inheritance.
 - Parameters that need to be passed to the parent class are delivered using the super function.
 - Any functions with the same name defined at the child level override the parent's implementation of those same functions.
-- 
+
+<h5>JSON</h5>
+
+- JSON Document Can Contain Many Data Types:
+  - string:	"crockford"
+  - number:	42
+  - boolean:	true
+  - array:	[null,42,"crockford"]
+  - object:	{"a":1,"b":"crockford"}
+  - null:	null
+- Most commonly, a JSON doc contains an object: they contain zero or more key value pairs where the key is always a string and the value must be valid JSON value.
+- Key-value pairs are delimited with commas; curly braces delimit an object, square brces and commas delimit arrays, and strings are always delimited with ".
+- You can convert JSON to, and from, JavaScript using the JSON.parse and JSON.stringify functions.
+- JSON cannot represent undefined objects, so it gets dropped when converting JS to JSON.
 
 
