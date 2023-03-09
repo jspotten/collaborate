@@ -541,6 +541,17 @@ Simon JavaScript:
 - Functions can be defined anonymously, or without a name, by including them inside of other things like function calls, variable declarations, or returns.
 - They can also be placed inside of other functions so that you can modularize your code without exposing private details.
 
+<h5>Arrow Functions</h5>
+
+- With the ability to pass functions anonymously, things can begin to get cluttered. So to replace the function keyword, you can use => instead.
+- The arrow functions canot be used for contructors or iterator generators.
+- Return keyword is optional if no cury braces are provided and only a single expression is used.
+- The result of that single expression is returned unless encased by curly brackets which then would behave like a standard function.
+- Inherit this pointer from the scope of where it is created which makes what is called a closure: allows a function to continue referencing its creation scope even after it has passed out of that scope.
+- Closures provide a valuable property when we do things like execute JavaScript within the scope of an HTML page, because it can remember the values of variables when the function was created instead of what they are when they are executed.
+
+
+
 
 
 
