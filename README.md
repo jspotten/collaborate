@@ -342,7 +342,66 @@ Simon JavaScript:
 - To save the file and exit VI(text editor), type :wq and hit enter.
 - Restart Caddy: 'sudo service caddy restart'.
 
-   
+<h4>HTML and CSS</h4>
+
+<h5>Hypertext Markup Language</h5>
+
+- The html element represents the top level page structure.
+- The head element contains metadata about the page and the page title.
+- The body element represents the content structure.
+- The main element represents the main content structure, as opposed to things like headers, footers, asides, and navigation content.
+-  Attributes describe the specific details of the element.
+  - For example, the id attribute gives a unique ID to the element so that you can distinguish it from other elements.
+  - The class attribute is another common element attribute that designates the element as being classified into a named group of elements.
+- Attributes are written inside the element tag with a name followed by an optional value. 
+- You can use either single quotes (') or double quotes (") to delimit attribute values.
+- A hyperlink is represented with an anchor (a) element that has an attribute containing the address of the hyperlink reference (href).
+  - Example: <a href="https://byu[.]edu">Go to the Y</a>
+- HTML defines a header (<!DOCTYPE html>) that tells the browser the type and version of the document.
+- Common Elements:
+  - html:	The page container
+  - head:	Header information
+  - title:	Title of the page
+  - meta:	Metadata for the page such as character set or viewport settings
+  - script:	JavaScript reference. Either a external reference, or inline
+  - include:	External content reference
+  - body:	The entire content body of the page
+  - header:	Header of the main content
+  - footer:	Footer of the main content
+  - nav:	Navigational inputs
+  - main:	Main content of the page
+  - section:	A section of the main content
+  - aside:	Aside content from the main content
+  - div:	A block division of content
+  - span:	An inline span of content
+  - h<1-9>:	Text heading. From h1, the highest level, down to h9, the lowest level
+  - p:	A paragraph of text
+  - b:	Bring attention
+  - table:	Table
+  - tr:	Table row
+  - th:	Table header
+  - td:	Table data
+  - ol,ul:	Ordered or unordered list
+  - li:	List item
+  - a:	Anchor the text to a hyperlink
+  - img:	Graphical image reference
+  - dialog:	Interactive component such as a confirmation
+  - form:	A collection of user input
+  - input:	User input field
+  - audio:	Audio content
+  - video:	Video content
+  - svg:	Scalable vector graphic content
+  - iframe:	Inline frame of another HTML page
+- Comments for HTML files are created by the placing the comment inbetween '<!-- -->'.
+- Special Characters:
+  - &	&amp;
+  - <	&lt;
+  - >	&gt;
+  - "	&quot;
+  - '	&apos;
+  - 😀 &#128512;
+- By default a web server will display the HTML file named index.html when a web browser, such as Google Chrome, makes a request without asking for a specific HTML file.
+
    
    
    
