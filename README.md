@@ -124,9 +124,9 @@ Simon JavaScript:
 - Having const [var1, var2. ...] enables one to have variables that update as one iterates through an array of objects using a for loop.
 <br></br>
 <br></br>
-<h3>MIDTERM EXAM NOTES</h3>
+<h2>MIDTERM EXAM NOTES</h2>
 
-<h4>Development Essentials</h4>
+<h3>Development Essentials</h3>
 
 <h5>Internet History</h5>
 
@@ -245,7 +245,7 @@ Simon JavaScript:
 - The '-h' parameter is the domain name of your production environment.
 - The '-s' parameter represents the name of the application you are deploying (such as simon or startup).
 
-<h4>Web Servers</h4>
+<h3>Web Servers</h3>
 
 <h5>The Internet</h5>
 
@@ -342,7 +342,7 @@ Simon JavaScript:
 - To save the file and exit VI(text editor), type :wq and hit enter.
 - Restart Caddy: 'sudo service caddy restart'.
 
-<h4>HTML and CSS</h4>
+<h3>HTML and CSS</h3>
 
 <h5>Hypertext Markup Language</h5>
 
@@ -493,7 +493,7 @@ Simon JavaScript:
 - The float css property moves an element to the left or right of its container element and allows inline elements to wrap around it.
 - @media selector dynamically detects the size and orientation of the device and applies CSS rules to represent the structure of the HTML in a way that accommodates the change.
 
-<h4>JavaScript</h4>
+<h3>JavaScript</h3>
 
 <h5>JavaScript Type and Construct</h5>
 
