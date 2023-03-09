@@ -623,3 +623,15 @@ Simon JavaScript:
 - Spread: prefix an array or string with three dots when sending it to a function.
 - It takes an object that is iterable (e.g. array or string) and expands it into a function's parameters.
 
+<h5>JavaScript Destructuring</h5>
+
+- Destructuring: the process of pulling individual items out of an existing one, or removing structure. (can be done with arrays or objects)
+- Example: const a = [1, 2, 3, 4]; -> const [b, c] = a; -> console.log(b, c); //Outut: 1, 2
+- You can also combine multiple items from the original object using rest syntax.
+- When object destructuring, you explicitly specify the properties you want to pull from the source object.
+- You can also map the names to new variables instead of just using the original property names.
+
+
+
+
+
