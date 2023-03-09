@@ -288,7 +288,24 @@ Simon JavaScript:
 - Use the 'exit' command to exit a remote shell.
 - Assigning an Elastic IP address to a server keeps the same address even if the server is stopped.
  
+<h5>Domain Names</h5>
   
+- A single domain name can be associated with multiple IP addresses so that in case one of them fails, another one can be used to maintain connection.
+- Domain Name: a text string that follows a specific naming convention and is listed in the domain name registry.
+- They are broken up into a root domain with one or more possible subdomain prefixes.
+- Root Domain: represented by a secondary level domain and a top level domain (TLD).
+  - Examples: byu.edu, google.com, or cs260.click.
+- Top Level Domain (TLD): represent things like com, edu, or click.
+- Domain Name Structure:
+  - [subdomain.]*secondary.top; where secondary.top is the root domain.
+  - Example: react.simon.cs260.click.
+- The owner of a root domain can create any number of subdomains off the root domain.
+- To get information about a domain name from the domain name registry, run the 'whois' command with the a website domain following that.
+- DNS database records that facilitate the mapping of domain names to IPs come in a variety such as address (A) and canonical name (CNAME):
+  - (A): a straight mapping from a domain name to an IP address.
+  - (CNAME): maps one domain name to another domain name; this acts as a domain name alias.
+    - You would use CNAME to do things like map byu.com to the same IP address as byu.edu so that either one could be used.
+
   
   
   
