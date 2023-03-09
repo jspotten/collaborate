@@ -152,7 +152,12 @@ Simon JavaScript:
   - Node.js: first successful application for deploying JS outside of a browser.
   - Standardization of common object notation JSON, a typed variant named TypeScript and other transpilers for converting languages into ECMAScript(JS).  
 <h5>Technology Stack</h5>
-- 
+
+- Collection of technologies used to create or deliever a web application is called a technology stack.
+- At the top is generally the web framework (Angular, React, Vue, Svelte): it communicates with one or more web services to provide authentication, business data, and persistent storage. It then uses backend services such as caching, database, logging, and monitoring.
+- Example Technology Stack: React for the web framework, talking to Caddy as the web server hosted on AWS, running web services with Node.js, and MongoDB as the database hosted on MongoDB Atlas.
+- Be careful when building a commercial stack as you will need to think about dependability, support, scalability, performance, security, and development productivity factors such as documentation, ease of use, common acceptance, community support, build times, and testing integration.  
+<h5>
 
   
   
