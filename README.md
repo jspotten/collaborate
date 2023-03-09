@@ -234,6 +234,16 @@ Simon JavaScript:
   - Use the command 'git branch [nameOfNewBranch]' and then 'git checkout [nameOfNewBranch]' to start working on the new branch.
 - When you want to combine the work done on both branches, you checkout the master branch and execute 'git merge [nameOfSeperateBranch]'.
 
+<h5>Development & Production Environments</h5>
+
+- It is critical to separate where you develop your application, from where the production release of your application is made publicly available.
+- Multiple environments to contain the development of code to divide up the stages involved in making software ready to be realized publicly.
+- Continuous Integration (CI) processes checkout the code, lint it, build it, test it, stage it, test it more, and finally, releases it to the production environment if everything checks out, notifying different departments of the releae.
+- You run a deployment script from a console window in your development window with a command like the following:
+  - ./deployService.sh -k ~/prod.pem -h yourdomain.click -s simon
+- The '-k' parameter provide the credential file necessary to access your production environment.
+- The '-h' parameter is the domain name of your production environment.
+- The '-s' parameter represents the name of the application you are deploying (such as simon or startup).
 
   
   
