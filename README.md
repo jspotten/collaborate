@@ -651,8 +651,22 @@ Simon JavaScript:
   - Example: import { alertDisplay } from './alert.js';
 - The key thing to understand is that modules can only be called from other modules. You cannot import a module object into a globally scoped JavaScript file.
 
+<h5>Document Object Model</h5>
 
-
+- The Document Object Model (DOM) is an object representation of the HTML elements that the browser uses to render the display.
+- You can provide a CSS selector to the querySelectorAll function in order to select elements from the document.
+- textContent property: contains all of the element's text.
+- innerHTML property: a textual representation of an element's HTML content.
+- o create a new element you first create the element on the DOM document. You then insert the new element into the DOM tree by appending it to an existing element in the tree.
+- To delete elements call the removeChild function on the parent element.
+- All DOM elements support the ability to attach a function that gets called when an event occurs on the element. (event listeners)
+- Commonly Used Events:
+  - Clipboard:	Cut, copied, pasted
+  - Focus:	An element gets focus
+  - Keyboard:	Keys are pressed
+  - Mouse:	Click events
+  - Text: selection	When text is selected
+- You can also add event listeners directly in the HTML using the onclick handler.
 
 
 
