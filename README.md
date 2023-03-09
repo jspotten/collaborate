@@ -125,7 +125,7 @@ Simon JavaScript:
 <br></br>
 <br></br>
 <h3>MIDTERM EXAM NOTES</h3>
-<h4>Development Essentials<h4>
+<h4>Development Essentials</h4>
 <h5>Internet History</h5>
 
 - Three Distinct Phases of Web Programming:
@@ -157,8 +157,50 @@ Simon JavaScript:
 - At the top is generally the web framework (Angular, React, Vue, Svelte): it communicates with one or more web services to provide authentication, business data, and persistent storage. It then uses backend services such as caching, database, logging, and monitoring.
 - Example Technology Stack: React for the web framework, talking to Caddy as the web server hosted on AWS, running web services with Node.js, and MongoDB as the database hosted on MongoDB Atlas.
 - Be careful when building a commercial stack as you will need to think about dependability, support, scalability, performance, security, and development productivity factors such as documentation, ease of use, common acceptance, community support, build times, and testing integration.  
-  <h5>The Console</h5>
-  - Hello World
+<h5>The Console</h5>
+  
+- Also known as the command line, shell, or terminal the console window provides access to the file system and allows for the execution of command line applications.
+- POSIX compliance: supports a standard set of console commands. (any necssary console commansd work on the operating systems with that compliance)
+- A primary purpose for a console application is to view files on the computer. The files are organized into a tree structure of nodes called directories.
+- You can see which directory you are in with the 'pwd' (present working directory) command.
+- You can list all of the files in the director with 'ls' (list files).
+- Most command line applications take parameters that are specified after you type the application name.
+- 'ls' can list files (even hidden ones) in a long format if you provide '-la' after 'ls'.
+- List of Basic Commands:
+  - echo - Output the parameters of the command
+  - cd - Change directory
+  - mkdir - Make directory
+  - rmdir - Remove directory
+  - rm - Remove file(s)
+  - mv - Move file(s)
+  - cp - Copy files
+  - ls - List files
+  - curl - Command line client URL browser
+  - grep - Regular expression search
+  - find - Find files
+  - top - View running processes with CPU and memory usage
+  - df - View disk statistics
+  - cat - Output the contents of a file
+  - less - Interactively output the contents of a file
+  - wc - Count the words in a file
+  - ps - View the currently running processes
+  - kill - Kill a currently running process
+  - sudo - Execute a command as a super user (admin)
+  - ssh - Create a secure shell on a remote computer
+  - scp - Securely copy files to a remote computer
+  - history - Show the history of commands
+  - ping - Check if a website is up
+  - tracert - Trace the connections to a website
+  - dig - Show the DNS information for a domain
+  - man - Look up a command in the manual
+- Chain Input and Output of Commands Using Special Characters:
+  - '|' - take the output from the command on the left and pipe, or pass, it to the command on the right.
+  - '>' - redirect output to a file; overwrites the file if it exists.
+  - '>>' - redirect output to a file; appends if the file exists.
+- Console Keystrokes:
+  - 'CTRL-R': use type ahead to find previous commands.
+  - 'CTRL-C': kill the currently running command.
+
 
   
   
