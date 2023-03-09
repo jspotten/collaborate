@@ -452,3 +452,26 @@ Simon JavaScript:
   - The final box is the margin. The margin is considered external to the actual styling of the box and therefore only represents whitespace.
 - You can change the box-sizing CSS property from the default value of content-box to border-box in order to redefine the width and height to also include the padding and the border.
 
+<h5>CSS Selectors</h5>
+
+- Element Selectors: selecting an element by name will cascade a declaration down to all the children of that element.
+- Wildcard Element Selector (asterisk): selects all of the elements.
+- Combinators:
+  - Descendant	      A list of descendants	      body section	Any section that is a descendant of a body
+  - Child	            A list of direct children	  section > p	  Any p that is a direct child of a section
+  - General sibling	  A list of siblings	        p ~ div	      Any p that has a div sibling
+  - Adjacent sibling	A list of adjacent sibling	p + div	      Any p that has an adjacent div sibling
+- Class Selector: use .[className] to pinpoint a specific element with the given class.
+- You can also combine the element name and class selectors to select all paragraphs with a class of summary.
+- ID Selector: use # followed by the name of the ID to select an element with that given ID.
+- Attribute Selector: element[attribute]
+- Psuedo Selector: select based on positional relationships, mouse interactions, hyperlink visitation states, and attributes.
+  - Example: section:hover {
+                border-left: solid 1em purple;
+             }
+
+
+
+
+
+
