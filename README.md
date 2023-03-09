@@ -264,6 +264,15 @@ Simon JavaScript:
   - Example: HTTPS, TCP, IP, and Fiber/Hardware.
   - Purpose: Functionality like web browsing, moving connection information packets, establishing connections, and physical connections.
  
+ <h5>Web Servers</h5>
+ 
+ - Web server: a computing device that is hotsing a web service that knows how to accept incoming internet connections and speak the HTTP application protocol.
+ - We can run a web service code and use the console application 'curl' to make an HTTP request and see the response body.
+ - It is common to find multiple web services running on the same computing device.
+ - Every network device allows for separate network connections by referring to a unique port number.
+ - To resolve the issue of remembering a port number, a service gateway (reverse proxy) is introduced which is a simple web service that listens on the common HTTPS port 443. The gateway then looks at the request and maps it to other services running on different ports.
+ - Web services that provide a single functional purpose are referred to as microservices.
+ 
  
   
   
