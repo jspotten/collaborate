@@ -555,20 +555,33 @@ Simon JavaScript:
 - Static Array Functions:
   - push:	Add an item to the end of the array	~ a.push(4)
   - pop:	Remove an item from the end of the array ~ x = a.pop
-  - slice:	Return a sub-array	a.slice(1,-1)
+  - slice:	Return a sub-array ~ a.slice(1,-1)
   - sort:	Run a function sort an array in place	~ a.sort((a,b) => b-a)
-  - values:	Creates an iterator for use with a for of loop	~ for (i of a.values()) {...}
-  - find:	Find the first item satisfied by a test function	~ a.find(i => i < 2)
+  - values:	Creates an iterator for use with a for of loop ~ for (i of a.values()) {...}
+  - find:	Find the first item satisfied by a test function ~ a.find(i => i < 2)
   - forEach:	Run a function on each array item	~ a.forEach(console.log)
   - reduce:	Run a function to reduce each array item to a single item	~ a.reduce((a, c) => a + c)
   - map:	Run a function to map an array to a new array	~ a.map(i => i+i)
-  - filter:	Run a function to remove items	~ a.filter(i => i%2)
+  - filter:	Run a function to remove items ~ a.filter(i => i%2)
   - every:	Run a function to test if all items match	~ a.every(i => i < 3)
   - some:	Run a function to test if any items match	~ a.some(i => 1 < 1)
 
-<h5></h5>
+<h5>JavaScript Objects and Classes</h5>
 
-
-
+- A JavaScript object represents a collection of name value pairs referred to as properties.
+- The property name must be of type String or Symbol, but the value can be of any type.
+- Once it is created, you can add any properties to the object by calling object.[newPropertyName] and setting it equal to something.
+- You can also declare a variable of object type with the object-literal syntax; allows you to provide the initial composition of the object.
+- Static Object Functions:
+  - entries:	Returns an array of key value pairs
+  - keys:	Returns an array of keys
+  - values:	Returns an array of values
+- Any function that returns an object is considered a constructor and can be invoked with the new operator.
+- Because objects can have any type of property value you can create methods on the object as part of its encapsulation.
+- You can make properties and functions of classes private by prefixing them with a #.
+- Classes can be extended by using the extends keyword to define inheritance.
+- Parameters that need to be passed to the parent class are delivered using the super function.
+- Any functions with the same name defined at the child level override the parent's implementation of those same functions.
+- 
 
 
