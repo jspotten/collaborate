@@ -570,6 +570,8 @@ Simon JavaScript:
 
 - A JavaScript object represents a collection of name value pairs referred to as properties.
 - The property name must be of type String or Symbol, but the value can be of any type.
+  - Example: const person = { name: 'John', age: 20 };
+- Each property name before colons is an identifier (either a name, a number, or a string literal).
 - Once it is created, you can add any properties to the object by calling object.[newPropertyName] and setting it equal to something.
 - You can also declare a variable of object type with the object-literal syntax; allows you to provide the initial composition of the object.
 - Static Object Functions:
