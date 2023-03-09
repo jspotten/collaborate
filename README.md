@@ -477,6 +477,15 @@ Simon JavaScript:
   - If you do not want to host font files on your server, then you can load them from a font provider.
     - Example: @import url('https://fonts.googleapis.com/css2?family=Rubik Microbe&display=swap');
 
+<h5>CSS Animation</h5>
+
+- You create CSS animations using the animation properties and defining keyframes for what the element should look like a different times in the animation.
+- Specify that we are animating the selected elements by adding the animation-name property with a value of demo. This name refers to the name of the keyframes.
+- The keyframes tell what CSS properites should be applied at different key points in the animation sequence.
+- Animation-duration property used to  specify how long an animation should last.
+- We can use from and to for the defining of the start and end of an animation in @key frames [nameOfAnimation].
+
+
 
 
 
