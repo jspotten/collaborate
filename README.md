@@ -485,8 +485,13 @@ Simon JavaScript:
 - Animation-duration property used to  specify how long an animation should last.
 - We can use from and to for the defining of the start and end of an animation in @key frames [nameOfAnimation].
 
+<h5>Responsive Design</h5>
 
-
+- The CSS display property allows you to change how an HTML element is displayed by the browser.
+  - Common Options: none (don't display element), block (display this element with a width that fills its parent element), inline (display this element with a width that is only as big as its content), flex (display this element's children in a flexible orientation), & grid (display this element's children in a grid orientation).
+- Tell browser to not scale the page: <meta name="viewport" content="width=device-width,initial-scale=1" />
+- The float css property moves an element to the left or right of its container element and allows inline elements to wrap around it.
+- @media selector dynamically detects the size and orientation of the device and applies CSS rules to represent the structure of the HTML in a way that accommodates the change.
 
 
 
