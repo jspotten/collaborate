@@ -402,6 +402,11 @@ Simon JavaScript:
   - 😀 &#128512;
 - By default a web server will display the HTML file named index.html when a web browser, such as Google Chrome, makes a request without asking for a specific HTML file.
 
-   
+<h5>HTML Structure Elements</h5>
+
+- A block element is meant to be a distinct block in the flow of the content structure.
+- An inline element is meant to be inline with the content flow of a block element. They don't disrupt the flow of a block element's content.
+
+
    
    
