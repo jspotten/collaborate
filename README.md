@@ -245,7 +245,26 @@ Simon JavaScript:
 - The '-h' parameter is the domain name of your production environment.
 - The '-s' parameter represents the name of the application you are deploying (such as simon or startup).
 
-  
+<h4>Web Servers</h4>
+
+<h5>The Internet</h5>
+
+- The internet can be thought of as a massive redundant collection of wires that connect up all of the computers in the world.
+- A lot of the wires are wireless (wiFi, satellite, or cell), and not all of the computers in the worl are connected.
+- When a device wants to talk to another device, it must have an IP address (e.g. 128.187.16.184).
+- A symbolic name for an IP address is called a domain name: domain names are converted to IP addresses by doing a lookup in the Domain Name System (DNS).
+- You can look up the IP address for any domain name using the 'dig' console utility.
+- Next, you connect to the device by first requesting a connection route to the device.
+- Connetion Route: consists of multiple hops across the network until the destination is dynamically and discovered and the connection established.
+- The hops can be determined using the 'traceroute' console utility.
+- Internet Service Provider (ISP)
+- Actual sending of data across the internet uses the TCP/IP model: a layered architecture that covers everything from physical wires to the data that a web application sends.
+- TCP/IP Architecture:
+  - Layers: Application, Transport, Internet, and Link.
+  - Example: HTTPS, TCP, IP, and Fiber/Hardware.
+  - Purpose: Functionality like web browsing, moving connection information packets, establishing connections, and physical connections.
+ 
+ 
   
   
   
