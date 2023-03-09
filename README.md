@@ -597,4 +597,26 @@ Simon JavaScript:
 - You can convert JSON to, and from, JavaScript using the JSON.parse and JSON.stringify functions.
 - JSON cannot represent undefined objects, so it gets dropped when converting JS to JSON.
 
+<h5>JavaScript Regular Expressions</h5>
+
+- Regular expressions: textual pattern matchers; patterns used to match character combinations in strings.
+- You can use them to find text in a string so that you can replace it, or simply know that it exists.
+- You can create a regular expression using the class constructor or a regular expression literal:
+  - const objRegex = new RegExp('ab*', 'i');
+  - const literalRegex = /ab*/i;
+- String class has several functions that accept regular expressions which includes match, replace, search, and split.
+  - match: retrieves the result of matching a string against a regular expression.
+  - replace: returns a new string with one, some, or all matches of a pattern replaced by a replacement.
+  - search: executes a search for a match between a regular expression and this String object.
+  - split: takes a pattern and divides a String into an ordered list of substrings by searching for the pattern, puts these substrings into an array, and returns the array.
+- For a quick test to see if there is a match you can use the regular expression object’s “test” function.
+- Regex Flags:
+  - g: Global search
+  - i: Case-insensitive search
+  - m: Multi-line search
+  - y: "sticky" search match starting at current position in target string
+
+
+
+
 
