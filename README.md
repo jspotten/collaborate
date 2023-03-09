@@ -631,7 +631,18 @@ Simon JavaScript:
 - When object destructuring, you explicitly specify the properties you want to pull from the source object.
 - You can also map the names to new variables instead of just using the original property names.
 
+<h5>Scope</h5>
 
-
+- JavaScript has four different types of scope:
+  - Gobal: Visible to all code
+  - Module: Visible to all code running in a module
+  - Function: Visible within a function
+  - Block: Visible within a block of code delimited by curly braces
+- There are three different context that this can refer to:
+  - Global - When this is referenced outside a function or object it refers to the globalThis object. The globalThis object represents the context for runtime environment. For example, when running in a browser, globalThis refers to the browser's window object.
+  - Function - When this is referenced in a function it refers to the object that owns the function. That is either an object you defined or globalThis if the function is defined outside of an object. Note that when running is JavaScript strict mode, a global function's this variable is undefined instead of globalThis.
+  - Object - When this is referenced in a object it refers to the object.
+- A closure is defined as a function and its surrounding state; whatever variables are accessible when a function is created are available inside of that function.
+- 
 
 
