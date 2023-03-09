@@ -206,6 +206,7 @@ Simon JavaScript:
   - 'CTRL-C': kill the currently running command.
 
 <h5>Git</h5>
+
 - Git provides two valuable functions:
   - First it allows you to track versions of files in a directory.
   - Second, it allows you to clone all of those versions to a differnt location, usually to a differnt computer.
