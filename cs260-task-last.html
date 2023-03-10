@@ -3,7 +3,7 @@
     <head>
         <meta charset = "utf-8">
         <meta name = "viewport" content = "width = device - width, initial - scale = 2">
-        <title>CS260 HW Example Task List Tasks Page</title>
+        <title>Collaborate - Tasks Page</title>
         <link 
             href = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel = "stylesheet"
             integrity = "sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin = "anonymous"
@@ -29,26 +29,18 @@
                     -->
                 </div>
                 <div class = "container" id = "button-nav">
-                    <button class = "btn btn-danger">Add Task</button>
-                    <button class = "btn btn-danger">Delete List</button>
-                    <button class = "btn btn-danger" onclick = "window.location.href = 'index.html';">Return</button>
+                    <button class = "btn btn-danger" id = "addTask">Add Task</button>
+                    <button class = "btn btn-danger" id = "deleteList">Delete List</button>
+                    <button class = "btn btn-danger" id = "toHomePage">Return</button>
                 </div>
             </nav>
         </header>
 
         <main class = "container-fluid">
             <h2 id = "tasks-title">In Progress</h2>
-            <div id = "in-progress">
-                <div id = #in-progress-tasks>
-                    <button class = "btn btn-light">Startup HTML/CSS</button>
-                </div>
-            </div>
+            <div id = "in-progress"></div>
             <h2 id = "tasks-title">Completed</h2>
-            <div id = "completed">
-                <div id = #completed-tasks>
-                    <button class = "btn btn-light">Simon HTML/CSS</button>
-                </div>
-            </div>            
+            <div id = "completed"></div>            
         </main>
 
         <footer class = "bg-secondary text-light">
@@ -57,5 +49,6 @@
                 <a href = "https://github.com/jespotten/startup">Github</a>                
             </div>
         </footer>
+        <script type = "module" src = "task.js"></script>
     </body>
 </html>
