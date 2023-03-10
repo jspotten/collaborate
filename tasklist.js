@@ -1,11 +1,11 @@
-import {TaskList, pinnedIcon, listSetUpComplete} from './main.js';
+import {TaskList, pinnedIcon, listSetUpComplete, setListSetUpComplete} from './main.js';
 export {addTaskList};
 
 let taskListCounter = 0;
 let taskListContainer;
 const currUser = (JSON.parse(sessionStorage.getItem('currentUser')));
 console.log(currUser.username);
-document.getElementById('user').innerHTML = userName;
+document.getElementById('user').innerHTML = currUser.username;
 
 function addTaskList()
 {
@@ -30,6 +30,7 @@ function addTaskList()
         const divEl = e.target.parentElement.parentElement;
         const listsDivEl = divEl.parentElement;
         listsDivEl.removeChild(divEl);
+        setListSetUpComplete(true);
     })
     taskListCounter++;
 }
