@@ -34,5 +34,22 @@ function addTaskList()
     })
     taskListCounter++;
 }
-
 document.getElementById('addList').addEventListener('click', addTaskList);
+
+function shareWithUser()
+{
+    console.log("Shared with Julie");
+   /*
+    * Add functionality to be able to send an invite to share a list with
+    * another user and give them the ability to accept or decline. If accepted,
+    * then the task list will be added to their collection of task lists.
+    */
+}
+document.getElementById('share').addEventListener('click', shareWithUser);
+
+function logout()
+{
+    sessionStorage.clear();
+    window.location.href = 'login.html';
+}
+document.getElementById('logout').addEventListener('click', logout);
