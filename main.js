@@ -1,4 +1,4 @@
-export {User, Users, Task, TaskList, pinnedIcon, listSetUpComplete};
+export {User, Users, Task, TaskList, pinnedIcon, listSetUpComplete, setListSetUpComplete};
 
 const pinIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="2.3vw" height="2.3vw" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
                     <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513
@@ -24,9 +24,14 @@ const taskListForm =`<form class = "d-flex" id = "tempTextBox">
 
 let listSetUpComplete = true;
 
+function setListSetUpComplete(value)
+{
+    listSetUpComplete = value;
+}
+
 class User
 {
-    constructor(firstName, lastName, email, username, password, taskLists = [])
+    constructor(firstName, lastName, username, email, password, taskLists = [])
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -67,16 +72,6 @@ class Task
         this.title = title;
         this.date = date;
         this.pinned = pinned;
-    }
-
-    pinList()
-    {
-        this.pinned = true;
-    }
-
-    unpinList()
-    {
-        this.pinned = false;
     }
 }
 
