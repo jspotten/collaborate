@@ -7,6 +7,7 @@ const currUser = (JSON.parse(sessionStorage.getItem('currentUser')));
 console.log(currUser.username);
 document.getElementById('user').innerHTML = currUser.username;
 
+
 function addTaskList()
 {
     if(!listSetUpComplete) return;
@@ -22,8 +23,10 @@ function addTaskList()
         filledStarIcon.innerHTML += pinnedIcon;
         filledStarIcon.addEventListener('click', () => {
             divEl.replaceChild(starIcon, filledStarIcon);
+            newTaskList.pinned = false;
         });
         divEl.replaceChild(filledStarIcon, starIcon);
+        newTaskList.pinned = true;
     });
 
     newTaskList.taskListCard.getElementsByClassName('trash')[0].addEventListener('click', (e) => {

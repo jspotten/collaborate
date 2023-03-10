@@ -24,6 +24,7 @@ const taskListForm =`<form class = "d-flex" id = "tempTextBox">
 
 let listSetUpComplete = true;
 
+
 function setListSetUpComplete(value)
 {
     listSetUpComplete = value;
@@ -39,16 +40,6 @@ class User
         this.email = email;
         this.password = password;
         this.taskLists = taskLists;
-    }
-
-    getJSON()
-    {
-        return JSON.parse(this);
-    }
-
-    decodeJSON(userJSON)
-    {
-        return JSON.stringify(userJSON);
     }
 }
 
@@ -82,6 +73,7 @@ class TaskList
         this.title = title;
         this.tasks = tasks;
         this.id = id;
+        this.pinned = false;
         if(tasks === [])
         {
             this.numTasks = 0;
