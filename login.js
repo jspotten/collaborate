@@ -61,6 +61,3 @@ function newUserCreation()
     }
 }
 document.getElementById('signUpButton').addEventListener('click', newUserCreation);
-
-///const userName = localStorage.getItem('currentUser');
-//document.getElementById('user').innerHTML = userName;

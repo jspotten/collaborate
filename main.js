@@ -143,15 +143,4 @@ class TaskList
             }
         }
     }
-
-    pinList()
-    {
-        this.pinned = true;
-    }
-
-    unpinList()
-    {
-        this.pinned = false;
-    }
-
 }
