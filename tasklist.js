@@ -1,4 +1,4 @@
-import {TaskList, pinnedIcon} from './main.js';
+import {TaskList, pinnedIcon, listSetUpComplete} from './main.js';
 export {addTaskList};
 
 let taskListCounter = 0;
@@ -6,6 +6,8 @@ let taskListContainer;
 
 function addTaskList()
 {
+    if(!listSetUpComplete) return;
+
     taskListContainer = document.getElementById('list-container');
     let newTaskList = new TaskList("CS 260 Exams", taskListCounter, []);
     taskListContainer.appendChild(newTaskList.taskListCard);
@@ -26,7 +28,6 @@ function addTaskList()
         const listsDivEl = divEl.parentElement;
         listsDivEl.removeChild(divEl);
     })
-
     taskListCounter++;
 }
 

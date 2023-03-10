@@ -1,4 +1,4 @@
-export {User, Users, Task, TaskList, pinnedIcon};
+export {User, Users, Task, TaskList, pinnedIcon, listSetUpComplete};
 
 const pinIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="2.3vw" height="2.3vw" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
                     <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513
@@ -21,6 +21,8 @@ const taskListForm =`<form class = "d-flex" id = "tempTextBox">
                         form-input" type="search" placeholder="Enter Task List Name Here"
                         aria-label="" aria-describedby="basic-addon1">
                     </form>`;
+
+let listSetUpComplete = true;
 
 class User
 {
@@ -94,7 +96,7 @@ class TaskList
             this.numTasks = tasks.length;    
         }
         this.taskListCard = this.createBlankTaskList();
-
+        listSetUpComplete = false;
         const input = this.taskListCard.getElementsByTagName('input');
         input[0].addEventListener('keypress', (event) =>
         {
@@ -105,6 +107,7 @@ class TaskList
                 taskListTitle.setAttribute('href', 'cs260-task-last.html');
                 taskListTitle.textContent = input[0].value;
                 this.taskListCard.replaceChild(taskListTitle, input[0].parentElement);
+                listSetUpComplete = true;
             }
         });
     }
