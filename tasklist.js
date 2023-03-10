@@ -2,7 +2,10 @@ import {TaskList, pinnedIcon, listSetUpComplete} from './main.js';
 export {addTaskList};
 
 let taskListCounter = 0;
-let taskListContainer; 
+let taskListContainer;
+const currUser = (JSON.parse(sessionStorage.getItem('currentUser')));
+console.log(currUser.username);
+document.getElementById('user').innerHTML = userName;
 
 function addTaskList()
 {
