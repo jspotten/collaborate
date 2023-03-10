@@ -1,5 +1,16 @@
 export {User, Users, Task, TaskList, pinnedIcon, listSetUpComplete, setListSetUpComplete};
 
+const uncheckedIcon =   `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06
+                                 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                        </svg>`
+
+const checkedIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75
+                            0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                       </svg>`;
+
 const pinIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="2.3vw" height="2.3vw" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
                     <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513
                         0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525
@@ -18,16 +29,34 @@ const deleteIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="2.3vw" height
 
 const taskListForm =`<form class = "d-flex" id = "tempTextBox">
                         <input id = "taskListTitle" class="form-control me-2 cursor-center 
-                        form-input" type="search" placeholder="Enter Task List Name Here"
+                        form-input" type="text" placeholder="Enter Task List Name Here"
                         aria-label="" aria-describedby="basic-addon1">
                     </form>`;
 
+const taskForm =`<form class = "d-flex" id = "tempTextBox">
+                    <input id = "task" class="form-control me-2 cursor-center 
+                    form-input" type="text" placeholder="Enter Task Name Here"
+                    aria-label="" aria-describedby="basic-addon1">
+                </form>`;
+
+const dateForm =`<form class = "d-flex" id = "tempTextBox">
+                        <input id = "taskDate" class="form-control me-2 cursor-center 
+                        form-input" type="datetime-local"
+                        aria-label="" aria-describedby="basic-addon1">
+                </form>`;
+
 let listSetUpComplete = true;
+let taskSetUpComplete = true;
 
 
 function setListSetUpComplete(value)
 {
     listSetUpComplete = value;
+}
+
+function setTaskSetUpComplete(value)
+{
+    taskSetUpComplete = value;
 }
 
 class User
@@ -58,11 +87,63 @@ class Users
 
 class Task
 {
-    constructor(title, date, pinned)
+    constructor(title)
     {
         this.title = title;
-        this.date = date;
-        this.pinned = pinned;
+        this.pinned = false;
+        this.taskCard = this.createTaskCard();
+
+        taskSetUpComplete = false;
+        const input = this.taskListCard.getElementsByTagName('input');
+        input[0].addEventListener('keypress', (event) =>
+        {
+            if(event.key === "Enter" && (input[0].textContent !== null || input.textContent !== ''))
+            {
+                event.preventDefault();
+                const taskTitle = document.createElement('span');
+                taskTitle.textContent = input[0].value;
+                this.taskListCard.replaceChild(taskTitle, input[0].parentElement);
+            }
+        });
+
+        input[1].addEventListener('keypress', (event) =>
+        {
+            if(event.key === "Enter" && (input[0].textContent !== null || input.textContent !== ''))
+            {
+                event.preventDefault();
+                const taskDate = document.createElement('time');
+                //taskDate.setAttribute('datetime', 'reminder');
+                taskDate.textContent = input[1].value;
+                this.taskListCard.replaceChild(taskDate, input[1].parentElement);
+            }
+        });
+    }
+
+    createTaskCard()
+    {
+        const taskCard = document.createElement('div');
+        taskCard.className = "card";
+        
+        const incompleteIcon = document.createElement('i');
+        starIcon.className = "unchecked";
+        starIcon.innerHTML += uncheckedIcon;
+        taskCard.appendChild(incompleteIcon);
+
+        const starIcon = document.createElement('i');
+        starIcon.className = "star";
+        starIcon.innerHTML += pinIcon;
+        taskCard.appendChild(starIcon);
+
+        taskCard.innerHTML += taskForm;
+
+        taskCard.innerHTML += dateForm;
+        
+        const trashIcon = document.createElement('i');
+        trashIcon.className = "trash";
+        trashIcon.innerHTML += deleteIcon
+        taskCard.appendChild(trashIcon);
+        
+        return taskCard;
     }
 }
 
@@ -82,7 +163,7 @@ class TaskList
         {
             this.numTasks = tasks.length;    
         }
-        this.taskListCard = this.createBlankTaskList();
+        this.taskListCard = this.createTaskListCard();
         listSetUpComplete = false;
         const input = this.taskListCard.getElementsByTagName('input');
         input[0].addEventListener('keypress', (event) =>
@@ -99,24 +180,24 @@ class TaskList
         });
     }
 
-    createBlankTaskList()
+    createTaskListCard()
     {
-        const taskCard = document.createElement('div');
-        taskCard.className = "card";
+        const taskListCard = document.createElement('div');
+        taskListCard.className = "card";
         
         const starIcon = document.createElement('i');
         starIcon.className = "star";
         starIcon.innerHTML += pinIcon;
-        taskCard.appendChild(starIcon);
+        taskListCard.appendChild(starIcon);
 
-        taskCard.innerHTML += taskListForm;
+        taskListCard.innerHTML += taskListForm;
         
         const trashIcon = document.createElement('i');
         trashIcon.className = "trash";
         trashIcon.innerHTML += deleteIcon
-        taskCard.appendChild(trashIcon);
+        taskListCard.appendChild(trashIcon);
         
-        return taskCard;
+        return taskListCard;
     }
 
     addTask(newTask)
