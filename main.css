@@ -112,13 +112,15 @@ main
     padding: 0 10px 0 10px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
+
     align-items: center;
 }
 
 .unchecked
 {
-    flex: 1;
+    /* flex: 1; */
+    /* width: 10%; */
     text-align: left;
     line-height: 16px !important;
 }
@@ -132,14 +134,27 @@ main
 
 .star
 {
-    flex: 1;
+    /* flex: 1; */
+    /* width: 10%; */
     text-align: left;
     line-height: 16px !important;
 }
 
-main .d-flex
+.tempTextBox
 {
-    width: 35vw;
+    /* flex: 3; */
+    width: 35%;
+    /* width: 35vw; */
+    text-align: center !important;
+    margin: 0;
+    padding: 0;
+}
+
+#dateForm
+{
+    /* flex: 1 !important; */
+    /* width: 35vw; */
+    width: 25%;
     text-align: center !important;
     margin: 0;
     padding: 0;
@@ -147,6 +162,7 @@ main .d-flex
 
 .form-input
 {
+    flex: 1;
     font-size: 1em;
     margin: 0px !important;
     padding: 0;
@@ -167,7 +183,9 @@ main .d-flex
 
 .trash
 {
-    flex: 1;
+    /* flex: 1; */
+    /* width: 10%; */
+    justify-self: flex-end;
     text-align: right;
     line-height: 16px !important;
 }
@@ -210,16 +228,20 @@ main .d-flex
 #in-progress
 {
     display: flex;
+    flex-direction: column;
     flex: 1;
-    padding: 0 3vw 0 3.4vw;
-    width: 89vw;
+    /* padding: 0 3vw 0 3.4vw; */
+    /* width: 89vw; */
     overflow-y: scroll;
     margin-bottom: 20px !important;
+    margin: 10px 10px 20px 10px;
+    gap: 15px;
 }
 
 #completed
 {
     display: flex;
+    flex-direction: column;
     flex: 1;
     padding: 0 3vw 0 3.4vw;
     width: 89vw;

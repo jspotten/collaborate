@@ -1,4 +1,4 @@
-import {Task, pinnedIcon, taskSetUpComplete, setTaskSetUpComplete} from './main.js';
+import {Task, pinnedIcon, checkedIcon, taskSetUpComplete, setTaskSetUpComplete} from './main.js';
 export {addTask};
 
 let taskCounter = 0;
@@ -12,8 +12,8 @@ function addTask()
 {
     if(!taskSetUpComplete) return;
 
-    taskContainer = document.getElementById('list-container');
-    let newTask = new Task("CS 260 Exams");
+    taskContainer = document.getElementById('in-progress');
+    let newTask = new Task("Startup");
     taskContainer.appendChild(newTask.taskCard);
     newTask.taskCard.getElementsByClassName('star')[0].addEventListener('click', (e) => {
         const divEl = e.target.parentElement.parentElement;
@@ -37,4 +37,13 @@ function addTask()
     })
     taskCounter++;
 }
-document.getElementById('addList').addEventListener('click', addTask);
+document.getElementById('addTask').addEventListener('click', addTask);
+
+function deleteList()
+{
+
+}
+document.getElementById('deleteList').addEventListener('click', deleteList);
+
+document.getElementById('toHomePage').addEventListener('click', () => {
+    onclick = window.location.href = 'index.html';});
