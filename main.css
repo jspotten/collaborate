@@ -200,7 +200,8 @@ main
 
 .card span
 {
-    flex: 3;
+    /* flex: 3; */
+    width: 35%;
     text-align: center;
     color: black;
 }

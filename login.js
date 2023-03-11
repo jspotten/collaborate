@@ -21,7 +21,7 @@ function existingUserLogin()
             if(user.password === password)
             {
                 sessionStorage.setItem('currentUser', JSON.stringify(user));
-                window.location.href = 'index.html';
+                window.location.href = 'tasklist.html';
                 break;
             }
         }
@@ -57,7 +57,7 @@ function newUserCreation()
         usersOnFile.addUser(newUser);
         localStorage.setItem('allUsers', JSON.stringify(usersOnFile));
         sessionStorage.setItem('currentUser', JSON.stringify(newUser));
-        window.location.href = 'index.html';
+        window.location.href = 'tasklist.html';
     }
 }
 document.getElementById('signUpButton').addEventListener('click', newUserCreation);

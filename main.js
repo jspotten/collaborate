@@ -94,7 +94,7 @@ class Task
         this.completed = false;
         this.taskCard = this.createTaskCard();
 
-        taskSetUpComplete = true;
+        taskSetUpComplete = false;
         const input = this.taskCard.getElementsByTagName('input');
         input[0].addEventListener('keypress', (event) =>
         {
@@ -104,9 +104,11 @@ class Task
                 const taskTitle = document.createElement('span');
                 taskTitle.textContent = input[0].value;
                 this.taskCard.replaceChild(taskTitle, input[0].parentElement);
+                taskSetUpComplete = true;
             }
         });
 
+        //Find way to check if state of date-local input has changed.
         input[1].addEventListener('keypress', (event) =>
         {
             if(event.key === "Enter" && (input[1].textContent !== null || input.textContent !== ''))
@@ -172,7 +174,7 @@ class TaskList
             {
                 event.preventDefault();
                 const taskListTitle = document.createElement('a');
-                taskListTitle.setAttribute('href', 'cs260-task-last.html');
+                taskListTitle.setAttribute('href', 'task.html');
                 taskListTitle.textContent = input[0].value;
                 this.taskListCard.replaceChild(taskListTitle, input[0].parentElement);
                 listSetUpComplete = true;

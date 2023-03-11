@@ -53,6 +53,6 @@ document.getElementById('share').addEventListener('click', shareWithUser);
 function logout()
 {
     sessionStorage.clear();
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
 }
 document.getElementById('logout').addEventListener('click', logout);

@@ -46,4 +46,4 @@ function deleteList()
 document.getElementById('deleteList').addEventListener('click', deleteList);
 
 document.getElementById('toHomePage').addEventListener('click', () => {
-    onclick = window.location.href = 'index.html';});
+    onclick = window.location.href = 'tasklist.html';});
