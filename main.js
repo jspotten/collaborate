@@ -94,7 +94,7 @@ class Task
         this.completed = false;
         this.taskCard = this.createTaskCard();
 
-        taskSetUpComplete = false;
+        taskSetUpComplete = true;
         const input = this.taskCard.getElementsByTagName('input');
         input[0].addEventListener('keypress', (event) =>
         {
