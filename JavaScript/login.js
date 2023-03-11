@@ -1,9 +1,10 @@
-import {User, Users, Task, TaskList} from './main.js';
+import {User, Users, TaskList} from './main.js';
+import {Task} from './task.js';
 export {existingUserLogin, newUserCreation};
 
-const taskList = new TaskList("CS 260 HW", new Task("Startup JS", 'cs260HW', new Date('March 10, 2023 11:59:59')));
+const taskList = new TaskList("CS 260 HW", '10', new Task("Startup JS"));
 const user1 = new User('Billy', 'Bob', 'billyBob', 'billyBob@gmail.com', 'Bobbybill', [taskList]);
-const user2 = new User('Jackie', 'Chan', 'jackieC', 'jackie.chan@hotmail.com', 'jackieR0cks!', [new TaskList("MSC", false)]);
+const user2 = new User('Jackie', 'Chan', 'jackieC', 'jackie.chan@hotmail.com', 'jackieR0cks!', [new TaskList("MSC", '11', [])]);
 const user3 = new User('Lizia', 'Stuart', 'lizia99', 'lizia.stuart@outlook.com', '\$myPassw0rd', []);
 const existingUsers = new Users(user1, user2, user3);
 localStorage.setItem('allUsers', JSON.stringify(existingUsers));
@@ -21,7 +22,7 @@ function existingUserLogin()
             if(user.password === password)
             {
                 sessionStorage.setItem('currentUser', JSON.stringify(user));
-                window.location.href = 'index.html';
+                window.location.href = 'tasklist.html';
                 break;
             }
         }
@@ -57,7 +58,7 @@ function newUserCreation()
         usersOnFile.addUser(newUser);
         localStorage.setItem('allUsers', JSON.stringify(usersOnFile));
         sessionStorage.setItem('currentUser', JSON.stringify(newUser));
-        window.location.href = 'index.html';
+        window.location.href = 'tasklist.html';
     }
 }
 document.getElementById('signUpButton').addEventListener('click', newUserCreation);

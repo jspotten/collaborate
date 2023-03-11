@@ -3,7 +3,7 @@
     <head>
         <meta charset = "utf-8">
         <meta name = "viewport" content = "width = device - width, initial - scale = 2">
-        <title>Collaborate - Tasks Page</title>
+        <title>Task List Hub</title>
         <link 
             href = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel = "stylesheet"
             integrity = "sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin = "anonymous"
@@ -14,33 +14,32 @@
         <link rel = "stylesheet" href = "../CSS/main.css"/>
     </head>
 
-    <body class = "bg-light">
+    <body>
         <header class = "container-fluid">
             <nav class = "navbar navbar-light">
                 <div class = "container-fluid" id = "title-nav-user">
-                    <a class = "navbar-brand" href = "index.html">
+                    <a class = "navbar-brand" href = "tasklist.html">
                         <h1>Collaborate</h1>
-                        <button class = "btn" onclick = "window.location.href = 'index.html';" id = "nav-bar">Home Page / CS 260 Homework Assignments</button>
+                        <button class = "btn" id = "nav-bar">Home Page</button>
                     </a>
-                    <button class = "btn" onclick = "window.location.href = 'login.html';"id = "user" data-toggle = "modal" data-target = "#myModal">User Profile</button>
+                    <button class = "btn" onclick = "window.location.href = 'login.html';" id = "user" data-toggle = "modal" data-target = "#myModal"></button>
                     <!--Place to create modal pop up user window below
                         <div id = #myModal" class = "modal fade" role = "menu/dialog">
                         </div>
                     -->
                 </div>
                 <div class = "container" id = "button-nav">
-                    <button class = "btn btn-danger" id = "addTask">Add Task</button>
-                    <button class = "btn btn-danger" id = "deleteList">Delete List</button>
-                    <button class = "btn btn-danger" id = "toHomePage">Return</button>
+                    <button class = "btn btn-danger" id = "addList">Add List</button>
+                    <button class = "btn btn-danger" id = "share">Share</button>
+                    <button class = "btn btn-danger" id = "logout">Logout</button>
                 </div>
             </nav>
         </header>
 
         <main class = "container-fluid">
-            <h2 id = "tasks-title">In Progress</h2>
-            <div id = "in-progress"></div>
-            <h2 id = "tasks-title">Completed</h2>
-            <div id = "completed"></div>            
+            <h2 id = "tasks-title">Task Lists</h2>
+            <div id = "list-container">
+            </div>
         </main>
 
         <footer class = "bg-secondary text-light">
@@ -49,6 +48,7 @@
                 <a href = "https://github.com/jespotten/startup">Github</a>                
             </div>
         </footer>
-        <script type = "module" src = "../JavaScript/task.js"></script>
+        <script type = 'module' src = "../JavaScript/tasklist.js"></script>
+        <script type = 'module' src = '../JavaScript/main.js'></script>
     </body>
 </html>
