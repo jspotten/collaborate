@@ -21,14 +21,14 @@ function existingUserLogin()
         {
             if(user.password === password)
             {
-                sessionStorage.setItem('currentUser', JSON.stringify(user));
+                localStorage.setItem('currentUser', JSON.stringify(user));
                 window.location.href = 'tasklist.html';
                 break;
             }
         }
     }
 }
-document.getElementById('loginButton').addEventListener('click', existingUserLogin);
+//document.getElementById('loginButton').addEventListener('click', existingUserLogin);
 
 function newUserCreation()
 {
@@ -57,7 +57,7 @@ function newUserCreation()
         let usersOnFile = new Users(...usersData.users);
         usersOnFile.addUser(newUser);
         localStorage.setItem('allUsers', JSON.stringify(usersOnFile));
-        sessionStorage.setItem('currentUser', JSON.stringify(newUser));
+        localStorage.setItem('currentUser', JSON.stringify(newUser));
         window.location.href = 'tasklist.html';
     }
 }
