@@ -122,6 +122,18 @@ Simon JavaScript:
 - It seems that you can include just an object in an if statement, and if the object has data, then it will return true, otherwise false.
 - HTML elements can have be filled with other children with appendChild or by setting its innerHTML to a string of HTML code which builds the structures.
 - Having const [var1, var2. ...] enables one to have variables that update as one iterates through an array of objects using a for loop.
+   
+   
+Startup JavaScript:
+- If I don't have access to a database, I can either store something in localstorage or sessionstorage if I want what is saved to disappear once webpage is closed.
+- To swap between two icon states by clicking on them, I can add an event lister for one and when changing to a different icon, add an event lister to the new icon within the other eventlister to allow me to be able to cycle back and forth between them.
+- In order to data from other js files, one must have the send file export the data desired and then have the receiving js file import them by name.
+- However, the receiving js file needs to be a module since modules can only share data with other modules.
+- When including the script in HTML, make sure to add type = 'module'.
+- innerHTML looks down one level from the element it is called on.
+- An alternative to using justify-content: center and flex: # is justify-content: space-between and width of each element set to a specific percent.
+- Keypress is an event that can be used to listen for any key on the keyboard and do something when it is pressed.
+
 <br></br>
 <br></br>
 <h2>MIDTERM EXAM NOTES</h2>
