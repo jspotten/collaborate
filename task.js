@@ -15,6 +15,21 @@ function addTask()
     taskContainer = document.getElementById('in-progress');
     let newTask = new Task("Startup");
     taskContainer.appendChild(newTask.taskCard);
+
+    newTask.taskCard.getElementsByClassName('unchecked')[0].addEventListener('click', (e) => {
+        const divEl = e.target.parentElement.parentElement;
+        const uncheckedIcon = e.target.parentElement;
+        const checkIcon = document.createElement('i');
+        checkIcon.className = "star";
+        checkIcon.innerHTML += checkedIcon;
+        checkIcon.addEventListener('click', () => {
+            divEl.replaceChild(uncheckedIcon, checkIcon);
+            newTask.pinned = false;
+        });
+        divEl.replaceChild(checkIcon, uncheckedIcon);
+        newTask.pinned = true;
+    });
+
     newTask.taskCard.getElementsByClassName('star')[0].addEventListener('click', (e) => {
         const divEl = e.target.parentElement.parentElement;
         const starIcon = e.target.parentElement;
