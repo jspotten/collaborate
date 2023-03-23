@@ -133,6 +133,30 @@ Startup JavaScript:
 - innerHTML looks down one level from the element it is called on.
 - An alternative to using justify-content: center and flex: # is justify-content: space-between and width of each element set to a specific percent.
 - Keypress is an event that can be used to listen for any key on the keyboard and do something when it is pressed.
+  
+  
+Simon Services:
+- When using Node.js to run a project using services, make sure to do npm init -y and then install express: npm install express.
+- After installing express, consolidate all of your files (HTML, CSS, JS, etc) into one directory and call it public.
+- Next create a JS file and call it server.js or index.js; it will be where code will be added for the server functionality which includes the port number that will be listening for HTTP requests, the imported use of express, different actions (endpoints), etc.
+- Importing the use of express (or any other package):
+  - const express = require('require');
+  - const app = express();
+- Unlike before where JSON had to deserialized everytime, we can do one command to do that for all request bodies: app.use(express.json());
+- To use the static public directory we created to store our files, do the following: app.use(express.static('static'));
+- If we want to route all of the requests through one junction, we can create a router: var apiRouter = express.Router(); app.use('/[subname]', apiRouter);
+- And from there we can do what we would normally do with app and define the steps that will be taken when certain HTTP requests come through.
+- For requests like get or post, the corresponding functions will take in two parameters: a string for the URL path and an arrow function which will have two parameters as well; req for the request and res for the response.
+- To listen on a port, write this: app.listen(port, () => { console.log('Listening on port ${port}');};
+- If you don't want certain things to be committed when using the commit command, create a .gitignore file and add directory to the file.
+- Sometimes a period will need to be added at the beginning and a forward slash at the end to ignore all files within the directory.
+- Use fetch to retrieve resources from webpages asynchronously. It will return a promise which will be fulfilled once the response, or resource(s), is available.
+- Fetch takes in a URL and takes the response, converts it to JSON with one then statement, and with another then statement containing the parameter 'data' for the response, it can be used in whatever way the user desires.
+- Since index.js links to the public directory, any global variables in the JS files can be referenced. So for instance, with scores, index.js can reference it and send the variables contents as a response when a get request with the URL path '/score';
+- We can create default when no recognizable path is provided by using app.use with no path parameter and just an arrow function.
+- For post requests, they can be captured by calling fetch for the given URL path and have their response stored in a variable.
+- Once that is done, we can do an await to store the deserialized response in another variable.
+
 
 <br></br>
 <br></br>
