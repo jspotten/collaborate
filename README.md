@@ -156,6 +156,21 @@ Simon Services:
 - We can create default when no recognizable path is provided by using app.use with no path parameter and just an arrow function.
 - For post requests, they can be captured by calling fetch for the given URL path and have their response stored in a variable.
 - Once that is done, we can do an await to store the deserialized response in another variable.
+  
+  
+Simon Database:
+- For the database code, create a separate JavaScript file to contain it.
+- Make sure your environment variables for user, password, and host name match what you have for your cluster and account with MongoDB Atlas.
+- The url used for creating a MongoClient has the following template: const url = 'mongodb+srv://${userName}:${password}@${hostname}';
+  - userName will be represented by process.env.[NameForUser], password represented by process.env.[NameForPassword], and process.env.[NameForHostName].
+- Create the client by calling new MongClient([url]).
+- To create a new database with a new collection for JSON objects (or other objects), call your newly created client in this way:
+  - client.db('[NameForDatabase]').collection('[NameForCollection]');
+  - The .db and .collection functions will create a new instance of a database and collection with the names you provided.
+- We store objects in a collection by calling insertOne(Object) on the collection we created.
+- If we want to use database functions that add or query for certain things, export them by typing module.exports = {function1, function2, ...};
+- Make sure your server/index JS file adds the Database: const DB = require('./[databaseName].js');
+- Now for each of our endpoints, we can use our defined database tractions to do certain things like updating scores and querying for data.
 
 
 <br></br>
