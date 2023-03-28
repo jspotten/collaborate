@@ -171,6 +171,24 @@ Simon Database:
 - If we want to use database functions that add or query for certain things, export them by typing module.exports = {function1, function2, ...};
 - Make sure your server/index JS file adds the Database: const DB = require('./[databaseName].js');
 - Now for each of our endpoints, we can use our defined database tractions to do certain things like updating scores and querying for data.
+  
+  
+Simon Login:
+- bcrypt: it is a library that provides hashing capabilities for making passwords/authtokens unrecognizable or crackable.
+- 409 error code used to tell the user that the info provided is already in use for another existing user.
+- When creating a cookie to store the info passed in to be verified, we can add three properties to make it more secure:
+  - secure: ensures that only HTTPS is used when passing the cookie back; no HTTP or any other protocol.
+  - httpOnly: will not be accessed or looked at by any JavaScript on the browser.
+  - sameSite: the cookie's return destination is strictly the domain that generated it.
+- Every cookie is given a specific name and an authentication token.
+- We can divide up the responsiblities for routers which handle the various endpoints. An example of this is wrapping one router in another which specifically does the verification of credentials for endpoints before proceeding.
+- Send a 404 code for things that are unknown like trying to login with credentials for an account that doesn't exits.
+- Use bcrypt.compare to compare the hashed password stored in the database with the password provided by the end-user.
+- When logging out, clear the cookie of contents like the authtoken and return a status code of 204.
+- Optional Chaining operator('?.'): enables you to read the value of a property located deep within a chain of connected objects without having to check that a child actually exists deep in the object or not.
+- Can use setDisplay function to block or show certain elements by their ID.
+- To create bootstrap elements, you can do new bootstrap.[bootstrap element] to create the element you want from the framework.
+
 
 
 <br></br>
