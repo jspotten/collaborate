@@ -188,7 +188,28 @@ Simon Login:
 - Optional Chaining operator('?.'): enables you to read the value of a property located deep within a chain of connected objects without having to check that a child actually exists deep in the object or not.
 - Can use setDisplay function to block or show certain elements by their ID.
 - To create bootstrap elements, you can do new bootstrap.[bootstrap element] to create the element you want from the framework.
-
+   
+   
+Simon WebSocket:
+- Good idea to create a separate proxy JavaScript file to contain and isolate the protocol upgrade to WebSocket, track any new WebSocket connections, pass or proxy requests between connections, and keep track of whether or not the connections are active by tracing pings/pongs.
+- Since the instance of the proxy class will likely not be referenced or used in the other JavaScript files, you can just create a new instance by calling new [nameOfProxyClass] at the end of the JavaScript, where you want it to be initialized, without storing it in any local or gloabl variable.
+- If you do that, you need to make sure to add a require statement in order to get access to the Class from the other JS file.
+- Adding require('uuid') imports in the UUID library which generates long authentication tokens or passwords that are generally unique.
+- To make the WebSocketServer independent of another server, put in the new instance creatiom parenthesis {noServer: true}.
+- Performing the upgrade from HTTP to WebSocket involves using the on function with the general HTTP server created at the beginning and passing it 'upgrade' and an arrow function with parameters for request, the socket, and the header.
+- You then call the handleUpgrade function on your WSS with those parameters and another arrow function which calls wss.emit('connection', ws, request).
+- Make sure to store your connections so that you can reference, use, and delete at some later date.
+- For a connection endpoint, include the four following pieces inside:
+  - Create a new connection with a UUID, an indicator for its alive status, and a property for it being a WebSocket.
+  - An embedded WS 'message' endpoint to take a message and send it using the WS for each connection except the connection from which the message originates.
+  - An embedded WS 'close' endpoint to locate a stored connection and remove it to prevent it from forwarding messages to the other connections.
+  - An embedded WS 'pong' endpoint that can be used when a connection is pinged and needs to notify the server that it is still live.
+- Use setInterval to go through each connection and close any that did not respond to previous pings, otherwise, set the alive status to false and ping again.
+- When creating WebSocket, it is good to verify what protocol is being used for the current webpage and then assign it ws or wss depending on if the webpage has a insecure or secure protocol, i.e. HTTP vs. HTTPS.
+- Then using that protocol create the new WS by doing '[protocol]://hostName/ws'
+- Include some messages to be displayed when the WebSocket is created with onopen and closed with onclose.
+- Then you can use the onmessage attribute for your WS and create some customized functionality and messages to be displayed based on the event taking place.
+- Events can then be broadcasted by using the WS send function with a JSON object containing data you want to be shown.
 
 
 <br></br>
