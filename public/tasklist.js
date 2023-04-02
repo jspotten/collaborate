@@ -1,3 +1,4 @@
+const uuid = require('uuid');
 import {TaskList, pinnedIcon, listSetUpComplete, setListSetUpComplete} from './main.js';
 export {addTaskList};
 
@@ -6,7 +7,6 @@ let taskListContainer;
 const currUser = (JSON.parse(sessionStorage.getItem('currentUser')));
 console.log(currUser.username);
 document.getElementById('user').innerHTML = currUser.username;
-
 
 function addTaskList()
 {

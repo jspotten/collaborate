@@ -128,7 +128,7 @@ function setUserCookie(resp, authToken)
 
 const httpService = app.listen(port, () =>
 {
-    console.log(`Listening on port ${port}`);
+    console.log(`Listening on port ${portNum}`);
 });
 
 new Proxy(httpService);
