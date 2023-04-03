@@ -38,15 +38,13 @@ apiRouter.post(`/auth/generate`, async (req, resp) =>
 
 apiRouter.post(`/auth/login`, async (req, resp) =>
 {
-    const user = await ((req.body.username == null)
-        ? database.getUser(req.body.email) 
-        : database.getUser(req.body.username));
+    const user = await database.getUser(req.body.identifier);
     if(user)
     {
         if(await bcrypt.compare(req.body.password, user.password))
         {
             setUserCookie(resp, user.token);
-            resp.send({id: user.id});
+            resp.send({username: user.username, id: user._id});
             return;
         }
     }

@@ -20,32 +20,94 @@
                 <h1>Collaborate</h1>
                 <div class = "card login">
                     <h2>Existing User</h2>
-                    <form class="d-flex">
-                        <input id = "userOrEmail" class="form-control me-2 cursor-center form-input" type="search" placeholder="Username or Email Address" aria-label="" aria-describedby="basic-addon1">
+                    <form class = "d-flex">
+                        <input
+                            id = "userOrEmail"
+                            class = "form-control me-2 cursor-center form-input"
+                            type = "text"
+                            placeholder = "Username or Email Address"
+                            aria-label = ""
+                            aria-describedby = "basic-addon1"
+                        />
                     </form>
                     <form class="d-flex">
-                        <input id = "exUserPassword" class="form-control me-2 cursor-center form-input" type="search" placeholder="Password" aria-label="" aria-describedby="basic-addon1">
+                        <input
+                            id = "exUserPassword"
+                            class = "form-control me-2 cursor-center form-input"
+                            type = "password"
+                            placeholder = "Password"
+                            aria-label = ""
+                            aria-describedby = "basic-addon1"
+                        />
                     </form>
                     <button id = "loginButton" class = "btn btn-secondary cursor-center">Login</button>
                 </div>
                 <div class = "card signup">
                     <h2>New User</h2>
                     <form class = "d-flex">
-                        <input id = "firstName" class="form-control me-2 cursor-center form-input" type="search" placeholder="First Name" aria-label="" aria-describedby="basic-addon1">
+                        <input 
+                            id = "firstName" 
+                            class = "form-control me-2 cursor-center form-input"
+                            type = "text"
+                            placeholder = "First Name"
+                            aria-label = ""
+                            aria-describedby = "basic-addon1"
+                        />
                     </form>
                     <form class = "d-flex">
-                        <input id = "lastName" class="form-control me-2 cursor-center form-input" type="search" placeholder="Lastname" aria-label="" aria-describedby="basic-addon1">
+                        <input 
+                            id = "lastName"
+                            class = "form-control me-2 cursor-center form-input"
+                            type = "text"
+                            placeholder = "Lastname"
+                            aria-label = ""
+                            aria-describedby = "basic-addon1"
+                        />
                     </form>
                     <form class = "d-flex">
-                        <input id = "email" class="form-control me-2 cursor-center form-input" type="search" placeholder="Email Address" aria-label="" aria-describedby="basic-addon1">
+                        <input
+                            id = "email"
+                            class = "form-control me-2 cursor-center form-input"
+                            type = "email"
+                            placeholder = "Email Address"
+                            aria-label = ""
+                            aria-describedby = "basic-addon1"
+                        />
                     </form>
                     <form class = "d-flex">
-                        <input id = "username" class="form-control me-2 cursor-center form-input" type="search" placeholder="Username" aria-label="" aria-describedby="basic-addon1">
+                        <input 
+                            id = "username"
+                            class = "form-control me-2 cursor-center form-input"
+                            type = "text"
+                            placeholder = "Username"
+                            aria-label = ""
+                            aria-describedby = "basic-addon1"
+                        />
                     </form>
                     <form class = "d-flex">
-                        <input id = "password" class="form-control me-2 cursor-center form-input" type="search" placeholder="Password" aria-label="" aria-describedby="basic-addon1">
+                        <input
+                            id = "password"
+                            class = "form-control me-2 cursor-center form-input"
+                            type = "password"
+                            placeholder = "Password"
+                            aria-label = ""
+                            aria-describedby = "basic-addon1"
+                        />
                     </form>
                     <button id = "signUpButton" class = "btn btn-secondary cursor-center">Signup</button>
+                </div>
+            </div>
+
+            <div class = "modal fade" id = "errorModal">
+                <div class = "modal-dialog modal-dialog-centered">
+                    <div class = "modal-content text-light">
+                        <div class = "modal-body">Error Message</div>
+                        <div class = "modal-footer">
+                            <button type = "button" class = "btn btn-secondary"
+                                data-bs-dismiss = "modal"
+                            >Close</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

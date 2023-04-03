@@ -1,35 +1,46 @@
 import {User, Users, Task, TaskList} from './main.js';
 export {existingUserLogin, newUserCreation};
 
-const taskList = new TaskList("CS 260 HW", new Task("Startup JS", 'cs260HW', new Date('March 10, 2023 11:59:59')));
-const user1 = new User('Billy', 'Bob', 'billyBob', 'billyBob@gmail.com', 'Bobbybill', [taskList]);
-const user2 = new User('Jackie', 'Chan', 'jackieC', 'jackie.chan@hotmail.com', 'jackieR0cks!', [new TaskList("MSC", false)]);
-const user3 = new User('Lizia', 'Stuart', 'lizia99', 'lizia.stuart@outlook.com', '\$myPassw0rd', []);
-const existingUsers = new Users(user1, user2, user3);
-localStorage.setItem('allUsers', JSON.stringify(existingUsers));
-
-function existingUserLogin()
+(async () =>
 {
-    const loginKey = document.getElementById('userOrEmail').value;
-    const password = document.getElementById('exUserPassword').value;
-    const usersOnFile = JSON.parse(localStorage.getItem('allUsers'));
-    console.log(usersOnFile);
-    for(const user of usersOnFile.users)
+    const identifier = localStorage.getItem('identifier');
+    if(identifier)
     {
-        if(user.username === loginKey || user.email === loginKey)
-        {
-            if(user.password === password)
-            {
-                sessionStorage.setItem('currentUser', JSON.stringify(user));
-                window.location.href = 'tasklist.html';
-                break;
-            }
-        }
+        const identifierEl = document.getElementById('userOrEmail')
+        identifierEl.value = identifier;
+        const user = await getUser(identifierEl.value);
+    }
+});
+
+async function loginUser()
+{
+    const endpoint = `/collaborate/auth/login`;
+    const identifier = document.getElementById('userOrEmail')?.value;
+    const password = document.getElementById('exUserPassword')?.value;
+    //const usersOnFile = JSON.parse(localStorage.getItem('allUsers'));
+    const response = await fetch(endpoint, {
+        method: 'post',
+        body: JSON.stringify({identifier: identifier, password: password}),
+        headers: {'Content-type': 'application/json; charset=UTF-8'},
+    });
+    const body = await response.json();
+
+    if(response?.status === 200)
+    {
+        localStorage.setItem('identifier', body.username);
+        window.location.href = 'tasklist.html'
+    }
+    else
+    {
+        const modalEl = document.getElementById('errorModal');
+        modalEl.querySelector('.modal-body').textContent = `Error: ${body.message}`;
+        const errorModal = new bootstrap.Modal(modalEl, {});
+        errorModal.show();
     }
 }
-document.getElementById('loginButton').addEventListener('click', existingUserLogin);
+document.getElementById('loginButton').addEventListener('click', loginUser);
 
-function newUserCreation()
+function signUpNewUser()
 {
     const newUser  = new User
     (
@@ -56,8 +67,8 @@ function newUserCreation()
         let usersOnFile = new Users(...usersData.users);
         usersOnFile.addUser(newUser);
         localStorage.setItem('allUsers', JSON.stringify(usersOnFile));
-        sessionStorage.setItem('currentUser', JSON.stringify(newUser));
+        localStorage.setItem('currentUser', JSON.stringify(newUser));
         window.location.href = 'tasklist.html';
     }
 }
-document.getElementById('signUpButton').addEventListener('click', newUserCreation);
+document.getElementById('signUpButton').addEventListener('click', signUpNewUser);

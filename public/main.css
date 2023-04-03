@@ -26,7 +26,7 @@ header
 
 body h1
 {
-    font-size:3em;
+    font-size: calc(2.5vw + 3.5vh);
     font-weight: bold;
     font-style: italic;
 }
@@ -43,17 +43,21 @@ body h1
     min-width: 180px;
 }
 
-#user
+.user
+{
+    padding: 8px 8px 8px 8px;
+}
+
+#user-button
 {
     background-color: orange;
     border: 4px solid darkorange;
     border-radius: 50%;
-    width: 110px;
-    height: 110px;
+    width: calc(4vw + 5vh);
+    height: calc(4vw + 5vh);
     font-size: 1.5em;
     font-weight: 600;
     margin-bottom: 0px;
-    padding: 6px 6px 6px 6px;
     text-align: center;
 }
 
@@ -168,12 +172,18 @@ main
     padding: 0;
     border: 2px solid gray;
     background-color: whitesmoke;
+    text-align: center !important;
 }
 
 ::-webkit-input-placeholder
 {
     text-align: center !important;
     font-weight: 600;
+}
+
+input[type="text"]::placeholder
+{   
+    text-align: center !important;
 }
 
 .cursor-center
@@ -215,7 +225,7 @@ main
 
 #tasks-title
 {
-    font-size: 40px;
+    font-size: calc(1.5vw + 2.5vh);
     font-weight: bold;
 }
 
