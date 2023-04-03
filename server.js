@@ -32,7 +32,7 @@ apiRouter.post(`/auth/generate`, async (req, resp) =>
             req.body.password   
         );
         setUserCookie(resp, user.token);
-        resp.send({id: user.id,})
+        resp.send({username: user.username, id: user.id,})
     }
 });
 
