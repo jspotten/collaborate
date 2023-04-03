@@ -124,7 +124,7 @@ function setUserCookie(resp, authToken)
     });
 }
 
-const httpService = app.listen(port, () =>
+const httpService = app.listen(portNum, () =>
 {
     console.log(`Listening on port ${portNum}`);
 });

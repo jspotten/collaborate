@@ -18,7 +18,7 @@ main
 main h1
 {
     display: flex;
-    font-size:4em;
+    font-size: calc(2.5vw + 4vh);
     font-weight: bold;
     font-style: italic;
     margin-bottom: 0;
@@ -26,7 +26,7 @@ main h1
 
 main h2
 {
-    font-size: 2em;
+    font-size: calc(1.5vw + 2.0vh);
     font-weight: 700;
 }
 
@@ -78,6 +78,7 @@ main .d-flex
     margin: 0px !important;
     border: 2px solid gray;
     background-color: whitesmoke;
+    text-align: center;
 }
 
 ::-webkit-input-placeholder

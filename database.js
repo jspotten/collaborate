@@ -11,7 +11,7 @@ if (!username)
     throw Error("Database not configured. Set environment variables");
 }
 
-const url = `mongodb+srv:://${username}:${password}@${hostname}`;
+const url = `mongodb+srv://${username}:${password}@${hostname}`;
 
 const client = new MongoClient(url);
 const userCollection = client.db('collaborate').collection('users');
@@ -44,8 +44,9 @@ async function createNewUser(firstName, lastName, email, username, password)
         password: passwordHash,
         token: uuid.v4(),
         userID: uuid.v4(),
+        tasklists: []
     };
-    await userCollection.insertOne();
+    await userCollection.insertOne(user);
     return user;
 }
 

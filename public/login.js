@@ -1,16 +1,6 @@
 import {User, Users, Task, TaskList} from './main.js';
-export {existingUserLogin, newUserCreation};
 
-(async () =>
-{
-    const identifier = localStorage.getItem('identifier');
-    if(identifier)
-    {
-        const identifierEl = document.getElementById('userOrEmail')
-        identifierEl.value = identifier;
-        const user = await getUser(identifierEl.value);
-    }
-});
+console.log("In login.js");
 
 async function loginUser()
 {
@@ -39,6 +29,7 @@ document.getElementById('loginButton').addEventListener('click', loginUser);
 
 async function signUpNewUser()
 {
+    console.log("Inside of signUpNewUser");
     const endpoint = `/collaborate/auth/generate`;
     const newUser  = new User
     (
@@ -114,3 +105,5 @@ async function validateInfo(newUser)
     }
     return true;
 }
+
+export {loginUser, signUpNewUser};
