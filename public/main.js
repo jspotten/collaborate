@@ -176,6 +176,7 @@ class TaskList
                 const taskListTitle = document.createElement('a');
                 taskListTitle.setAttribute('href', 'task.html');
                 taskListTitle.textContent = input[0].value;
+                this.title = input[0].value;
                 this.taskListCard.replaceChild(taskListTitle, input[0].parentElement);
                 listSetUpComplete = true;
             }

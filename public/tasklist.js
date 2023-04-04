@@ -1,16 +1,22 @@
-const uuid = require('uuid');
 import {TaskList, pinnedIcon, listSetUpComplete, setListSetUpComplete} from './main.js';
-export {addTaskList};
 
 let taskListCounter = 0;
 let taskListContainer;
-const currUser = (JSON.parse(sessionStorage.getItem('currentUser')));
-console.log(currUser.username);
-document.getElementById('user').innerHTML = currUser.username;
+const currUser = (localStorage.getItem('username'));
+document.getElementById('user-button').innerHTML = currUser;
 
+
+/*
+ * Adds New TaskList Object to User and Creates Tasklist HTML
+ * when the Add Task button is clicked by the user.
+ */
 function addTaskList()
 {
-    if(!listSetUpComplete) return;
+    if(!listSetUpComplete || findTaskList()) 
+    {
+        //Add Error Modal Creation
+        return;
+    }
 
     taskListContainer = document.getElementById('list-container');
     let newTaskList = new TaskList("CS 260 Exams", taskListCounter, []);
@@ -35,10 +41,17 @@ function addTaskList()
         listsDivEl.removeChild(divEl);
         setListSetUpComplete(true);
     })
+
+    storeNewList(newTaskList.title);
     taskListCounter++;
 }
 document.getElementById('addList').addEventListener('click', addTaskList);
 
+
+/*
+ * Creates a popup box where the user can select a list that they want to invite
+ * a specific user to take part in and join.
+ */
 function shareWithUser()
 {
     console.log("Shared with Julie");
@@ -50,9 +63,66 @@ function shareWithUser()
 }
 document.getElementById('share').addEventListener('click', shareWithUser);
 
+
+/*
+ * Logs the user out and returns them to the login page.
+ */
 function logout()
 {
     sessionStorage.clear();
     window.location.href = 'index.html';
 }
 document.getElementById('logout').addEventListener('click', logout);
+
+
+/*
+ * Searches for a specific tasklist and returns true if
+ * found and false if it isn't.
+ */
+async function findTaskList(listName)
+{
+    const endpoint = `/collaborate/getlist`;
+    const response = await fetch(endpoint, {
+        method: 'get',
+        body: JSON.stringify(
+        {
+            username: currUser,
+            listname: listName,
+        }),
+        headers: {'Content-type': 'application/json; charset=UTF-8'},
+    });
+
+    const tasklist = await response.json();
+    if(response?.status === 200)
+    {
+        return true;
+    }
+    else
+    {
+        return false;    
+    }
+}
+
+
+/*
+ * Takes a newly created tasklist and adds it to the user's
+ * tasklists field. It includes, the creator's username, an
+ * array for those it is shared with, and an array to store
+ * the tasks linked with it.
+ */
+async function storeNewList(listName)
+{
+    const endpoint = `/collaborate/addlist`;
+    await fetch(endpoint, {
+        method: 'post',
+        body: JSON.stringify(
+        {
+            username: currUser,
+            tasklist: {username: currUser, shared: [], tasks: []},
+        }),
+        headers: {'Content-type': 'application/json; charset=UTF-8'},
+    });
+}
+
+
+export {addTaskList};

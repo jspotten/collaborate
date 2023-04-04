@@ -15,8 +15,8 @@ const url = `mongodb+srv://${username}:${password}@${hostname}`;
 
 const client = new MongoClient(url);
 const userCollection = client.db('collaborate').collection('users');
-const taskListCollection = client.db('collaborate').collection('tasklists');
-const taskCollection = client.db('collaborate').collection('tasks');
+//const taskListCollection = client.db('collaborate').collection('tasklists');
+//const taskCollection = client.db('collaborate').collection('tasks');
 
 function getUser(key)
 {
@@ -50,9 +50,21 @@ async function createNewUser(firstName, lastName, email, username, password)
     return user;
 }
 
-function addTaskList(tasklist)
+async function getTaskList(username, listName)
 {
-    taskListCollection.insertOne(tasklist)
+    let tasklist = database.find(
+        {tasklists:{$elemMatch:{username : username}}}
+    );
+    return (tasklist != null) ? tasklist : null;
+}
+
+async function addTaskList(associatedUsername, tasklist)
+{
+    await userCollection.updateOne
+    (   
+        {username: associatedUsername},
+        {$push: {tasklists: tasklist}},
+    );
 }
 
 function deleteTaskList(tasklist)
@@ -77,6 +89,7 @@ module.exports =
     getUser,
     getUserByToken,
     createNewUser,
+    getTaskList,
     addTaskList,
     deleteTaskList,
     addTask,

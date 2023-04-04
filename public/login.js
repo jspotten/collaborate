@@ -1,9 +1,10 @@
-import {User, Users, Task, TaskList} from './main.js';
+import {User} from './main.js';
 
 console.log("In login.js");
 
 async function loginUser()
 {
+    console.log("Inside of loginUser");
     const endpoint = `/collaborate/auth/login`;
     const identifier = document.getElementById('userOrEmail')?.value;
     const password = document.getElementById('exUserPassword')?.value;
@@ -16,7 +17,7 @@ async function loginUser()
 
     if(response?.status === 200)
     {
-        localStorage.setItem('identifier', body.username);
+        localStorage.setItem('username', body.username);
         window.location.href = 'tasklist.html'
     }
     else
@@ -33,10 +34,10 @@ async function signUpNewUser()
     const endpoint = `/collaborate/auth/generate`;
     const newUser  = new User
     (
-        document.getElementById('firstName')?.value,
-        document.getElementById('lastName')?.value,
-        document.getElementById('username')?.value,
-        document.getElementById('email')?.value,
+        document.getElementById('firstName').value,
+        document.getElementById('lastName').value,
+        document.getElementById('username').value,
+        document.getElementById('email').value,
         document.getElementById('password')?.value
     );
     let validInfo = await validateInfo(newUser);
@@ -58,7 +59,7 @@ async function signUpNewUser()
     
         if(response?.status === 200)
         {
-            localStorage.setItem('identifier', body.username);
+            localStorage.setItem('username', body.username);
             window.location.href = 'tasklist.html'
         }
         else
@@ -91,7 +92,7 @@ async function validateInfo(newUser)
     {
         return false;
     }
-    else if(newUser.email.length === 0 || !newUser.lastName.includes('@'))
+    else if(newUser.email.length === 0 || !newUser.email.includes('@'))
     {
         return false;
     }

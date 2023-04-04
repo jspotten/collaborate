@@ -102,7 +102,25 @@ secureAPIRouter.use(async (req, resp, next) =>
  * 1: Endpoint to receive gather number of users with shared list.
  * 2: Endpoint for list of people invited to join list.
  * 3: Endpoint to submit a new invitation.
- */ 
+ */
+secureAPIRouter.get(`/getlist`, async (req, resp) =>
+{
+    const tasklist = await database.getTaskList(req.body.username, req.body.listname);
+    if(tasklist)
+    {
+        resp.status(200).send(tasklist);
+    }
+    else
+    {
+        resp.status(404).send({ message: 'Tasklist Not Found'});
+    }
+});
+
+secureAPIRouter.post(`/addlist`, async (req, resp) =>
+{
+    await database.addTaskList(req.body.username, req.body.tasklist);
+    resp.status(200).send({message: "Tasklist Successfully Added"});
+});
 
 app.use((err, req, resp, next) => 
 {
