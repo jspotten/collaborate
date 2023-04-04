@@ -151,20 +151,12 @@ class Task
 
 class TaskList
 {
-    constructor(title, id, ...tasks)
+    constructor()
     {
-        this.title = title;
-        this.tasks = tasks;
-        this.id = id;
+        this.title = "";
+        this.id = "";
         this.pinned = false;
-        if(tasks === [])
-        {
-            this.numTasks = 0;
-        }
-        else
-        {
-            this.numTasks = tasks.length;    
-        }
+        
         this.taskListCard = this.createTaskListCard();
         listSetUpComplete = false;
         const input = this.taskListCard.getElementsByTagName('input');
@@ -203,20 +195,8 @@ class TaskList
         return taskListCard;
     }
 
-    addTask(newTask)
+    setID(taskListID)
     {
-        this.tasks.push(newTask);
-    }
-
-    removeTask(title)
-    {
-        for(const [i,task] of tasks)
-        {
-            if(task.title == title)
-            {
-                this.tasks.splice(i, task)
-                break;
-            }
-        }
+        this.id = taskListID;
     }
 }

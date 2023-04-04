@@ -3,6 +3,7 @@ import {TaskList, pinnedIcon, listSetUpComplete, setListSetUpComplete} from './m
 let taskListCounter = 0;
 let taskListContainer;
 const currUser = (localStorage.getItem('username'));
+const userID = getUserID();
 document.getElementById('user-button').innerHTML = currUser;
 
 
@@ -45,7 +46,7 @@ function addTaskList()
     }
 
     taskListContainer = document.getElementById('list-container');
-    let newTaskList = new TaskList("CS 260 Exams", taskListCounter, []);
+    let newTaskList = new TaskList();
     taskListContainer.appendChild(newTaskList.taskListCard);
     newTaskList.taskListCard.getElementsByClassName('star')[0].addEventListener('click', (e) => {
         const divEl = e.target.parentElement.parentElement;
@@ -140,15 +141,20 @@ async function findTaskList(listName)
 async function storeNewList(listName)
 {
     const endpoint = `/collaborate/addlist`;
-    await fetch(endpoint, {
+    const response = await fetch(endpoint, {
         method: 'post',
         body: JSON.stringify(
         {
-            username: currUser,
-            tasklist: {username: currUser, shared: [], tasks: []},
+            userID: userID,
+            listname: listName,
         }),
         headers: {'Content-type': 'application/json; charset=UTF-8'},
     });
+    const respBody = await response.json();
+    if(response?.status === 200)
+    {
+        return respBody.userID;
+    }
 }
 
 async function deleteTasklist(listName)
@@ -161,5 +167,19 @@ async function deleteTasklist(listName)
     });
 }
 
+async function getUserID()
+{
+    const endpoint = `collaborate/getUserID`;
+    const response = await fetch(endpoint, {
+        method: 'get',
+        body: JSON.stringify({username: currUser}),
+        headers: {'Content-type': 'application/json; charset=UTF-8'},
+    });
+    const respBody = await response.json();
+    if(response?.status === 200)
+    {
+        return respBody.userID;
+    }
+}
 
 export {addTaskList};

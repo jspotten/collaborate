@@ -103,33 +103,32 @@ secureAPIRouter.use(async (req, resp, next) =>
 });
 
 
-/*
- * Add some specific endpoints for things only users get access to.
- *
- * 1: Endpoint to receive gather number of users with shared list.
- * 2: Endpoint for list of people invited to join list.
- * 3: Endpoint to submit a new invitation.
- */
-secureAPIRouter.get(`/getlist`, async (req, resp) =>
+secureAPIRouter.get(`/getUserID`, async (req, resp) =>
 {
-    const tasklist = await database.getTaskList(req.body.username, req.body.listname);
-    if(tasklist)
+    const user = await database.getUser(req.body.username);
+    if(user)
     {
-        resp.status(200).send(tasklist);
+        resp.status(200).send({userID: user.userID});
     }
     else
     {
-        resp.status(404).send({ message: 'Tasklist Not Found'});
+        resp.status(404).send({message: "Unknown User"});
     }
 });
 
 
 secureAPIRouter.post(`/addlist`, async (req, resp) =>
 {
-    await database.addTaskList(req.body.username, req.body.tasklist);
-    resp.status(200).send({message: "Tasklist Successfully Added"});
+    const userID = await database.addTaskList(req.body.username, req.body.tasklist);
+    if(userID != 0)
+    {
+        resp.status(200).send({userID: userID});
+    }
+    else
+    {
+        resp.status(409).send({message: "Error While Adding List!"});
+    }    
 });
-
 
 secureAPIRouter.delete(`/deletelist`, async (req, resp) =>
 {
@@ -141,6 +140,19 @@ secureAPIRouter.delete(`/deletelist`, async (req, resp) =>
     else
     {
         resp.status(409).send({message: "Tasklist Unsuccessfully Deleted"})
+    }
+});
+
+secureAPIRouter.get(`/getlist`, async (req, resp) =>
+{
+    const tasklist = await database.getTaskList(req.body.username, req.body.listname);
+    if(tasklist)
+    {
+        resp.status(200).send(tasklist);
+    }
+    else
+    {
+        resp.status(404).send({ message: 'Tasklist Not Found'});
     }
 });
 

@@ -15,6 +15,10 @@ const url = `mongodb+srv://${username}:${password}@${hostname}`;
 
 const client = new MongoClient(url);
 const userCollection = client.db('collaborate').collection('users');
+const taskListCollection = client.db('collaborate').collection('tasklist');
+const taskCollection = client.db('collaborate').collection('task');
+const sharedCollection = client.db('collaborate').collection('shared');
+const notificationCollection = client.db('collaborate').collection('notification');
 
 function getUser(key)
 {
@@ -42,51 +46,53 @@ async function createNewUser(firstName, lastName, email, username, password)
         password: passwordHash,
         token: uuid.v4(),
         userID: uuid.v4(),
-        tasklists: [],
-        notifications: [],
     };
     await userCollection.insertOne(user);
     return user;
 }
 
-async function getTaskList(username, listName)
+
+async function addTaskList(userId, listName)
 {
-    let tasklist = await database.find(
-        {tasklists:{$elemMatch:{username : username}}}
-    );
-    return (tasklist != null) ? tasklist : null;
+    const taskListID = uuid.v4();
+    await taskCollection.insertOne
+    ({
+        userID: userId,
+        listname: listName,
+        taskList: taskListID,
+    })
+        .then(() => {return taskListID;})
+        .catch(() => {return 0;});
 }
 
-async function addTaskList(associatedUsername, tasklist)
+async function deleteTaskList(tasklist)
 {
-    await userCollection.updateOne
-    (   
-        {username: associatedUsername},
-        {$push: {tasklists: tasklist}},
-    );
+    const result = await taskCollection.deleteOne(listName);
+    return (result.ok === 1) ? true : false;
 }
 
-async function deleteTaskList(username, listName)
+async function getTaskList(tasklist)
 {
-    //How to Get Specific Tasklist from tasklists
-    //if(!getTaskList(username, listName))
-    await userCollection.updateOne
-    (
-        {listname: username},
-        {$pull: {tasklists: listName}},
-    );
-    return (getTaskList(username, listName)); // ? "fail" : "success";
+    const taskList = taskListCollection.findOne(tasklist);
+    return taskList;
 }
 
 
-function addTask(task)
+async function addTask(task)
 {
-    taskCollection.insertOne(task);
+    await taskCollection.insertOne(task);
+    return task;
 }
 
-function deleteTask(task)
+async function deleteTask(task)
 {
-    taskCollection.deleteOne(task);
+    const result = await taskCollection.deleteOne(task);
+    return (result.ok === 1) ? true : false;
+}
+
+async function getTask(task)
+{
+    const task = await taskCollection.findOne(task)
 }
 
 module.exports = 

@@ -1,15 +1,39 @@
 {
+   "User": 
+   {
         "firstName": "val",
         "lastName": "val",
         "email": "val",
         "username": "val",
         "password": "val",
         "token": "id",
-        "userID": "id",
-        "tasklists": 
-        {
-            
-        },
-        "notifications": {}
+        "userID": "id"
+    },
+
+    "Tasklist":
+    {
+        "userID": "userID",
+        "listname": "listname",
+        "listID": "id"
+    },
+
+    "Task": 
+    {
+        "listID": "listID",
+        "taskname": "name",
+        "date": ""
+    },
+
+    "Shared": 
+    {
+        "userID": "val",
+        "shared": ["user1", "user2"]
+    },
+
+    "Notifications":
+    {
+        "userID": "",
+        "notifications": []
+    }
 }
 
