@@ -1,0 +1,40 @@
+.modal-dialog
+{
+    height: calc(2vw + 2.5vh);
+    width: calc(16vw + 17vh);
+}
+
+.modal-header
+{
+    text-align: center;
+    justify-content: center;
+    font-size: calc(1.5vw + 2vh);
+    font-weight: 600;
+}
+
+.modal-body
+{
+    justify-content: center;
+    text-align: center;
+}
+
+.modal-footer
+{
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+}
+
+.modal-footer.btn
+{
+    background-color: green;
+    border: 2px solid rgb(75, 75, 75);
+    width: calc(7vw + 8vh);
+    height: calc(1vw + 1.75vh);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 0;
+    font-size: calc(0.5vw + 1.5vh);
+}

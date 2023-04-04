@@ -1,0 +1,15 @@
+{
+        "firstName": "val",
+        "lastName": "val",
+        "email": "val",
+        "username": "val",
+        "password": "val",
+        "token": "id",
+        "userID": "id",
+        "tasklists": 
+        {
+            
+        },
+        "notifications": {}
+}
+

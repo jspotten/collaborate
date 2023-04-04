@@ -1,4 +1,3 @@
-import e from 'express';
 import {TaskList, pinnedIcon, listSetUpComplete, setListSetUpComplete} from './main.js';
 
 let taskListCounter = 0;
@@ -12,6 +11,7 @@ document.getElementById('user-button').innerHTML = currUser;
  */
 function showNotifications()
 {
+    console.log("In showNotifications");
     const modalEl = document.getElementById('notificationsModal');
     //modalEl.querySelector('.modal-header').textContent = `Notifications`;
     /*
