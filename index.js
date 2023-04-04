@@ -15,6 +15,7 @@ app.use(express.static('public'));
 const apiRouter = express.Router();
 app.use(`/collaborate`, apiRouter);
 
+
 apiRouter.post(`/auth/generate`, async (req, resp) =>
 {
     if(await (database.getUser(req.body.email) || database.getUser(req.body.username)))
@@ -36,6 +37,7 @@ apiRouter.post(`/auth/generate`, async (req, resp) =>
     }
 });
 
+
 apiRouter.post(`/auth/login`, async (req, resp) =>
 {
     const user = await database.getUser(req.body.identifier);
@@ -51,11 +53,13 @@ apiRouter.post(`/auth/login`, async (req, resp) =>
     resp.status(401).send({message: 'Access Not Granted'});
 });
 
+
 apiRouter.delete(`/auth/logout`, (_req, resp) =>
 {
     resp.clearCookie(cookieName);
     resp.status(204).end();
 });
+
 
 apiRouter.get(`/user/:email`, async (req, resp) =>
 {
@@ -79,8 +83,10 @@ apiRouter.get(`/user/:email`, async (req, resp) =>
     resp.send(404).send({message: 'Unknown User'});
 });
 
+
 var secureAPIRouter = express.Router();
 apiRouter.use(secureAPIRouter);
+
 
 secureAPIRouter.use(async (req, resp, next) =>
 {
@@ -95,6 +101,7 @@ secureAPIRouter.use(async (req, resp, next) =>
         resp.status(401).send({message: 'Access Not Granted'});
     }
 });
+
 
 /*
  * Add some specific endpoints for things only users get access to.
@@ -116,21 +123,39 @@ secureAPIRouter.get(`/getlist`, async (req, resp) =>
     }
 });
 
+
 secureAPIRouter.post(`/addlist`, async (req, resp) =>
 {
     await database.addTaskList(req.body.username, req.body.tasklist);
     resp.status(200).send({message: "Tasklist Successfully Added"});
 });
 
+
+secureAPIRouter.delete(`/deletelist`, async (req, resp) =>
+{
+    const deleted = await database.deleteTaskList(req.body.username, req.body.listname);
+    if(deleted)
+    {
+        resp.status(200).send({message: "Tasklist Successfully Deleted"})
+    }
+    else
+    {
+        resp.status(409).send({message: "Tasklist Unsuccessfully Deleted"})
+    }
+});
+
+
 app.use((err, req, resp, next) => 
 {
     resp.status(500).send({type: err.name, message: err.msg});
 });
 
+
 app.use((_req, resp) =>
 {
     resp.sendFile('index.html', {root: 'public'});
 });
+
 
 function setUserCookie(resp, authToken)
 {
@@ -142,9 +167,11 @@ function setUserCookie(resp, authToken)
     });
 }
 
+
 const httpService = app.listen(portNum, () =>
 {
     console.log(`Listening on port ${portNum}`);
 });
+
 
 new Proxy(httpService);

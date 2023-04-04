@@ -1,3 +1,4 @@
+import e from 'express';
 import {TaskList, pinnedIcon, listSetUpComplete, setListSetUpComplete} from './main.js';
 
 let taskListCounter = 0;
@@ -39,6 +40,7 @@ function addTaskList()
         const divEl = e.target.parentElement.parentElement;
         const listsDivEl = divEl.parentElement;
         listsDivEl.removeChild(divEl);
+        deleteTasklist(newTaskList.title);
         setListSetUpComplete(true);
     })
 
@@ -120,6 +122,16 @@ async function storeNewList(listName)
             username: currUser,
             tasklist: {username: currUser, shared: [], tasks: []},
         }),
+        headers: {'Content-type': 'application/json; charset=UTF-8'},
+    });
+}
+
+async function deleteTasklist(listName)
+{
+    const endpoint = `/collaborate/deletelist`;
+    await fetch(endpoint, {
+        method: 'delete',
+        body: JSON.stringify({username: currUser, listname: listName}),
         headers: {'Content-type': 'application/json; charset=UTF-8'},
     });
 }
