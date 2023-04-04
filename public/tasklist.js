@@ -8,6 +8,31 @@ document.getElementById('user-button').innerHTML = currUser;
 
 
 /*
+ * Displays the notifications popup window when clicking user circle.
+ */
+function showNotifications()
+{
+    const modalEl = document.getElementById('notificationsModal');
+    //modalEl.querySelector('.modal-header').textContent = `Notifications`;
+    /*
+     * Update the dropdown box to retrive existing tasklist.
+     */
+    const notificationsModal = new bootstrap.Modal(modalEl, {});
+    notificationsModal.show();
+}
+document.getElementById('user-button').addEventListener('click', showNotifications);
+
+
+/*
+ * Adds a notification to user's stored notifications.
+ */
+function addNotification()
+{
+
+}
+
+
+/*
  * Adds New TaskList Object to User and Creates Tasklist HTML
  * when the Add Task button is clicked by the user.
  */

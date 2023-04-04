@@ -23,12 +23,33 @@
                         <!--<button class = "btn" id = "nav-bar">Home Page</button>-->
                     </div>
                     <div class = "user">
-                        <button class = "btn" onclick = "window.location.href = 'index.html';"
-                            id = "user-button" data-toggle = "modal" data-target = "#myModal"></button>
+                        <button class = "btn" id = "user-button"></button>
                         <!--Place to create modal pop up user window below
                         <div id = #myModal" class = "modal fade" role = "menu/dialog">
                         </div>
                         -->
+                        <div class = "modal fade" id = "notificationsModal" tabindex = "-1">
+                            <div class = "modal-dialog modal-dialog-centered">
+                                <div class = "modal-content text-dark">
+                                    <div class = "modal-header">Notifications</div>
+                                    <div class = "modal-body">
+                                        <p>Notification Drop Down</p>
+                                        <p>User Input Box</p>
+                                    </div>
+                                    <div class = "modal-footer">
+                                        <button type = "button" class = "btn btn-secondary"
+                                            id = "notify-accept"
+                                        >Accept</button>
+                                        <button type = "button" class = "btn btn-secondary"
+                                            id = "notify-delete"
+                                        >Delete</button>
+                                        <button type = "button" class = "btn btn-secondary"
+                                            data-bs-dismiss = "modal" id = "notify-close"
+                                        >Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
                 </div>

@@ -42,7 +42,8 @@ async function createNewUser(firstName, lastName, email, username, password)
         password: passwordHash,
         token: uuid.v4(),
         userID: uuid.v4(),
-        tasklists: []
+        tasklists: [],
+        notifications: [],
     };
     await userCollection.insertOne(user);
     return user;
