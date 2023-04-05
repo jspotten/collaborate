@@ -32,10 +32,11 @@
                                     <div class = "modal-header">Notifications</div>
                                     <div class = "modal-body">
                                         <h5 id = "drop-down-title">Tasklist Invites</h5>
-                                        <select id = "tasklist-invites-drop-down" name = "invites">
+                                        <div id = "tasklist-invites"></div>
+                                        <!--<select id = "tasklist-invites-drop-down" name = "invites">
                                             <option value = "blank">--Select Invitation--</option>
                                             <option value = "tasklist">Tasklist</option>
-                                        </select>
+                                        </select>-->
                                     </div>
                                     <div class = "modal-footer">
                                         <button type = "button" class = "btn btn-secondary"
@@ -62,8 +63,22 @@
                             <div class = "modal-content text-dark">
                                 <div class = "modal-header">Share Tasklist</div>
                                 <div class = "modal-body">
-                                    <p>Notification Drop Down</p>
-                                    <p>User Input Box</p>
+                                    <h6 id = "drop-down-title">Select List to Share</h6>
+                                    <select id = "tasklist-invites-drop-down" name = "invites">
+                                        <option value = "blank">--Select List--</option>
+                                        <option value = "tasklist">Tasklist</option>
+                                    </select>
+                                    <h6 id = "drop-down-title">Enter Username for Sharing</h6>
+                                    <form class = "d-flex">
+                                        <input
+                                            id = "username-to-invite"
+                                            class = "form-control me-2 cursor-center form-input"
+                                            type = "text"
+                                            placeholder = "Username"
+                                            aria-label = ""
+                                            aria-describedby = "basic-addon1"
+                                        />
+                                    </form>
                                 </div>
                                 <div class = "modal-footer">
                                     <div class = "modal-buttons">
@@ -78,7 +93,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class = "btn btn-danger" id = "logout">Logout</button>
+                    <button type = "button" class = "btn btn-danger" id = "logout">Logout</button>
                 </div>
             </nav>
         </header>

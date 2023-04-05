@@ -1,9 +1,9 @@
-import {Task, pinnedIcon, checkedIcon, taskSetUpComplete, setTaskSetUpComplete} from './main.js';
-export {addTask};
+//import {Task, pinnedIcon, checkedIcon, taskSetUpComplete, setTaskSetUpComplete} from './main.js';
+//export {addTask};
 
 let taskCounter = 0;
 let taskContainer;
-const currUser = (JSON.parse(sessionStorage.getItem('currentUser')));
+const currUser = (localStorage.getItem('username'));
 console.log(currUser.username);
 document.getElementById('user').innerHTML = currUser.username;
 
@@ -21,7 +21,7 @@ function addTask()
         const uncheckedIcon = e.target.parentElement;
         const checkIcon = document.createElement('i');
         checkIcon.className = "star";
-        checkIcon.innerHTML += checkedIcon;
+        //checkIcon.innerHTML += checkedIcon;
         checkIcon.addEventListener('click', () => {
             divEl.replaceChild(uncheckedIcon, checkIcon);
             newTask.pinned = false;

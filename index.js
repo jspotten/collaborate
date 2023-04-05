@@ -130,9 +130,9 @@ secureAPIRouter.post(`/addlist`, async (req, resp) =>
     }    
 });
 
-secureAPIRouter.delete(`/deletelist/:listname/:username`, async (req, resp) =>
+secureAPIRouter.delete(`/deletelist/:userID/:listname`, async (req, resp) =>
 {
-    const deleted = await database.deleteTaskList(req.params.username, req.params.listname);
+    const deleted = await database.deleteTaskList(req.params.userID, req.params.listname);
     if(deleted)
     {
         resp.status(200).send({message: "Tasklist Successfully Deleted"})
@@ -160,7 +160,7 @@ secureAPIRouter.get(`/getlists/:userID`, async (req, resp) =>
 {
     //Not recognizing my function that is clearly written in database.js
     const lists = await database.getTaskLists(req.params.userID);
-    if(tasklists)
+    if(lists)
     {
         resp.status(200).send({tasklists: lists});
     }

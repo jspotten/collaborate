@@ -64,9 +64,9 @@ async function addTaskList(userId, listName)
     return taskListID;
 }
 
-async function deleteTaskList(tasklist)
+async function deleteTaskList(userId, listName)
 {
-    const result = await taskCollection.deleteOne(listName);
+    const result = await taskListCollection.deleteOne({userID: userId, listname: listName});
     return (result.ok === 1) ? true : false;
 }
 

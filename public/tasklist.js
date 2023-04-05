@@ -1,14 +1,18 @@
-import {TaskList, LoadedTaskList, pinnedIcon, listSetUpComplete, setListSetUpComplete} from './main.js';
+import {TaskList, LoadedTaskList, pinnedIcon, listSetUpComplete,
+    setListSetUpComplete} from './main.js';
 
 let taskListCounter = 0;
 let taskListContainer;
+let dropDownContainer;
+let socket;
 const currUser = (localStorage.getItem('username'));
 document.getElementById('user-button').innerHTML = currUser;
 
 (async () => 
 { 
     localStorage.setItem('userID', await getUserID());
-    //await loadTaskLists();
+    await loadTaskLists();
+    configureSocket();
 })();
 
 
@@ -73,8 +77,6 @@ function addTaskList()
         deleteTasklist(newTaskList.title);
         setListSetUpComplete(true);
     })
-
-    //storeNewList(newTaskList.title);
     taskListCounter++;
 }
 document.getElementById('addList').addEventListener('click', addTaskList);
@@ -105,7 +107,7 @@ document.getElementById('share').addEventListener('click', showShareWindow);
  */
 function shareTaskList()
 {
-
+    //const listname;
 }
 document.getElementById('share-with-user').addEventListener('click', shareTaskList);
 
@@ -177,7 +179,8 @@ async function storeNewList(listName)
  */
 async function deleteTasklist(listName)
 {
-    const endpoint = `/collaborate/deletelist/${listName}/${currUser}`;
+    const userID = (localStorage.getItem('userID'));
+    const endpoint = `/collaborate/deletelist/${userID}/${listName}`;
     await fetch(endpoint, {
         method: 'delete',
         //body: JSON.stringify({username: currUser, listname: listName}),
@@ -230,10 +233,11 @@ async function loadTaskLists()
 {
     const tasklists = await getUserTaskLists();
     taskListContainer = document.getElementById('list-container');
-    tasklists.array.forEach((list) => 
+    tasklists.forEach((list) => 
     {
-        //LoadedTaskList filledList = new LoadedTaskList(list.listname, list.listID, false);
+        let filledList = new LoadedTaskList(list.listname, list.listID, false);
         taskListContainer.appendChild(filledList.taskListCard);
+
         filledList.taskListCard.getElementsByClassName('star')[0].addEventListener('click', (e) => 
         {
             const divEl = e.target.parentElement.parentElement;
@@ -257,8 +261,18 @@ async function loadTaskLists()
             deleteTasklist(filledList.title);
             setListSetUpComplete(true);
         })
+        addShareListOption(list.listname, list.listID);
     });
-    
+}
+
+
+function addShareListOption(listName, listId)
+{
+    dropDownContainer = document.getElementById('tasklist-invites-drop-down');
+    const newOption = document.createElement('option');
+    newOption.setAttribute('value', {listname: listName, listID: listId});
+    newOption.innerHTML = listName;
+    dropDownContainer += newOption;
 }
 
 
@@ -273,4 +287,33 @@ async function loadTasksPage(listID)
     window.location.href = 'task.html';
 }
 
-export {addTaskList, storeNewList, loadTasksPage};
+function configureSocket()
+{
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    socket.onmessage = async (event) => 
+    {
+        const message = JSON.parse(await event.data.text());
+        if (message.type === "NotifyUser") 
+        {
+            displayMessage(message.inviter, message.lisname);
+        }
+    };
+}
+
+function displayMessage(inviter, listname)
+{
+    const notifications = document.getElementById('tasklist-invites');
+    notifications.innerHTML +=
+        `<div class="event">
+            <span>${inviter} Invited You to Join ${listname}</span>
+        </div>`;
+}
+
+function broadcastToUser(inviter, listname)
+{
+   const event = {inviter: inviter, listname: listname};
+   socket.send(JSON.stringify(event));
+}
+
+export {addTaskList, addShareListOption, storeNewList, loadTasksPage};

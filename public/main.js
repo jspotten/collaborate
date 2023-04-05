@@ -177,6 +177,7 @@ class TaskList
                 this.listCardComplete = true;
                 listSetUpComplete = true;
                 this.id = storeNewList(this.title);
+                addShareListOption(this.title, this.id);
             }
         });
     }
@@ -228,9 +229,9 @@ class LoadedTaskList
         taskListCard.appendChild(starIcon);
 
         const taskListTitle = document.createElement('a');
-        taskListTitle.onclick = loadTasksPage(this.id);
-        taskListTitle.textContent = input[0].value;
-        taskListCard.innerHTML += taskListTitle;
+        taskListTitle.addEventListener('click', () => loadTasksPage(this.id));
+        taskListTitle.textContent = this.title;
+        taskListCard.appendChild(taskListTitle);
         
         const trashIcon = document.createElement('i');
         trashIcon.className = "trash";

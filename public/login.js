@@ -1,4 +1,4 @@
-import {User} from './main.js';
+//import {User} from './main.js';
 
 console.log("In login.js");
 
@@ -32,14 +32,14 @@ async function signUpNewUser()
 {
     console.log("Inside of signUpNewUser");
     const endpoint = `/collaborate/auth/generate`;
-    const newUser  = new User
-    (
-        document.getElementById('firstName').value,
-        document.getElementById('lastName').value,
-        document.getElementById('username').value,
-        document.getElementById('email').value,
-        document.getElementById('password')?.value
-    );
+    const newUser  = 
+    {    
+        "firstName": document.getElementById('firstName').value,
+        "lastName": document.getElementById('lastName').value,
+        "email": document.getElementById('email').value,
+        "username": document.getElementById('username').value,
+        "password": document.getElementById('password').value
+    };
     let validInfo = await validateInfo(newUser);
     if(validInfo)
     {
@@ -100,11 +100,11 @@ async function validateInfo(newUser)
     {
         return false;
     }
-    else if(newUser.password.length < 7 || newUser.lastName === ' ')
+    else if(newUser.password.length < 7 || newUser.password === ' ')
     {
         return false;
     }
     return true;
 }
 
-export {loginUser, signUpNewUser};
+//export {loginUser, signUpNewUser};

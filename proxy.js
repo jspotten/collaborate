@@ -19,9 +19,12 @@ class Proxy
 
         wss.on('connection', (ws) =>
         {
-            const connection = {id: uuid.v4(), alive: true, ws: ws};
+            const connection = {id: uuid.v4(), alive: true, ws: ws, username: };
             connections.push(connection);
         
+            //How to send message to singular connection;
+            //For time, may just send invite to everyone.
+
             ws.on('close', () =>
             {
                 connections.findIndex((o, i) =>
