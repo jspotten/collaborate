@@ -130,9 +130,9 @@ secureAPIRouter.post(`/addlist`, async (req, resp) =>
     }    
 });
 
-secureAPIRouter.delete(`/deletelist`, async (req, resp) =>
+secureAPIRouter.delete(`/deletelist/:listname/:username`, async (req, resp) =>
 {
-    const deleted = await database.deleteTaskList(req.body.username, req.body.listname);
+    const deleted = await database.deleteTaskList(req.params.username, req.params.listname);
     if(deleted)
     {
         resp.status(200).send({message: "Tasklist Successfully Deleted"})
@@ -145,14 +145,28 @@ secureAPIRouter.delete(`/deletelist`, async (req, resp) =>
 
 secureAPIRouter.get(`/getlist/:list`, async (req, resp) =>
 {
-    const tasklist = await database.getTaskList(req.params.list);
+    const list = await database.getTaskList(req.params.list);
     if(tasklist)
     {
-        resp.status(200).send(tasklist);
+        resp.status(200).send({tasklist: list});
     }
     else
     {
         resp.status(404).send({ message: 'Tasklist Not Found'});
+    }
+});
+
+secureAPIRouter.get(`/getlists/:userID`, async (req, resp) =>
+{
+    //Not recognizing my function that is clearly written in database.js
+    const lists = await database.getTaskLists(req.params.userID);
+    if(tasklists)
+    {
+        resp.status(200).send({tasklists: lists});
+    }
+    else
+    {
+        resp.status(404).send({message: "No Tasklists Associated with that User ID."});
     }
 });
 

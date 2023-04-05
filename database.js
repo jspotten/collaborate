@@ -59,7 +59,7 @@ async function addTaskList(userId, listName)
     ({
         userID: userId,
         listname: listName,
-        taskList: taskListID,
+        listID: taskListID,
     })
     return taskListID;
 }
@@ -76,6 +76,11 @@ async function getTaskList(listName)
     return taskList;
 }
 
+async function getTaskLists(userId)
+{
+    const cursor = taskListCollection.find({userID: userId});
+    return cursor.toArray();
+}
 
 async function addTask(task)
 {
@@ -100,9 +105,11 @@ module.exports =
     getUser,
     getUserByToken,
     createNewUser,
-    getTaskList,
     addTaskList,
     deleteTaskList,
+    getTaskList,
+    getTaskLists,
     addTask,
     deleteTask,
+    getTask
 };

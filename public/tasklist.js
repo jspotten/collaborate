@@ -1,15 +1,15 @@
-import {TaskList, pinnedIcon, listSetUpComplete, setListSetUpComplete} from './main.js';
+import {TaskList, LoadedTaskList, pinnedIcon, listSetUpComplete, setListSetUpComplete} from './main.js';
 
 let taskListCounter = 0;
 let taskListContainer;
 const currUser = (localStorage.getItem('username'));
+document.getElementById('user-button').innerHTML = currUser;
 
 (async () => 
 { 
     localStorage.setItem('userID', await getUserID());
+    //await loadTaskLists();
 })();
-document.getElementById('user-button').innerHTML = currUser;
-
 
 
 /*
@@ -44,7 +44,6 @@ function acceptInvitation()
  */
 function addTaskList()
 {
-    
     if(!listSetUpComplete)//taskListContainer.childNodes.length > 1 && 
         //newTaskList.title !== "none" && !newTaskList.listCardComplete) && findTaskList(newTaskList.title))
     {
@@ -178,10 +177,10 @@ async function storeNewList(listName)
  */
 async function deleteTasklist(listName)
 {
-    const endpoint = `/collaborate/deletelist`;
+    const endpoint = `/collaborate/deletelist/${listName}/${currUser}`;
     await fetch(endpoint, {
         method: 'delete',
-        body: JSON.stringify({username: currUser, listname: listName}),
+        //body: JSON.stringify({username: currUser, listname: listName}),
         headers: {'Content-type': 'application/json; charset=UTF-8'},
     });
 }
@@ -195,7 +194,6 @@ async function getUserID()
     const endpoint = `/collaborate/getUserID/${currUser}`;
     const response = await fetch(endpoint, {
         method: 'get',
-        //body: JSON.stringify({username: currUser}),
         headers: {'Content-type': 'application/json; charset=UTF-8'},
     });
     const respBody = await response.json();
@@ -205,9 +203,74 @@ async function getUserID()
     }
 }
 
+
+/*
+ *  Retrieves the user's ID number.
+ */
+async function getUserTaskLists()
+{
+    const userID = (localStorage.getItem('userID'));
+    const endpoint = `/collaborate/getlists/${userID}`;
+    const response = await fetch(endpoint, {
+        method: 'get',
+        headers: {'Content-type': 'application/json; charset=UTF-8'},
+    });
+    const respBody = await response.json();
+    if(response?.status === 200)
+    {
+        return respBody.tasklists;
+    }
+}
+
+
+/*
+ *  Retrieves the user's ID number.
+ */
+async function loadTaskLists()
+{
+    const tasklists = await getUserTaskLists();
+    taskListContainer = document.getElementById('list-container');
+    tasklists.array.forEach((list) => 
+    {
+        //LoadedTaskList filledList = new LoadedTaskList(list.listname, list.listID, false);
+        taskListContainer.appendChild(filledList.taskListCard);
+        filledList.taskListCard.getElementsByClassName('star')[0].addEventListener('click', (e) => 
+        {
+            const divEl = e.target.parentElement.parentElement;
+            const starIcon = e.target.parentElement;
+            const filledStarIcon = document.createElement('i');
+            filledStarIcon.className = "star";
+            filledStarIcon.innerHTML += pinnedIcon;
+            filledStarIcon.addEventListener('click', () => {
+            divEl.replaceChild(starIcon, filledStarIcon);
+            filledList.pinned = false;
+        });
+            divEl.replaceChild(filledStarIcon, starIcon);
+            filledList.pinned = true;
+        });
+
+        filledList.taskListCard.getElementsByClassName('trash')[0].addEventListener('click', (e) => 
+        {
+            const divEl = e.target.parentElement.parentElement;
+            const listsDivEl = divEl.parentElement;
+            listsDivEl.removeChild(divEl);
+            deleteTasklist(filledList.title);
+            setListSetUpComplete(true);
+        })
+    });
+    
+}
+
+
+/*
+ * Transitions to the tasks HTML page and stores a
+ * local variable for the listID where that list
+ * had its title clicked.
+ */
 async function loadTasksPage(listID)
 {
-
+    localStorage.setItem('listID', listID);
+    window.location.href = 'task.html';
 }
 
 export {addTaskList, storeNewList, loadTasksPage};
