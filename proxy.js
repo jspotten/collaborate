@@ -15,15 +15,28 @@ class Proxy
             });
         });
 
+        async function findSharedLists()
+        {
+            
+        }
+
         let connections = [];
 
         wss.on('connection', (ws) =>
         {
-            const connection = {id: uuid.v4(), alive: true, ws: ws, username: };
+            //add username to connection
+            const connection = {id: uuid.v4(), username: currUser, alive: true, ws: ws};
             connections.push(connection);
         
             //How to send message to singular connection;
             //For time, may just send invite to everyone.
+            ws.on('message', function message(data) {
+                connections.forEach((c) => {
+                  if (c.id !== connection.id) {
+                    c.ws.send(data);
+                  }
+                });
+              });
 
             ws.on('close', () =>
             {

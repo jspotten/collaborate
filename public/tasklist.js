@@ -1,7 +1,6 @@
 import {TaskList, LoadedTaskList, pinnedIcon, listSetUpComplete,
     setListSetUpComplete} from './main.js';
 
-let taskListCounter = 0;
 let taskListContainer;
 let dropDownContainer;
 let socket;
@@ -77,7 +76,6 @@ function addTaskList()
         deleteTasklist(newTaskList.title);
         setListSetUpComplete(true);
     })
-    taskListCounter++;
 }
 document.getElementById('addList').addEventListener('click', addTaskList);
 
@@ -101,15 +99,84 @@ document.getElementById('share').addEventListener('click', showShareWindow);
 
 
 /*
+ * 
+ */
+async function createdNewShared(listName)
+{
+    const endpoint = `/collaborate/createShared`;
+    const response = await fetch(endpoint, {
+        method: 'post',
+        body: JSON.stringify({
+           username: currUser,
+           listname: listName,
+        }),
+        headers: {'Content-type': 'application/json; charset=UTF-8'},
+    });
+}
+
+
+/*
  * When share Window share button is clicked, the specified
  * tasklist will be shared with a specific user if both
  * fields exist.
  */
-function shareTaskList()
+async function shareTaskList()
 {
-    //const listname;
+    const selectEl = document.getElementById('tasklist-invites-drop-down');
+    const optionVal = selectEl.value;
+    const optionText = selectEl.options[selectEl.selectedIndex].text;
+    
+    const inputEl = document.getElementById('username-to-invite');
+    const invitee = inputEl?.value;
+
+    if(invitee !== undefined)
+    {
+        const endpoint = `/collaborate/findUser/${invitee}`;
+        const response = await fetch(endpoint, {
+            method: 'get',
+            headers: {'Content-type': 'application/json; charset=UTF-8'},
+        });
+        if(response?.status === 200)
+        {
+            await addSharedUser(invitee, optionText);
+        }
+        else
+        {
+            console.log('No user found with that username.');
+        }
+    }
+    else
+    {
+        console.log('Input Box is Blank');
+    }
+    
 }
 document.getElementById('share-with-user').addEventListener('click', shareTaskList);
+
+
+/*
+ * Adds user to the specific shared object who's listname matches the
+ * the one owned and shared by the current user.
+ */
+async function addSharedUser(invitee, listName)
+{
+    const endpoint = `/collaborate/addShared`;
+    const response = await fetch(endpoint, {
+        method: 'post',
+        body: JSON.stringify(
+        {
+            username: currUser,
+            listname: listName,
+            invited: invitee,
+        }),
+        headers: {'Content-type': 'application/json; charset=UTF-8'},
+    });
+    broadcastToUser(currUser, listName);
+    if(response?.status !== 200)
+    {
+        console.log('Error adding user to shared list object.');
+    }
+}
 
 
 /*
@@ -266,13 +333,16 @@ async function loadTaskLists()
 }
 
 
-function addShareListOption(listName, listId)
+/*
+ *
+ */
+function addShareListOption(listName, listID)
 {
     dropDownContainer = document.getElementById('tasklist-invites-drop-down');
     const newOption = document.createElement('option');
-    newOption.setAttribute('value', {listname: listName, listID: listId});
+    newOption.value = `${listID}`;//setAttribute('value', `${listID}`);
     newOption.innerHTML = listName;
-    dropDownContainer += newOption;
+    dropDownContainer.appendChild(newOption);
 }
 
 
@@ -316,4 +386,4 @@ function broadcastToUser(inviter, listname)
    socket.send(JSON.stringify(event));
 }
 
-export {addTaskList, addShareListOption, storeNewList, loadTasksPage};
+export {addTaskList, addShareListOption, storeNewList, loadTasksPage, createdNewShared};

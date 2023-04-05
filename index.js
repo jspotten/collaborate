@@ -102,6 +102,37 @@ secureAPIRouter.use(async (req, resp, next) =>
     }
 });
 
+secureAPIRouter.post(`/createShared`, async (req, resp) =>
+{
+    await database.createShared(
+        req.body.username,
+        req.body.listname
+    );
+    resp.status(200).send({message: "Success"});
+});
+
+secureAPIRouter.post(`/addShared`, async (req, resp) =>
+{
+    await database.addShared(
+        req.body.username,
+        req.body.listname,
+        req.body.invited
+    );
+    resp.status(200).send({message: "Success"});
+});
+
+secureAPIRouter.get(`/findUser/:username`, async (req, resp) =>
+{
+    const user = await database.getUser(req.params.username);
+    if(user)
+    {
+        resp.status(200).send({found: true});
+    }
+    else
+    {
+        resp.status(404).send({message: ""})
+    }
+});
 
 secureAPIRouter.get(`/getUserID/:username`, async (req, resp) =>
 {
@@ -112,7 +143,7 @@ secureAPIRouter.get(`/getUserID/:username`, async (req, resp) =>
     }
     else
     {
-        resp.status(404).send({message: "Unknown User"});
+        resp.status(404).send({message: 'Unknown User'});
     }
 });
 

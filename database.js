@@ -82,23 +82,49 @@ async function getTaskLists(userId)
     return cursor.toArray();
 }
 
-async function addTask(task)
+async function createShared(username, listName)
 {
-    await taskCollection.insertOne(task);
-    return task;
+    sharedCollection.insertOne
+    ({
+        owner: username,
+        listname: listName,
+        shared: [],
+    });
 }
 
-async function deleteTask(task)
+async function addShared(username, listName, invited)
 {
-    const result = await taskCollection.deleteOne(task);
-    return (result.ok === 1) ? true : false;
+    await sharedCollection.updateOne(
+        {$and: [{owner: username}, {listname: listName}]},
+        {$push: {shared: invited}},
+    );
 }
 
-async function getTask(_task)
+async function findShared(username)
 {
-    const task = await taskCollection.findOne(_task)
-    return task;
+    const sharedLists = await sharedCollection.find(
+        {shared: [username]}//, {$elemMatch: username}
+    );
 }
+
+
+// async function addTask(task)
+// {
+//     await taskCollection.insertOne(task);
+//     return task;
+// }
+
+// async function deleteTask(task)
+// {
+//     const result = await taskCollection.deleteOne(task);
+//     return (result.ok === 1) ? true : false;
+// }
+
+// async function getTask(_task)
+// {
+//     const task = await taskCollection.findOne(_task)
+//     return task;
+// }
 
 module.exports = 
 {
@@ -109,7 +135,9 @@ module.exports =
     deleteTaskList,
     getTaskList,
     getTaskLists,
-    addTask,
-    deleteTask,
-    getTask
+    createShared,
+    addShared,
+    // addTask,
+    // deleteTask,
+    // getTask
 };

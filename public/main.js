@@ -1,5 +1,6 @@
-import {storeNewList, loadTasksPage} from './tasklist.js'
-export {User, Users, Task, TaskList, LoadedTaskList, pinnedIcon, checkedIcon, 
+import { createShared } from '../database.js';
+import {storeNewList, loadTasksPage, createdNewShared} from './tasklist.js'
+export {User, Users, Task, TaskList, LoadedTaskList, pinnedIcon, checkedIcon, createdNewShared, 
     listSetUpComplete, setListSetUpComplete, taskSetUpComplete, setTaskSetUpComplete};
 
 const uncheckedIcon =   `<svg xmlns="http://www.w3.org/2000/svg" width="2.3vw" height="2.3vw" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
@@ -177,6 +178,7 @@ class TaskList
                 this.listCardComplete = true;
                 listSetUpComplete = true;
                 this.id = storeNewList(this.title);
+                createdNewShared(this.title);
                 addShareListOption(this.title, this.id);
             }
         });
