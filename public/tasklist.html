@@ -25,17 +25,17 @@
                     </div>
                     <div class = "user">
                         <button type = "button" class = "btn" id = "user-button"></button>
-                        <!--Place to create modal pop up user window below
-                        <div id = #myModal" class = "modal fade" role = "menu/dialog">
-                        </div>
-                        -->
+                        <!-- Modal For When user-button is clicked. -->
                         <div class = "modal fade" id = "notificationsModal" tabindex = "-1">
                             <div class = "modal-dialog modal-dialog-centered">
                                 <div class = "modal-content text-dark">
                                     <div class = "modal-header">Notifications</div>
                                     <div class = "modal-body">
-                                        <p>Notification Drop Down</p>
-                                        <p>User Input Box</p>
+                                        <h5 id = "drop-down-title">Tasklist Invites</h5>
+                                        <select id = "tasklist-invites-drop-down" name = "invites">
+                                            <option value = "blank">--Select Invitation--</option>
+                                            <option value = "tasklist">Tasklist</option>
+                                        </select>
                                     </div>
                                     <div class = "modal-footer">
                                         <button type = "button" class = "btn btn-secondary"
@@ -43,7 +43,7 @@
                                         >Accept</button>
                                         <button type = "button" class = "btn btn-secondary"
                                             id = "notify-delete"
-                                        >Delete</button>
+                                        >Decline</button>
                                         <button type = "button" class = "btn btn-secondary"
                                             data-bs-dismiss = "modal" id = "notify-close"
                                         >Close</button>
@@ -55,8 +55,29 @@
                     
                 </div>
                 <div class = "container" id = "button-nav">
-                    <button class = "btn btn-danger" id = "addList">Add List</button>
-                    <button class = "btn btn-danger" id = "share">Share</button>
+                    <button type = "button" class = "btn btn-danger" id = "addList">Add List</button>
+                    <button type = "button" class = "btn btn-danger" id = "share">Share</button>
+                    <div class = "modal fade" id = "shareModal" tabindex = "-1">
+                        <div class = "modal-dialog modal-dialog-centered">
+                            <div class = "modal-content text-dark">
+                                <div class = "modal-header">Share Tasklist</div>
+                                <div class = "modal-body">
+                                    <p>Notification Drop Down</p>
+                                    <p>User Input Box</p>
+                                </div>
+                                <div class = "modal-footer">
+                                    <div class = "modal-buttons">
+                                        <button type = "button" class = "btn btn-secondary"
+                                            id = "share-with-user"
+                                        >Share</button>
+                                        <button type = "button" class = "btn btn-secondary"
+                                            data-bs-dismiss = "modal" id = "share-close"
+                                        >Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button class = "btn btn-danger" id = "logout">Logout</button>
                 </div>
             </nav>

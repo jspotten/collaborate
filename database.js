@@ -14,7 +14,7 @@ if (!username)
 const url = `mongodb+srv://${username}:${password}@${hostname}`;
 
 const client = new MongoClient(url);
-const userCollection = client.db('collaborate').collection('users');
+const userCollection = client.db('collaborate').collection('user');
 const taskListCollection = client.db('collaborate').collection('tasklist');
 const taskCollection = client.db('collaborate').collection('task');
 const sharedCollection = client.db('collaborate').collection('shared');
@@ -55,14 +55,13 @@ async function createNewUser(firstName, lastName, email, username, password)
 async function addTaskList(userId, listName)
 {
     const taskListID = uuid.v4();
-    await taskCollection.insertOne
+    taskListCollection.insertOne
     ({
         userID: userId,
         listname: listName,
         taskList: taskListID,
     })
-        .then(() => {return taskListID;})
-        .catch(() => {return 0;});
+    return taskListID;
 }
 
 async function deleteTaskList(tasklist)
@@ -71,9 +70,9 @@ async function deleteTaskList(tasklist)
     return (result.ok === 1) ? true : false;
 }
 
-async function getTaskList(tasklist)
+async function getTaskList(listName)
 {
-    const taskList = taskListCollection.findOne(tasklist);
+    const taskList = taskListCollection.findOne({listname: listName});
     return taskList;
 }
 
@@ -90,9 +89,10 @@ async function deleteTask(task)
     return (result.ok === 1) ? true : false;
 }
 
-async function getTask(task)
+async function getTask(_task)
 {
-    const task = await taskCollection.findOne(task)
+    const task = await taskCollection.findOne(_task)
+    return task;
 }
 
 module.exports = 

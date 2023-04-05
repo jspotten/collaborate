@@ -9,7 +9,7 @@
     text-align: center;
     justify-content: center;
     font-size: calc(1.5vw + 2vh);
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .modal-body
@@ -21,20 +21,24 @@
 .modal-footer
 {
     justify-content: center;
+}
+
+.modal-buttons
+{
     display: flex;
     flex-direction: row;
     gap: 2vw;
 }
 
-.modal-footer.btn
+.modal-buttons button
 {
-    background-color: green;
-    border: 2px solid rgb(75, 75, 75);
-    width: calc(7vw + 8vh);
-    height: calc(1vw + 1.75vh);
+    min-width: calc(5.5vw + 6.5vh) !important;
+    width: calc(5.5vw + 6.5vh) !important;
+    border: none !important;
+    height: calc(1vw + 2vh);
     align-items: center;
     justify-content: center;
     display: flex;
     padding: 0;
-    font-size: calc(0.5vw + 1.5vh);
+    font-size: calc(0.5vw + 1.5vh) !important;
 }

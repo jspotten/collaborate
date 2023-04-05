@@ -1,3 +1,4 @@
+import {storeNewList, loadTasksPage} from './tasklist.js'
 export {User, Users, Task, TaskList, pinnedIcon, checkedIcon, listSetUpComplete, setListSetUpComplete, taskSetUpComplete, setTaskSetUpComplete};
 
 const uncheckedIcon =   `<svg xmlns="http://www.w3.org/2000/svg" width="2.3vw" height="2.3vw" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
@@ -153,9 +154,10 @@ class TaskList
 {
     constructor()
     {
-        this.title = "";
+        this.title = "none";
         this.id = "";
         this.pinned = false;
+        this.listCardComplete = false;
         
         this.taskListCard = this.createTaskListCard();
         listSetUpComplete = false;
@@ -170,7 +172,9 @@ class TaskList
                 taskListTitle.textContent = input[0].value;
                 this.title = input[0].value;
                 this.taskListCard.replaceChild(taskListTitle, input[0].parentElement);
+                this.listCardComplete = true;
                 listSetUpComplete = true;
+                this.id = storeNewList(this.title);
             }
         });
     }
@@ -198,5 +202,39 @@ class TaskList
     setID(taskListID)
     {
         this.id = taskListID;
+    }
+}
+
+class LoadedTaskList
+{
+    constructor(title, id, pinned)
+    {
+        this.title = title;
+        this.id = id;
+        this.pinned = pinned;
+        this.taskListCard = this.generateTaskListCard();
+    }
+
+    generateTaskListCard()
+    {
+        const taskListCard = document.createElement('div');
+        taskListCard.className = "card";
+        
+        const starIcon = document.createElement('i');
+        starIcon.className = "star";
+        starIcon.innerHTML += pinIcon;
+        taskListCard.appendChild(starIcon);
+
+        const taskListTitle = document.createElement('a');
+        taskListTitle.onclick = loadTasksPage(this.id);
+        taskListTitle.textContent = input[0].value;
+        taskListCard.innerHTML += taskListTitle;
+        
+        const trashIcon = document.createElement('i');
+        trashIcon.className = "trash";
+        trashIcon.innerHTML += deleteIcon
+        taskListCard.appendChild(trashIcon);
+        
+        return taskListCard;
     }
 }

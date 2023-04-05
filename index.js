@@ -103,9 +103,9 @@ secureAPIRouter.use(async (req, resp, next) =>
 });
 
 
-secureAPIRouter.get(`/getUserID`, async (req, resp) =>
+secureAPIRouter.get(`/getUserID/:username`, async (req, resp) =>
 {
-    const user = await database.getUser(req.body.username);
+    const user = await database.getUser(req.params.username);
     if(user)
     {
         resp.status(200).send({userID: user.userID});
@@ -119,10 +119,10 @@ secureAPIRouter.get(`/getUserID`, async (req, resp) =>
 
 secureAPIRouter.post(`/addlist`, async (req, resp) =>
 {
-    const userID = await database.addTaskList(req.body.username, req.body.tasklist);
-    if(userID != 0)
+    const listID = await database.addTaskList(req.body.userID, req.body.listname);
+    if(listID != 0)
     {
-        resp.status(200).send({userID: userID});
+        resp.status(200).send({listID: listID});
     }
     else
     {
@@ -143,9 +143,9 @@ secureAPIRouter.delete(`/deletelist`, async (req, resp) =>
     }
 });
 
-secureAPIRouter.get(`/getlist`, async (req, resp) =>
+secureAPIRouter.get(`/getlist/:list`, async (req, resp) =>
 {
-    const tasklist = await database.getTaskList(req.body.username, req.body.listname);
+    const tasklist = await database.getTaskList(req.params.list);
     if(tasklist)
     {
         resp.status(200).send(tasklist);

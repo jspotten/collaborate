@@ -27,10 +27,11 @@
     "Shared": 
     {
         "userID": "val",
+        "listname": "val",
         "shared": ["user1", "user2"]
     },
 
-    "Notifications":
+    "Notification":
     {
         "userID": "",
         "notifications": []

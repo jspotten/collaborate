@@ -3,8 +3,13 @@ import {TaskList, pinnedIcon, listSetUpComplete, setListSetUpComplete} from './m
 let taskListCounter = 0;
 let taskListContainer;
 const currUser = (localStorage.getItem('username'));
-const userID = getUserID();
+
+(async () => 
+{ 
+    localStorage.setItem('userID', await getUserID());
+})();
 document.getElementById('user-button').innerHTML = currUser;
+
 
 
 /*
@@ -25,9 +30,9 @@ document.getElementById('user-button').addEventListener('click', showNotificatio
 
 
 /*
- * Adds a notification to user's stored notifications.
+ * 
  */
-function addNotification()
+function acceptInvitation()
 {
 
 }
@@ -39,14 +44,14 @@ function addNotification()
  */
 function addTaskList()
 {
-    if(!listSetUpComplete || findTaskList()) 
+    
+    if(!listSetUpComplete)//taskListContainer.childNodes.length > 1 && 
+        //newTaskList.title !== "none" && !newTaskList.listCardComplete) && findTaskList(newTaskList.title))
     {
-        //Add Error Modal Creation
         return;
     }
-
-    taskListContainer = document.getElementById('list-container');
     let newTaskList = new TaskList();
+    taskListContainer = document.getElementById('list-container');
     taskListContainer.appendChild(newTaskList.taskListCard);
     newTaskList.taskListCard.getElementsByClassName('star')[0].addEventListener('click', (e) => {
         const divEl = e.target.parentElement.parentElement;
@@ -70,7 +75,7 @@ function addTaskList()
         setListSetUpComplete(true);
     })
 
-    storeNewList(newTaskList.title);
+    //storeNewList(newTaskList.title);
     taskListCounter++;
 }
 document.getElementById('addList').addEventListener('click', addTaskList);
@@ -80,16 +85,30 @@ document.getElementById('addList').addEventListener('click', addTaskList);
  * Creates a popup box where the user can select a list that they want to invite
  * a specific user to take part in and join.
  */
-function shareWithUser()
+function showShareWindow()
 {
-    console.log("Shared with Julie");
-   /*
-    * Add functionality to be able to send an invite to share a list with
-    * another user and give them the ability to accept or decline. If accepted,
-    * then the task list will be added to their collection of task lists.
-    */
+    console.log("In showShareWindow");
+    const modalEl = document.getElementById('shareModal');
+    //modalEl.querySelector('.modal-header').textContent = `Notifications`;
+    /*
+     * Update the dropdown box to retrive existing tasklist.
+     */
+    const shareModal = new bootstrap.Modal(modalEl, {});
+    shareModal.show();
 }
-document.getElementById('share').addEventListener('click', shareWithUser);
+document.getElementById('share').addEventListener('click', showShareWindow);
+
+
+/*
+ * When share Window share button is clicked, the specified
+ * tasklist will be shared with a specific user if both
+ * fields exist.
+ */
+function shareTaskList()
+{
+
+}
+document.getElementById('share-with-user').addEventListener('click', shareTaskList);
 
 
 /*
@@ -109,14 +128,9 @@ document.getElementById('logout').addEventListener('click', logout);
  */
 async function findTaskList(listName)
 {
-    const endpoint = `/collaborate/getlist`;
+    const endpoint = `/collaborate/getlist/${listName}`;
     const response = await fetch(endpoint, {
         method: 'get',
-        body: JSON.stringify(
-        {
-            username: currUser,
-            listname: listName,
-        }),
         headers: {'Content-type': 'application/json; charset=UTF-8'},
     });
 
@@ -140,6 +154,7 @@ async function findTaskList(listName)
  */
 async function storeNewList(listName)
 {
+    const userID = (localStorage.getItem('userID'));
     const endpoint = `/collaborate/addlist`;
     const response = await fetch(endpoint, {
         method: 'post',
@@ -153,10 +168,14 @@ async function storeNewList(listName)
     const respBody = await response.json();
     if(response?.status === 200)
     {
-        return respBody.userID;
+        return respBody.listID;
     }
 }
 
+
+/*
+ * Deletes a tasklist by name from database.
+ */
 async function deleteTasklist(listName)
 {
     const endpoint = `/collaborate/deletelist`;
@@ -167,12 +186,16 @@ async function deleteTasklist(listName)
     });
 }
 
+
+/*
+ * Retrieves the user's ID number.
+ */
 async function getUserID()
 {
-    const endpoint = `collaborate/getUserID`;
+    const endpoint = `/collaborate/getUserID/${currUser}`;
     const response = await fetch(endpoint, {
         method: 'get',
-        body: JSON.stringify({username: currUser}),
+        //body: JSON.stringify({username: currUser}),
         headers: {'Content-type': 'application/json; charset=UTF-8'},
     });
     const respBody = await response.json();
@@ -182,4 +205,9 @@ async function getUserID()
     }
 }
 
-export {addTaskList};
+async function loadTasksPage(listID)
+{
+
+}
+
+export {addTaskList, storeNewList, loadTasksPage};
