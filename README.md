@@ -245,6 +245,13 @@ Startup - WS & MongoDB
 - So with a socket configured for every user, we can send info via the socket which will be sent through our 'message' wss endpoint which will then be routed to the destination user(s) configured socket which will then do something based on the event that is sent.
 
 
+React CLI:
+- You cannot enter down the open parenthesis when returning some kind of HTML element from a component.
+- Doing this will make anything that follows the return unrecogizable and usable; it would be loaded.
+- App.js will contain the front-end UX and reactivity with JSX components which combine those two things.
+- Anything backend related will be handled by index.js and other js files.
+
+
 <br></br>
 <br></br>
 <h2>MIDTERM EXAM NOTES</h2>
