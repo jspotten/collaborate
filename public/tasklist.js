@@ -364,7 +364,7 @@ function configureSocket()
     socket.onmessage = async (event) => 
     {
         const message = JSON.parse(await event.data.text());
-        displayMessage(message.inviter, message.lisname);
+        displayMessage(message.inviter, message.listname);
     };
 }
 

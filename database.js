@@ -102,8 +102,6 @@ async function addShared(username, listName, invited)
 
 async function getShared(username)
 {
-    //{ dim_cm: { $elemMatch: { $gt: 22, $lt: 30 } } }
-    // {$in: }
     const cursor = await sharedCollection.find(
         {shared: {$elemMatch: username}}
     );

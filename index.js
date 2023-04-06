@@ -202,7 +202,6 @@ secureAPIRouter.get(`/getlist/:list`, async (req, resp) =>
 
 secureAPIRouter.get(`/getlists/:userID`, async (req, resp) =>
 {
-    //Not recognizing my function that is clearly written in database.js
     const lists = await database.getTaskLists(req.params.userID);
     if(lists)
     {
