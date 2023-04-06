@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
 
 const app = express();
-const database = require('./database');
+const database = require('./database.js');
 const { Proxy } = require('./proxy');
 const cookieName = 'authToken';
 const portNum = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -119,6 +119,19 @@ secureAPIRouter.post(`/addShared`, async (req, resp) =>
         req.body.invited
     );
     resp.status(200).send({message: "Success"});
+});
+
+secureAPIRouter.get(`/getShared/:username`, async (req, resp) =>
+{
+    const shared = await database.getShared(req.params.username);
+    if(shared)
+    {
+        resp.status(200).send({shared: shared});
+    }
+    else
+    {
+        resp.status(404).send({message: 'No lists shared with that user.'});
+    }
 });
 
 secureAPIRouter.get(`/findUser/:username`, async (req, resp) =>

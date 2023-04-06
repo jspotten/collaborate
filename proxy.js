@@ -15,9 +15,22 @@ class Proxy
             });
         });
 
-        async function findSharedLists()
+        async function getSharedLists(username)
         {
-            
+            const endpoint = `/collaborate/getShared/${username}`;
+            const response = await fetch(endpoint, {
+                method: 'get',
+                headers: {'Content-type': 'application/json; charset=UTF-8'},
+            })
+            const respBody = await response.json();
+            if(response?.status === 200)
+            {
+                return respBody.shared;
+            }
+            else
+            {   
+                return null;
+            }
         }
 
         let connections = [];
@@ -25,18 +38,29 @@ class Proxy
         wss.on('connection', (ws) =>
         {
             //add username to connection
-            const connection = {id: uuid.v4(), username: currUser, alive: true, ws: ws};
+            const connection = {id: uuid.v4(), alive: true, ws: ws};
             connections.push(connection);
         
-            //How to send message to singular connection;
-            //For time, may just send invite to everyone.
             ws.on('message', function message(data) {
                 connections.forEach((c) => {
                   if (c.id !== connection.id) {
                     c.ws.send(data);
                   }
                 });
-              });
+            });
+
+            //How to send message to singular connection;
+            //For time, may just send invite to everyone.
+            // ws.on('message', function message(data) {
+            //     connections.forEach((c) => 
+            //     {
+            //         const sharedItems = getSharedLists(c.username);
+            //         if(sharedItems)
+            //         {
+            //             c.ws.send
+            //         }
+            //     });
+            //   });
 
             ws.on('close', () =>
             {
@@ -70,7 +94,7 @@ class Proxy
                     connect.ws.ping();
                 }
             });
-        });
+        }, 10000);
     }   
 }
 

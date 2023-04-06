@@ -364,10 +364,7 @@ function configureSocket()
     socket.onmessage = async (event) => 
     {
         const message = JSON.parse(await event.data.text());
-        if (message.type === "NotifyUser") 
-        {
-            displayMessage(message.inviter, message.lisname);
-        }
+        displayMessage(message.inviter, message.lisname);
     };
 }
 

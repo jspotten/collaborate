@@ -100,11 +100,14 @@ async function addShared(username, listName, invited)
     );
 }
 
-async function findShared(username)
+async function getShared(username)
 {
-    const sharedLists = await sharedCollection.find(
-        {shared: [username]}//, {$elemMatch: username}
+    //{ dim_cm: { $elemMatch: { $gt: 22, $lt: 30 } } }
+    // {$in: }
+    const cursor = await sharedCollection.find(
+        {shared: {$elemMatch: username}}
     );
+    return cursor.toArray();
 }
 
 
@@ -137,7 +140,5 @@ module.exports =
     getTaskLists,
     createShared,
     addShared,
-    // addTask,
-    // deleteTask,
-    // getTask
+    getShared,
 };
