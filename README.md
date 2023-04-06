@@ -212,6 +212,39 @@ Simon WebSocket:
 - Events can then be broadcasted by using the WS send function with a JSON object containing data you want to be shown.
 
 
+Startup - WS & MongoDB
+- Overall, I have come to understand pretty well how to make a service and do something from end to end using JavaScript to transmit data from the front-end to the backend and from the backend to the front-end. I took CS 240 this semester and we used a local database, Java, and android to do what we've done with this class, so taking this different approach with webservices and web related languages has given me new perspective.
+- To use third-party services, npm needs to be installed in a project directory so that you can use it to get available APIs like uuid, bcrypt, and express.
+- And once in your index.js file, which is starting point for your project to load, require statements must be used to import in the endpoints.
+- A variety of routers can be used to separate endpoints and restrict them in ways that you desire. And for every router that trails on from another one, a new addition to the url is appended.
+- To add extra authentication, use bcrypt to store a hash of password inserted upon user creation and then use the compare function when checking to see if the provided password matches the password stored in the database.
+- Having a chain of module dependencies can cause JS files to be loaded when you don't want them to. I had one JS file link to one JS file which linked to another. This caused a lot of confusion as the last JS file in the chain was being loaded without it being referenced in the JS file used by my index.html.
+- To take in values with a get request, you can't add a request body. But you can add them to the URL that matches with an endpoint. Just add it when performing a fetch request and then when receiving the URL at the endpoint, put /:[paramName]. You will then be able to extract the value with req.params.paramName.
+- A status and an object can be sent back at the end of the fetch with a status to indicate success, and anything you want to send that will provide key information or an message to indicate why the API failed.
+- To avoid moving on from an asychronouse process before it is finished, always use the await keyword at the beginning.
+- If we want to export functions from the database JS that will be used by our web service JS file, we can add module.exports = {functionName1, functionName2,...}.
+- After we have created an account in Mongodb Atlas and a cluster to store our databases, define a database and the collections that will go inside.
+- Then to reference and use them in our backend database JS file, we can store them in variable by calling client.db('nameOfCollection').collection('collectionName').
+- Client is created by initilaizing a new MongoClient with a url that contains our credentials and the information relating to our cluster's connection.
+- Once we've created the desired collection reference variables, we can call a variety of functions that will perform certain queries which can be singular in what they return or many in what is returned.
+- Each query function takes in an object which contains specific fields or details that will be used to add, delete, find, etc.
+- The find function will return everything that matches our query while findOne will return the first occurence of an object that matches our search.
+- InsertMany and InsertOne work similarly in that they can either insert either one object, or many objects into the database collection.
+- updateOne is used to update a the contents of the fields in the collections objects specified by the query.
+- When getting more than one object using find, you will need to user .toArray() to return what you retrieved as a JSON array.
+- $and: is used to append more than one query together to create a combination query.
+- $push: is a opertation used to be able push data into an array.
+- Websockets are used to transmit data between connections that are currently open for many users.
+- In your proxy class, you need to create a WS server and once we've upgraded our protocol, we connect to an our WSS endpoint which establishes connections.
+- And with those connections, you can define what happens when to indicate when they are active, in the process of being closed, or when they receive a message.
+- As a last step in the proxy, make sure set a time limit or interval to ping connections to see if they are active, close them if they aren't and keep them open for an allotted amount of time.
+- General setup for doing something from one end to the other is to have a function that interacts with a database, an endpoint to send that function important information, and a function iniated from the front end which performs a fetch on the endpoint and passes it the important information.
+- To use websockets have them pass information to other users, we need to configure a soocket with url that contains the protocol, host, and /ws at the end.
+- Then we can use have it do certain things when it is opened, closed, and when it receives a message:
+  - Those actions are defined by asigning arrow functions to the following: socket.onopen, socket.onclose, and socket.onmessage.
+- So with a socket configured for every user, we can send info via the socket which will be sent through our 'message' wss endpoint which will then be routed to the destination user(s) configured socket which will then do something based on the event that is sent.
+
+
 <br></br>
 <br></br>
 <h2>MIDTERM EXAM NOTES</h2>
