@@ -252,6 +252,24 @@ React CLI:
 - Anything backend related will be handled by index.js and other js files.
 
 
+Simon React:
+- Just as we had an index.js to initiate the beginning of our backend, with React we will have a file called App.jsx to initiate the beginning of our components for the front end of our code which includes the appearance from HTML and the reactivity from JS.
+-One of the important aspects of React is that everything is compartamentalized.
+- For each of the possible pages that our program will run, we will have a separate directory which will typically contain at least one JSX and CSS file, but there coule be additional JSX files to break things up and extra JS files to handle separate reactivity.
+- So in the case of Simon, there is login, play, scores, and about directory, each with CSS files and JSX/JS files.
+- In order to debug a React project, we need to be able to run on two ports: one for the node.js service and one for the React client HTTP debugger.
+- To convert to React components, you'll want to copy over your HTML into separate components and put the code in the return line of the component.
+- Make sure to change the class to be className and then delete any header or footer that is carried over from the default App.jsx file. If you don't have a footer and or header that don't carry across multiple pages, than you can leave that.
+- The JS will then need to be converted into functions that are placed inside the component above the return line.
+- Create React state variables for the following: for each stateful object in the component and for any DOM query selectors.
+- Sometimes it might be necessary to move state objects to a parent component designated for a specific state as indicated by the name you give it.
+- And vice versa, creating some parent components can be helpful to create coherent, readable, and effective code.
+- Utilize the useEffect hook to watch the username's state so that it proper permissions are kept in order and certain things are restricted if the username changes to something that hasn't been authenticated.
+- In order to reference Bootstrap styles in your components, this needs to be at the top: import 'bootstrap/dist/css/bootstrap.min.css';.
+- Also, when beginning the conversion, generate the CLI template, clear out anything you don't want and then bring it over to your project.
+- Make to install the different npm packages for the service directort and then at the root of the project before trying to deploy to your Server.
+
+
 <br></br>
 <br></br>
 <h2>MIDTERM EXAM NOTES</h2>
