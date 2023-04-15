@@ -70,9 +70,9 @@ async function deleteTaskList(userId, listName)
     return (result.ok === 1) ? true : false;
 }
 
-async function getTaskList(listName)
+async function getTaskList(listId)
 {
-    const taskList = taskListCollection.findOne({listname: listName});
+    const taskList = taskListCollection.findOne({listID: listId});
     return taskList;
 }
 
@@ -103,9 +103,18 @@ async function addShared(username, listName, invited)
 async function getShared(username)
 {
     const cursor = await sharedCollection.find(
-        {shared: {$elemMatch: username}}
+        {shared:  username}
     );
     return cursor.toArray();
+}
+
+async function removeShared(username, listName)
+{
+    const result = sharedCollection.updateOne(
+        {$and: [{listname: listName}, {shared: username}]},
+        {$pull: {shared: username}}
+    );
+    return result;
 }
 
 
@@ -139,4 +148,5 @@ module.exports =
     createShared,
     addShared,
     getShared,
+    removeShared
 };

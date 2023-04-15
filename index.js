@@ -134,6 +134,20 @@ secureAPIRouter.get(`/getShared/:username`, async (req, resp) =>
     }
 });
 
+secureAPIRouter.delete(`/removeShared/:username/:listName`, async (req, resp) =>
+{
+    const deleted = await database.removeShared(
+        req.params.username, req.params.listName);
+    if(deleted)
+    {
+        resp.status(200).send({message: "Shared User Successfully Deleted"})
+    }
+    else
+    {
+        resp.status(409).send({message: "Shared User Unsuccessfully Deleted"})
+    }
+});
+
 secureAPIRouter.get(`/findUser/:username`, async (req, resp) =>
 {
     const user = await database.getUser(req.params.username);
@@ -187,12 +201,12 @@ secureAPIRouter.delete(`/deletelist/:userID/:listname`, async (req, resp) =>
     }
 });
 
-secureAPIRouter.get(`/getlist/:list`, async (req, resp) =>
+secureAPIRouter.get(`/getlist/:listID`, async (req, resp) =>
 {
-    const list = await database.getTaskList(req.params.list);
+    const tasklist = await database.getTaskList(req.params.listID);
     if(tasklist)
     {
-        resp.status(200).send({tasklist: list});
+        resp.status(200).send({tasklist: tasklist});
     }
     else
     {

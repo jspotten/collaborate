@@ -101,7 +101,7 @@ main
     flex-direction: column;
     width: 85vw;
     align-items: center !important;
-    margin: 10px 10px 10px 32px;
+    margin: 10px 10px 10px 31px;
     gap: 15px;
 }
 

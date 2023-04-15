@@ -10,6 +10,7 @@ document.getElementById('user-button').innerHTML = currUser;
 { 
     localStorage.setItem('userID', await getUserID());
     await loadTaskLists();
+    await loadSharedLists();
     configureSocket();
 })();
 
@@ -29,31 +30,50 @@ document.getElementById('user-button').addEventListener('click', showNotificatio
 /*
  * 
  */
-function acceptInvitation()
+async function acceptInvitation()
 {
     const selectEl = document.getElementById('tasklist-invite-notifications');
     const optionVal = selectEl.value;
     if(optionVal !== 'blank')
     {   
         const optionText = selectEl.options[selectEl.selectedIndex].text;
+        const tasklist = getTaskList(optionVal);
+        //const invitee = optionText.split(" ")[0];
+        //await addSharedUser(invitee, optionText, optionVal);
+        loadTasklist(tasklist);
+        deleteSelectOption(selectEl);
     }
 }
 document.getElementById('notify-accept').addEventListener('click', acceptInvitation);
 
-
-function declineInvitation()
+async function getTaskList(listID)
 {
-    const selectEl = document.getElementById('tasklist-invite-notificationsn');
-    if(!selectEl.hasAttribute('id'))
+    const endpoint = `/collaborate/getlist/${listID}`;
+    const response = await fetch(endpoint, {
+        method: 'get',
+        headers: {'Content-type': 'application/json; charset=UTF-8'},
+    });
+
+    const respBody = await response.json();
+    if(response?.status === 200)
     {
-        const [user, listID]= selectEl.value;
-        const optionText = selectEl.options[selectEl.selectedIndex].text;
+        return respBody.tasklist;
     }
 }
 
-function deleteNotification()
+function declineInvitation()
 {
     const selectEl = document.getElementById('tasklist-invite-notifications');
+    if(selectEl.value !== 'blank');
+    {
+        deleteSelectOption(selectEl);
+    }
+}
+document.getElementById('notify-delete').addEventListener('click', declineInvitation);
+
+function deleteSelectOption(selectEl)
+{
+    selectEl.remove(selectEl.selectedIndex);
 }
 
 
@@ -151,6 +171,7 @@ async function shareTaskList()
         if(response?.status === 200)
         {
             await addSharedUser(invitee, optionText, optionVal);
+            //broadcastToUser(currUser, optionText, optionVal);
         }
         else
         {
@@ -200,30 +221,6 @@ function logout()
     window.location.href = 'index.html';
 }
 document.getElementById('logout').addEventListener('click', logout);
-
-
-/*
- * Searches for a specific tasklist and returns true if
- * found and false if it isn't.
- */
-async function findTaskList(listName)
-{
-    const endpoint = `/collaborate/getlist/${listName}`;
-    const response = await fetch(endpoint, {
-        method: 'get',
-        headers: {'Content-type': 'application/json; charset=UTF-8'},
-    });
-
-    const tasklist = await response.json();
-    if(response?.status === 200)
-    {
-        return true;
-    }
-    else
-    {
-        return false;    
-    }
-}
 
 
 /*
@@ -314,14 +311,40 @@ async function loadTaskLists()
     taskListContainer.style.overflowY = 'scroll';
     tasklists.forEach(async (list) => 
     {
-        await loadTasklist(list)
+        await loadTasklist(list, false)
     });
 }
 
 
-async function loadTasklist(list)
+async function getSharedTaskLists()
 {
-    let filledList = new LoadedTaskList(list.listname, list.listID, false);
+    const endpoint = `/collaborate/getShared/${currUser}`;
+    const response = await fetch(endpoint, {
+        method: 'get',
+        headers: {'Content-type': 'application/json; charset=UTF-8'},
+    })
+    const respBody = await response.json();
+    if(response?.status === 200)
+    {
+        return respBody.shared;
+    }
+}
+
+
+async function loadSharedLists()
+{
+    const sharedLists = await getSharedTaskLists();
+    taskListContainer = document.getElementById('list-container');
+    sharedLists.forEach(async (list) => 
+    {
+        await loadTasklist(list, true)
+    });
+}
+
+
+async function loadTasklist(list, shared)
+{
+    let filledList = new LoadedTaskList(list.listname, list.listID, shared, false);
         taskListContainer.appendChild(filledList.taskListCard);
 
         filledList.taskListCard.getElementsByClassName('star')[0].addEventListener('click', (e) => 
@@ -344,10 +367,28 @@ async function loadTasklist(list)
             const divEl = e.target.parentElement.parentElement;
             const listsDivEl = divEl.parentElement;
             listsDivEl.removeChild(divEl);
-            deleteTasklist(filledList.title);
+            if(filledList.shared === true)
+            {
+                removeSharedUser(filledList.title);
+            }
+            else
+            {
+                deleteTasklist(filledList.title);
+            }
             setListSetUpComplete(true);
         })
         addShareListOption(list.listname, list.listID);
+}
+
+
+async function removeSharedUser(listname)
+{
+    const endpoint = `/collaborate/removeShared/${currUser}/${listname}`;
+    const response = await fetch(endpoint, {
+        method: 'delete',
+        headers: {'Content-type': 'application/json; charset=UTF-8'},
+    })
+    const respBody = await response.json();
 }
 
 

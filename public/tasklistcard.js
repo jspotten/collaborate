@@ -37,6 +37,7 @@ class TaskList
     {
         this.title = null;
         this.id = "";
+        this.shared = false;
         this.pinned = false;
         this.listCardComplete = false;
         
@@ -91,10 +92,11 @@ class TaskList
 
 class LoadedTaskList
 {
-    constructor(title, id, pinned)
+    constructor(title, id, shared, pinned)
     {
         this.title = title;
         this.id = id;
+        this.shared = shared;
         this.pinned = pinned;
         this.taskListCard = this.generateTaskListCard();
     }
