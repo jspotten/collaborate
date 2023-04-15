@@ -10,14 +10,16 @@ document.getElementById('nav-bar').innerHTML += currTasklist;
     await loadTasks();
 })();
 
-async function addTask()
+function addTask()
 {
-    if(!taskSetUpComplete) return;
+    if(!taskSetUpComplete) 
+    {
+        return;
+    }
 
+    let newTask = new Task();
     taskContainer = document.getElementById('in-progress');
-    let newTask = new Task("Startup");
     taskContainer.appendChild(newTask.taskCard);
-
     newTask.taskCard.getElementsByClassName('unchecked')[0].addEventListener('click', (e) => {
         const divEl = e.target.parentElement.parentElement;
         const uncheckedIcon = e.target.parentElement;
@@ -26,10 +28,10 @@ async function addTask()
         checkIcon.innerHTML += checkedIcon;
         checkIcon.addEventListener('click', () => {
             divEl.replaceChild(uncheckedIcon, checkIcon);
-            newTask.pinned = false;
+            newTask.checked = false;
         });
         divEl.replaceChild(checkIcon, uncheckedIcon);
-        newTask.pinned = true;
+        newTask.checked = true;
     });
 
     newTask.taskCard.getElementsByClassName('star')[0].addEventListener('click', (e) => {
@@ -50,9 +52,9 @@ async function addTask()
         const divEl = e.target.parentElement.parentElement;
         const tasksDivEl = divEl.parentElement;
         await tasksDivEl.removeChild(divEl);
+        //deleteTask() and check for title
         setTaskSetUpComplete(true);
     })
-    taskCounter++;
 }
 document.getElementById('addTask').addEventListener('click', addTask);
 

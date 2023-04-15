@@ -50,13 +50,15 @@ function setTaskSetUpComplete(value)
 
 class Task
 {
-    constructor(title)
+    constructor()
     {
-        this.title = title;
+        this.title = null;
+        this.id = null;
+        this.checked = false;
         this.pinned = false;
-        this.completed = false;
-        this.taskCard = this.createTaskCard();
+        this.taskCardComplete = false;
 
+        this.taskCard = this.createTaskCard();
         taskSetUpComplete = false;
         const input = this.taskCard.getElementsByTagName('input');
         input[0].addEventListener('keypress', (event) =>
@@ -66,7 +68,9 @@ class Task
                 event.preventDefault();
                 const taskTitle = document.createElement('span');
                 taskTitle.textContent = input[0].value;
+                this.title = input[0].value;
                 this.taskCard.replaceChild(taskTitle, input[0].parentElement);
+                this.taskCardComplete = true;
                 taskSetUpComplete = true;
             }
         });

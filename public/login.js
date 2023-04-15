@@ -1,10 +1,5 @@
-//import {User} from './main.js';
-
-console.log("In login.js");
-
 async function loginUser()
 {
-    console.log("Inside of loginUser");
     const endpoint = `/collaborate/auth/login`;
     const identifier = document.getElementById('userOrEmail')?.value;
     const password = document.getElementById('exUserPassword')?.value;
@@ -30,7 +25,6 @@ document.getElementById('loginButton').addEventListener('click', loginUser);
 
 async function signUpNewUser()
 {
-    console.log("Inside of signUpNewUser");
     const endpoint = `/collaborate/auth/generate`;
     const newUser  = 
     {    
@@ -106,5 +100,3 @@ async function validateInfo(newUser)
     }
     return true;
 }
-
-//export {loginUser, signUpNewUser};

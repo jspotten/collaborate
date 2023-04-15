@@ -19,7 +19,6 @@ document.getElementById('user-button').innerHTML = currUser;
  */
 function showNotifications()
 {
-    console.log("In showNotifications");
     const modalEl = document.getElementById('notificationsModal');
     const notificationsModal = new bootstrap.Modal(modalEl, {});
     notificationsModal.show();
@@ -52,6 +51,11 @@ function declineInvitation()
     }
 }
 
+function deleteNotification()
+{
+    const selectEl = document.getElementById('tasklist-invite-notifications');
+}
+
 
 /*
  * Adds New TaskList Object to User and Creates Tasklist HTML
@@ -64,6 +68,7 @@ function addTaskList()
     {
         return;
     }
+
     let newTaskList = new TaskList();
     taskListContainer = document.getElementById('list-container');
     taskListContainer.appendChild(newTaskList.taskListCard);
@@ -98,12 +103,7 @@ document.getElementById('addList').addEventListener('click', addTaskList);
  */
 function showShareWindow()
 {
-    console.log("In showShareWindow");
     const modalEl = document.getElementById('shareModal');
-    //modalEl.querySelector('.modal-header').textContent = `Notifications`;
-    /*
-     * Update the dropdown box to retrive existing tasklist.
-     */
     const shareModal = new bootstrap.Modal(modalEl, {});
     shareModal.show();
 }
