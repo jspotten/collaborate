@@ -1,6 +1,6 @@
-import {storeNewList, loadTasksPage, createNewShared, addShareListOption} from './tasklist.js'
-export {Task, TaskList, LoadedTaskList, pinnedIcon, checkedIcon,
-    createNewShared, listSetUpComplete, setListSetUpComplete,
+import {loadTasks} from './task.js'
+export {Task, pinnedIcon, checkedIcon,
+    createdNewShared, setListSetUpComplete,
     taskSetUpComplete, setTaskSetUpComplete};
 
 const uncheckedIcon =   `<svg xmlns="http://www.w3.org/2000/svg" width="2.3vw" height="2.3vw" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
@@ -30,12 +30,6 @@ const deleteIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="2.3vw" height
                             0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
                     </svg>`;
 
-const taskListForm =`<form class = "d-flex tempTextBox" id = "taskListForm">
-                        <input id = "taskListTitle" class="form-control me-2 cursor-center 
-                        form-input" type="text" placeholder="Enter Task List Name Here"
-                        aria-label="" aria-describedby="basic-addon1">
-                    </form>`;
-
 const taskForm =`<form class = "d-flex tempTextBox" id = "taskForm">
                     <input id = "task" class="form-control me-2 cursor-center 
                     form-input" type="text" placeholder="Enter Task Name Here"
@@ -48,14 +42,8 @@ const dateForm =`<form class = "d-flex" id = "dateForm">
                         aria-label="" aria-describedby="basic-addon1">
                 </form>`;
 
-let listSetUpComplete = true;
 let taskSetUpComplete = true;
 
-
-function setListSetUpComplete(value)
-{
-    listSetUpComplete = value;
-}
 
 function setTaskSetUpComplete(value)
 {
@@ -85,7 +73,6 @@ class Task
             }
         });
 
-        //Find way to check if state of date-local input has changed.
         input[1].addEventListener('keypress', (event) =>
         {
             if(event.key === "Enter" && (input[1].textContent !== null || input.textContent !== ''))
@@ -123,97 +110,5 @@ class Task
         taskCard.appendChild(trashIcon);
         
         return taskCard;
-    }
-}
-
-class TaskList
-{
-    constructor()
-    {
-        this.title = "none";
-        this.id = "";
-        this.pinned = false;
-        this.listCardComplete = false;
-        
-        this.taskListCard = this.createTaskListCard();
-        listSetUpComplete = false;
-        const input = this.taskListCard.getElementsByTagName('input');
-        input[0].addEventListener('keypress', (event) =>
-        {
-            if(event.key === "Enter" && (input[0].textContent !== null || input.textContent !== ''))
-            {
-                event.preventDefault();
-                const taskListTitle = document.createElement('a');
-                //Change this to be an onclick for loadTasksPage.
-                taskListTitle.setAttribute('href', 'task.html');
-                taskListTitle.textContent = input[0].value;
-                this.title = input[0].value;
-                this.taskListCard.replaceChild(taskListTitle, input[0].parentElement);
-                this.listCardComplete = true;
-                listSetUpComplete = true;
-                this.id = storeNewList(this.title);
-                createNewShared(this.title);
-                addShareListOption(this.title, this.id);
-            }
-        });
-    }
-
-    createTaskListCard()
-    {
-        const taskListCard = document.createElement('div');
-        taskListCard.className = "card";
-        
-        const starIcon = document.createElement('i');
-        starIcon.className = "star";
-        starIcon.innerHTML += pinIcon;
-        taskListCard.appendChild(starIcon);
-
-        taskListCard.innerHTML += taskListForm;
-        
-        const trashIcon = document.createElement('i');
-        trashIcon.className = "trash";
-        trashIcon.innerHTML += deleteIcon
-        taskListCard.appendChild(trashIcon);
-        
-        return taskListCard;
-    }
-
-    setID(taskListID)
-    {
-        this.id = taskListID;
-    }
-}
-
-class LoadedTaskList
-{
-    constructor(title, id, pinned)
-    {
-        this.title = title;
-        this.id = id;
-        this.pinned = pinned;
-        this.taskListCard = this.generateTaskListCard();
-    }
-
-    generateTaskListCard()
-    {
-        const taskListCard = document.createElement('div');
-        taskListCard.className = "card";
-        
-        const starIcon = document.createElement('i');
-        starIcon.className = "star";
-        starIcon.innerHTML += pinIcon;
-        taskListCard.appendChild(starIcon);
-
-        const taskListTitle = document.createElement('a');
-        taskListTitle.addEventListener('click', () => loadTasksPage(this.id));
-        taskListTitle.textContent = this.title;
-        taskListCard.appendChild(taskListTitle);
-        
-        const trashIcon = document.createElement('i');
-        trashIcon.className = "trash";
-        trashIcon.innerHTML += deleteIcon
-        taskListCard.appendChild(trashIcon);
-        
-        return taskListCard;
     }
 }

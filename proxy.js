@@ -15,23 +15,23 @@ class Proxy
             });
         });
 
-        async function getSharedLists(username)
-        {
-            const endpoint = `/collaborate/getShared/${username}`;
-            const response = await fetch(endpoint, {
-                method: 'get',
-                headers: {'Content-type': 'application/json; charset=UTF-8'},
-            })
-            const respBody = await response.json();
-            if(response?.status === 200)
-            {
-                return respBody.shared;
-            }
-            else
-            {   
-                return null;
-            }
-        }
+        // async function getSharedLists(username)
+        // {
+        //     const endpoint = `/collaborate/getShared/${username}`;
+        //     const response = await fetch(endpoint, {
+        //         method: 'get',
+        //         headers: {'Content-type': 'application/json; charset=UTF-8'},
+        //     })
+        //     const respBody = await response.json();
+        //     if(response?.status === 200)
+        //     {
+        //         return respBody.shared;
+        //     }
+        //     else
+        //     {   
+        //         return null;
+        //     }
+        // }
 
         let connections = [];
 
@@ -51,16 +51,10 @@ class Proxy
 
             //How to send message to singular connection;
             //For time, may just send invite to everyone.
-            // ws.on('message', function message(data) {
-            //     connections.forEach((c) => 
-            //     {
-            //         const sharedItems = getSharedLists(c.username);
-            //         if(sharedItems)
-            //         {
-            //             c.ws.send
-            //         }
-            //     });
-            //   });
+            // ws.on('message', function privateInvite(data) 
+            // {
+                
+            // });
 
             ws.on('close', () =>
             {

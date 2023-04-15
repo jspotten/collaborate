@@ -101,7 +101,7 @@ document.getElementById('share').addEventListener('click', showShareWindow);
 /*
  * 
  */
-async function createdNewShared(listName)
+async function createNewShared(listName)
 {
     const endpoint = `/collaborate/createShared`;
     const response = await fetch(endpoint, {
@@ -138,7 +138,7 @@ async function shareTaskList()
         });
         if(response?.status === 200)
         {
-            await addSharedUser(invitee, optionText);
+            await addSharedUser(invitee, optionText, optionVal);
         }
         else
         {
@@ -158,7 +158,7 @@ document.getElementById('share-with-user').addEventListener('click', shareTaskLi
  * Adds user to the specific shared object who's listname matches the
  * the one owned and shared by the current user.
  */
-async function addSharedUser(invitee, listName)
+async function addSharedUser(invitee, listName, listID)
 {
     const endpoint = `/collaborate/addShared`;
     const response = await fetch(endpoint, {
@@ -171,7 +171,7 @@ async function addSharedUser(invitee, listName)
         }),
         headers: {'Content-type': 'application/json; charset=UTF-8'},
     });
-    broadcastToUser(currUser, listName);
+    broadcastToUser(currUser, listName, listID);
     if(response?.status !== 200)
     {
         console.log('Error adding user to shared list object.');
@@ -340,7 +340,7 @@ function addShareListOption(listName, listID)
 {
     dropDownContainer = document.getElementById('tasklist-invites-drop-down');
     const newOption = document.createElement('option');
-    newOption.value = `${listID}`;//setAttribute('value', `${listID}`);
+    newOption.value = `${listID}`;
     newOption.innerHTML = listName;
     dropDownContainer.appendChild(newOption);
 }
@@ -364,22 +364,27 @@ function configureSocket()
     socket.onmessage = async (event) => 
     {
         const message = JSON.parse(await event.data.text());
-        displayMessage(message.inviter, message.listname);
+        displayMessage(message.inviter, message.listname, message.listID);
     };
 }
 
-function displayMessage(inviter, listname)
+function displayMessage(inviter, listname, listID)
 {
-    const notifications = document.getElementById('tasklist-invites');
-    notifications.innerHTML +=
-        `<div class="event">
-            <span>${inviter} Invited You to Join ${listname}</span>
-        </div>`;
+    //const notifications = document.getElementById('tasklist-invites');
+    // notifications.innerHTML +=
+    //     `<div class="event">
+    //         <span>${inviter} Invited You to Join ${listname}</span>
+    //     </div>`;
+    dropDownContainer = document.getElementById('tasklist-invite-notifications');
+    const newNotification = document.createElement('option');
+    newNotification.value = `${listID}`;//setAttribute('value', `${listID}`);
+    newNotification.innerHTML = `${inviter} Invited You to Join ${listname}`;
+    dropDownContainer.appendChild(newNotification);
 }
 
-function broadcastToUser(inviter, listname)
+function broadcastToUser(inviter, listname, listId)
 {
-   const event = {inviter: inviter, listname: listname};
+   const event = {inviter: inviter, listname: listname, listID: listId};
    socket.send(JSON.stringify(event));
 }
 

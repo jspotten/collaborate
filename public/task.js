@@ -1,5 +1,5 @@
-//import {Task, pinnedIcon, checkedIcon, taskSetUpComplete, setTaskSetUpComplete} from './main.js';
-//export {addTask};
+// import {Task, pinnedIcon, checkedIcon, taskSetUpComplete, setTaskSetUpComplete} from './main.js';
+// export {addTask};
 
 let taskCounter = 0;
 let taskContainer;
@@ -62,3 +62,10 @@ document.getElementById('deleteList').addEventListener('click', deleteList);
 
 document.getElementById('toHomePage').addEventListener('click', () => {
     onclick = window.location.href = 'tasklist.html';});
+
+function loadTasks()
+{
+
+}
+
+export {loadTasks};
