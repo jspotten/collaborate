@@ -32,7 +32,24 @@ document.getElementById('user-button').addEventListener('click', showNotificatio
  */
 function acceptInvitation()
 {
+    const selectEl = document.getElementById('tasklist-invite-notifications');
+    const optionVal = selectEl.value;
+    if(optionVal !== 'blank')
+    {   
+        const optionText = selectEl.options[selectEl.selectedIndex].text;
+    }
+}
+document.getElementById('notify-accept').addEventListener('click', acceptInvitation);
 
+
+function declineInvitation()
+{
+    const selectEl = document.getElementById('tasklist-invite-notificationsn');
+    if(!selectEl.hasAttribute('id'))
+    {
+        const [user, listID]= selectEl.value;
+        const optionText = selectEl.options[selectEl.selectedIndex].text;
+    }
 }
 
 
@@ -245,7 +262,6 @@ async function deleteTasklist(listName)
     const endpoint = `/collaborate/deletelist/${userID}/${listName}`;
     await fetch(endpoint, {
         method: 'delete',
-        //body: JSON.stringify({username: currUser, listname: listName}),
         headers: {'Content-type': 'application/json; charset=UTF-8'},
     });
 }
@@ -296,9 +312,16 @@ async function loadTaskLists()
     const tasklists = await getUserTaskLists();
     taskListContainer = document.getElementById('list-container');
     taskListContainer.style.overflowY = 'scroll';
-    tasklists.forEach((list) => 
+    tasklists.forEach(async (list) => 
     {
-        let filledList = new LoadedTaskList(list.listname, list.listID, false);
+        await loadTasklist(list)
+    });
+}
+
+
+async function loadTasklist(list)
+{
+    let filledList = new LoadedTaskList(list.listname, list.listID, false);
         taskListContainer.appendChild(filledList.taskListCard);
 
         filledList.taskListCard.getElementsByClassName('star')[0].addEventListener('click', (e) => 
@@ -325,7 +348,6 @@ async function loadTaskLists()
             setListSetUpComplete(true);
         })
         addShareListOption(list.listname, list.listID);
-    });
 }
 
 
