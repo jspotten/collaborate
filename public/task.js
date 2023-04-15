@@ -1,12 +1,14 @@
 import {Task, pinnedIcon, checkedIcon, taskSetUpComplete, setTaskSetUpComplete} from './taskcard.js';
-// export {addTask};
 
-let taskCounter = 0;
 let taskContainer;
 const currUser = (localStorage.getItem('username'));
-console.log(currUser.username);
 document.getElementById('user-button').innerHTML = currUser;
-
+const currTasklist = (localStorage.getItem('currTasklist'));
+document.getElementById('nav-bar').innerHTML += currTasklist;
+(async () =>
+{
+    await loadTasks();
+})();
 
 async function addTask()
 {
@@ -63,7 +65,7 @@ document.getElementById('deleteList').addEventListener('click', deleteList);
 document.getElementById('toHomePage').addEventListener('click', () => {
     onclick = window.location.href = 'tasklist.html';});
 
-function loadTasks()
+async function loadTasks()
 {
 
 }

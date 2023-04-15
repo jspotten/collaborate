@@ -49,7 +49,7 @@ class TaskList
             {
                 event.preventDefault();
                 const taskListTitle = document.createElement('a');
-                //Change this to be an onclick for loadTasksPage.
+                taskListTitle.addEventListener('click', () => loadTasksPage(this.id, input[0].value));
                 taskListTitle.setAttribute('href', 'task.html');
                 taskListTitle.textContent = input[0].value;
                 this.title = input[0].value;
@@ -110,7 +110,7 @@ class LoadedTaskList
         taskListCard.appendChild(starIcon);
 
         const taskListTitle = document.createElement('a');
-        taskListTitle.addEventListener('click', () => loadTasksPage(this.id));
+        taskListTitle.addEventListener('click', () => loadTasksPage(this.id, this.title));
         taskListTitle.textContent = this.title;
         taskListCard.appendChild(taskListTitle);
         

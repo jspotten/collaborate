@@ -350,9 +350,10 @@ function addShareListOption(listName, listID)
  * local variable for the listID where that list
  * had its title clicked.
  */
-async function loadTasksPage(listID)
+async function loadTasksPage(listID, listName)
 {
     localStorage.setItem('listID', listID);
+    localStorage.setItem('currTasklist', listName)
     window.location.href = 'task.html';
 }
 
