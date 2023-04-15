@@ -21,10 +21,6 @@ function showNotifications()
 {
     console.log("In showNotifications");
     const modalEl = document.getElementById('notificationsModal');
-    //modalEl.querySelector('.modal-header').textContent = `Notifications`;
-    /*
-     * Update the dropdown box to retrive existing tasklist.
-     */
     const notificationsModal = new bootstrap.Modal(modalEl, {});
     notificationsModal.show();
 }
@@ -72,7 +68,7 @@ function addTaskList()
         const divEl = e.target.parentElement.parentElement;
         const listsDivEl = divEl.parentElement;
         await listsDivEl.removeChild(divEl);
-        deleteTasklist(newTaskList.title);
+        if(newTaskList.title !== null) deleteTasklist(newTaskList.title);
         setListSetUpComplete(true);
     })
 }
@@ -299,6 +295,7 @@ async function loadTaskLists()
 {
     const tasklists = await getUserTaskLists();
     taskListContainer = document.getElementById('list-container');
+    taskListContainer.style.overflowY = 'scroll';
     tasklists.forEach((list) => 
     {
         let filledList = new LoadedTaskList(list.listname, list.listID, false);

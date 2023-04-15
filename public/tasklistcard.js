@@ -35,7 +35,7 @@ class TaskList
 {
     constructor()
     {
-        this.title = "none";
+        this.title = null;
         this.id = "";
         this.pinned = false;
         this.listCardComplete = false;

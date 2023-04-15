@@ -99,10 +99,10 @@ main
 {
     display: flex;
     flex-direction: column;
+    width: 85vw;
     align-items: center !important;
-    margin: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 29px;
     gap: 15px;
-    
 }
 
 .card
