@@ -8,7 +8,7 @@ console.log(currUser.username);
 document.getElementById('user-button').innerHTML = currUser;
 
 
-function addTask()
+async function addTask()
 {
     if(!taskSetUpComplete) return;
 
@@ -20,8 +20,8 @@ function addTask()
         const divEl = e.target.parentElement.parentElement;
         const uncheckedIcon = e.target.parentElement;
         const checkIcon = document.createElement('i');
-        checkIcon.className = "star";
-        //checkIcon.innerHTML += checkedIcon;
+        checkIcon.className = "unchecked";
+        checkIcon.innerHTML += checkedIcon;
         checkIcon.addEventListener('click', () => {
             divEl.replaceChild(uncheckedIcon, checkIcon);
             newTask.pinned = false;
@@ -44,10 +44,10 @@ function addTask()
         newTask.pinned = true;
     });
 
-    newTask.taskCard.getElementsByClassName('trash')[0].addEventListener('click', (e) => {
+    newTask.taskCard.getElementsByClassName('trash')[0].addEventListener('click', async (e) => {
         const divEl = e.target.parentElement.parentElement;
         const tasksDivEl = divEl.parentElement;
-        tasksDivEl.removeChild(divEl);
+        await tasksDivEl.removeChild(divEl);
         setTaskSetUpComplete(true);
     })
     taskCounter++;

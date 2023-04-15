@@ -1,5 +1,4 @@
-import {TaskList, LoadedTaskList, pinnedIcon, listSetUpComplete,
-    setListSetUpComplete} from './tasklistcard.js';
+import {TaskList, LoadedTaskList, pinnedIcon, listSetUpComplete, setListSetUpComplete} from './tasklistcard.js';
 
 let taskListContainer;
 let dropDownContainer;
@@ -69,10 +68,10 @@ function addTaskList()
         newTaskList.pinned = true;
     });
 
-    newTaskList.taskListCard.getElementsByClassName('trash')[0].addEventListener('click', (e) => {
+    newTaskList.taskListCard.getElementsByClassName('trash')[0].addEventListener('click', async (e) => {
         const divEl = e.target.parentElement.parentElement;
         const listsDivEl = divEl.parentElement;
-        listsDivEl.removeChild(divEl);
+        await listsDivEl.removeChild(divEl);
         deleteTasklist(newTaskList.title);
         setListSetUpComplete(true);
     })
