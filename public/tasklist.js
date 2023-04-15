@@ -1,5 +1,5 @@
 import {TaskList, LoadedTaskList, pinnedIcon, listSetUpComplete,
-    setListSetUpComplete} from './main.js';
+    setListSetUpComplete} from './tasklistcard.js';
 
 let taskListContainer;
 let dropDownContainer;
@@ -388,4 +388,4 @@ function broadcastToUser(inviter, listname, listId)
    socket.send(JSON.stringify(event));
 }
 
-export {addTaskList, addShareListOption, storeNewList, loadTasksPage, createdNewShared};
+export {addTaskList, addShareListOption, storeNewList, loadTasksPage, createNewShared};

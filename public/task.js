@@ -1,11 +1,11 @@
-// import {Task, pinnedIcon, checkedIcon, taskSetUpComplete, setTaskSetUpComplete} from './main.js';
+import {Task, pinnedIcon, checkedIcon, taskSetUpComplete, setTaskSetUpComplete} from './taskcard.js';
 // export {addTask};
 
 let taskCounter = 0;
 let taskContainer;
 const currUser = (localStorage.getItem('username'));
 console.log(currUser.username);
-document.getElementById('user').innerHTML = currUser.username;
+document.getElementById('user-button').innerHTML = currUser;
 
 
 function addTask()

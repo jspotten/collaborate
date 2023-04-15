@@ -1,7 +1,5 @@
 import {storeNewList, loadTasksPage, createNewShared, addShareListOption} from './tasklist.js'
-export {Task, TaskList, LoadedTaskList, pinnedIcon, checkedIcon,
-    createNewShared, listSetUpComplete, setListSetUpComplete,
-    taskSetUpComplete, setTaskSetUpComplete};
+export {TaskList, LoadedTaskList, pinnedIcon, checkedIcon, listSetUpComplete, setListSetUpComplete};
 
 const uncheckedIcon =   `<svg xmlns="http://www.w3.org/2000/svg" width="2.3vw" height="2.3vw" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -36,94 +34,11 @@ const taskListForm =`<form class = "d-flex tempTextBox" id = "taskListForm">
                         aria-label="" aria-describedby="basic-addon1">
                     </form>`;
 
-const taskForm =`<form class = "d-flex tempTextBox" id = "taskForm">
-                    <input id = "task" class="form-control me-2 cursor-center 
-                    form-input" type="text" placeholder="Enter Task Name Here"
-                    aria-label="" aria-describedby="basic-addon1">
-                </form>`;
-
-const dateForm =`<form class = "d-flex" id = "dateForm">
-                        <input id = "taskDate" class="form-control me-2 cursor-center 
-                        form-input" type="datetime-local"
-                        aria-label="" aria-describedby="basic-addon1">
-                </form>`;
-
 let listSetUpComplete = true;
-let taskSetUpComplete = true;
-
 
 function setListSetUpComplete(value)
 {
     listSetUpComplete = value;
-}
-
-function setTaskSetUpComplete(value)
-{
-    taskSetUpComplete = value;
-}
-
-class Task
-{
-    constructor(title)
-    {
-        this.title = title;
-        this.pinned = false;
-        this.completed = false;
-        this.taskCard = this.createTaskCard();
-
-        taskSetUpComplete = false;
-        const input = this.taskCard.getElementsByTagName('input');
-        input[0].addEventListener('keypress', (event) =>
-        {
-            if(event.key === "Enter" && (input[0].textContent !== null || input.textContent !== ''))
-            {
-                event.preventDefault();
-                const taskTitle = document.createElement('span');
-                taskTitle.textContent = input[0].value;
-                this.taskCard.replaceChild(taskTitle, input[0].parentElement);
-                taskSetUpComplete = true;
-            }
-        });
-
-        //Find way to check if state of date-local input has changed.
-        input[1].addEventListener('keypress', (event) =>
-        {
-            if(event.key === "Enter" && (input[1].textContent !== null || input.textContent !== ''))
-            {
-                event.preventDefault();
-                const taskDate = document.createElement('time');
-                taskDate.textContent = input[1].value;
-                this.taskCard.replaceChild(taskDate, input[1].parentElement);
-            }
-        });
-    }
-
-    createTaskCard()
-    {
-        const taskCard = document.createElement('div');
-        taskCard.className = "card";
-        
-        const incompleteIcon = document.createElement('i');
-        incompleteIcon.className = "unchecked";
-        incompleteIcon.innerHTML += uncheckedIcon;
-        taskCard.appendChild(incompleteIcon);
-
-        const starIcon = document.createElement('i');
-        starIcon.className = "star";
-        starIcon.innerHTML += pinIcon;
-        taskCard.appendChild(starIcon);
-
-        taskCard.innerHTML += taskForm;
-
-        taskCard.innerHTML += dateForm;
-        
-        const trashIcon = document.createElement('i');
-        trashIcon.className = "trash";
-        trashIcon.innerHTML += deleteIcon
-        taskCard.appendChild(trashIcon);
-        
-        return taskCard;
-    }
 }
 
 class TaskList
