@@ -33,13 +33,13 @@ document.getElementById('user-button').addEventListener('click', showNotificatio
 async function acceptInvitation()
 {
     const selectEl = document.getElementById('tasklist-invite-notifications');
-    const optionVal = selectEl.value;
-    if(optionVal !== 'blank')
+    const listID = await selectEl.value;
+    if(listID !== 'blank')
     {   
         const optionText = selectEl.options[selectEl.selectedIndex].text;
-        const tasklist = getTaskList(optionVal);
-        //const invitee = optionText.split(" ")[0];
-        //await addSharedUser(invitee, optionText, optionVal);
+        const tasklist = await getTaskList(listID);
+        const invitee = optionText.split(" ")[0];
+        await addSharedUser(invitee, tasklist.listname, listID);
         loadTasklist(tasklist);
         deleteSelectOption(selectEl);
     }
@@ -111,6 +111,7 @@ function addTaskList()
         const listsDivEl = divEl.parentElement;
         await listsDivEl.removeChild(divEl);
         if(newTaskList.title !== null) deleteTasklist(newTaskList.title);
+        deleteShareListOption(newTaskList.id);
         setListSetUpComplete(true);
     })
 }
@@ -170,8 +171,8 @@ async function shareTaskList()
         });
         if(response?.status === 200)
         {
-            await addSharedUser(invitee, optionText, optionVal);
-            //broadcastToUser(currUser, optionText, optionVal);
+            //await addSharedUser(invitee, optionText, optionVal);
+            broadcastToUser(currUser, optionText, optionVal);
         }
         else
         {
@@ -204,7 +205,7 @@ async function addSharedUser(invitee, listName, listID)
         }),
         headers: {'Content-type': 'application/json; charset=UTF-8'},
     });
-    broadcastToUser(currUser, listName, listID);
+    //broadcastToUser(currUser, listName, listID);
     if(response?.status !== 200)
     {
         console.log('Error adding user to shared list object.');
@@ -217,7 +218,7 @@ async function addSharedUser(invitee, listName, listID)
  */
 function logout()
 {
-    sessionStorage.clear();
+    localStorage.clear();
     window.location.href = 'index.html';
 }
 document.getElementById('logout').addEventListener('click', logout);
@@ -375,6 +376,7 @@ async function loadTasklist(list, shared)
             {
                 deleteTasklist(filledList.title);
             }
+            deleteShareListOption(filledList.id);
             setListSetUpComplete(true);
         })
         addShareListOption(list.listname, list.listID);
@@ -402,6 +404,18 @@ function addShareListOption(listName, listID)
     newOption.value = `${listID}`;
     newOption.innerHTML = listName;
     dropDownContainer.appendChild(newOption);
+}
+
+function deleteShareListOption(listID)
+{
+    const selectEl = document.getElementById('tasklist-invites-drop-down');
+    for(var i = 0; i < selectEl.length; i++)
+    {
+        if(selectEl.options[i].value === listID)
+        {
+            selectEl.remove(i);
+        }
+    }
 }
 
 
@@ -437,7 +451,7 @@ function displayMessage(inviter, listname, listID)
     //     </div>`;
     dropDownContainer = document.getElementById('tasklist-invite-notifications');
     const newNotification = document.createElement('option');
-    newNotification.value = `${listID}`;//setAttribute('value', `${listID}`);
+    newNotification.value = `${listID}`;
     newNotification.innerHTML = `${inviter} Invited You to Join ${listname}`;
     dropDownContainer.appendChild(newNotification);
 }

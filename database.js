@@ -110,7 +110,11 @@ async function getShared(username)
 
 async function removeShared(username, listName)
 {
-    const result = sharedCollection.updateOne(
+    // const result = sharedCollection.updateOne(
+    //     {$and: [{listname: listName}, {shared: username}]},
+    //     {$pull: {shared: username}}
+    // );
+    const result = sharedCollection.findOneAndUpdate(
         {$and: [{listname: listName}, {shared: username}]},
         {$pull: {shared: username}}
     );
