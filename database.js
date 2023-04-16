@@ -122,11 +122,27 @@ async function removeShared(username, listName)
 }
 
 
-// async function addTask(task)
-// {
-//     await taskCollection.insertOne(task);
-//     return task;
-// }
+async function addTask(listId, taskName, task_date)
+{
+    const taskId = uuid.v4();
+    await taskCollection.insertOne
+    ({
+        listID: listId,
+        taskname: taskName,
+        date: task_date,
+        taskID: taskId
+    });
+    return taskId;
+}
+
+async function updateDate(taskId, task_date)
+{
+    const result = await taskCollection.updateOne(
+        {taskID: taskId},
+        {$set: {date: task_date}}
+    );
+    return result;
+}
 
 // async function deleteTask(task)
 // {
@@ -152,5 +168,7 @@ module.exports =
     createShared,
     addShared,
     getShared,
-    removeShared
+    removeShared,
+    addTask,
+    updateDate
 };

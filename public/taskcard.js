@@ -1,4 +1,4 @@
-import {loadTasks} from './task.js'
+import {storeNewTask, updateTaskDate} from './task.js'
 export {Task, pinnedIcon, checkedIcon, taskSetUpComplete, setTaskSetUpComplete};
 
 const uncheckedIcon =   `<svg xmlns="http://www.w3.org/2000/svg" width="2.3vw" height="2.3vw" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
@@ -62,12 +62,13 @@ class Task
         this.id = null;
         this.checked = false;
         this.pinned = false;
+        this.date = ' '
         this.taskCardComplete = false;
 
         this.taskCard = this.createTaskCard();
         taskSetUpComplete = false;
         const input = this.taskCard.getElementsByTagName('input');
-        input[0].addEventListener('keypress', (event) =>
+        input[0].addEventListener('keypress', async (event) =>
         {
             if(event.key === "Enter" && (input[0].textContent !== null || input.textContent !== ''))
             {
@@ -78,19 +79,18 @@ class Task
                 this.taskCard.replaceChild(taskTitle, input[0].parentElement);
                 this.taskCardComplete = true;
                 taskSetUpComplete = true;
+                this.id = await storeNewTask(this.title);
+
+                const dateInputEl = document.getElementById('taskDate');
+                dateInputEl.addEventListener('change', (event) =>
+                {
+                    this.date = event.target.value;
+                    updateTaskDate(this.id, this.date);
+                });
             }
         });
 
-        input[1].addEventListener('keypress', (event) =>
-        {
-            if(event.key === "Enter" && (input[1].textContent !== null || input.textContent !== ''))
-            {
-                event.preventDefault();
-                const taskDate = document.createElement('time');
-                taskDate.textContent = input[1].value;
-                this.taskCard.replaceChild(taskDate, input[1].parentElement);
-            }
-        });
+       
     }
 
     createTaskCard()

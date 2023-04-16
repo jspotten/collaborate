@@ -60,6 +60,45 @@ function addTask()
 }
 document.getElementById('addTask').addEventListener('click', addTask);
 
+
+/*
+ * 
+ */
+async function storeNewTask(taskName)
+{
+    const endpoint = `/collaborate/addtask`;
+    const response = await fetch(endpoint, {
+        method: 'post',
+        body: JSON.stringify(
+        {
+            listID: currListID,
+            taskname: taskName,
+            date: " "
+        }),
+        headers: {'Content-type': 'application/json; charset=UTF-8'},
+    });
+    const respBody = await response.json();
+    if(response?.status === 200)
+    {
+        return respBody.taskID;
+    }
+}
+
+async function updateTaskDate(taskId, task_date)
+{
+    const endpoint = `/collaborate/updateDate`;
+    const response = await fetch(endpoint, {
+        method: 'post',
+        body: JSON.stringify(
+        {
+            taskID: taskId,
+            date: task_date
+        }),
+        headers: {'Content-type': 'application/json; charset=UTF-8'},
+    });
+    const respBody = await response.json();
+}
+
 function deleteList()
 {
 
@@ -69,9 +108,28 @@ document.getElementById('deleteList').addEventListener('click', deleteList);
 document.getElementById('toHomePage').addEventListener('click', () => {
     onclick = window.location.href = 'tasklist.html';});
 
-async function loadTasks()
+
+/*
+ * 
+ */
+async function getListTasks()
 {
 
 }
 
-export {loadTasks};
+
+/*
+ * 
+ */
+async function loadTasks()
+{
+    const tasks = await getListTasks();
+    taskContainer = document.getElementById('task-container');
+    taskContainer.style.overflowY = 'scroll';
+}
+
+//async function loadTask()
+
+
+
+export {storeNewTask, updateTaskDate};

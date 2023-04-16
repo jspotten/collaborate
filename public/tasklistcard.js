@@ -36,7 +36,7 @@ class TaskList
     constructor()
     {
         this.title = null;
-        this.id = "";
+        this.id = null;
         this.shared = false;
         this.pinned = false;
         this.listCardComplete = false;
@@ -82,11 +82,6 @@ class TaskList
         taskListCard.appendChild(trashIcon);
         
         return taskListCard;
-    }
-
-    setID(taskListID)
-    {
-        this.id = taskListID;
     }
 }
 

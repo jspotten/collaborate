@@ -227,6 +227,35 @@ secureAPIRouter.get(`/getlists/:userID`, async (req, resp) =>
     }
 });
 
+secureAPIRouter.post(`/addtask`, async (req, resp) =>
+{
+    const taskId = await database.addTask(
+        req.body.listID, req.body.taskname, req.body.date);
+    if(taskId)
+    {
+        resp.status(200).send({taskID: taskId});
+    }
+    else
+    {
+        resp.status(404).send({message: "No Tasks Associated with that User ID."});
+    }
+});
+
+secureAPIRouter.post(`/updateDate`, async (req, resp) =>
+{
+    const result = await database.updateDate(
+        req.body.taskID, req.body.date);
+    if(result)
+    {
+        resp.status(200).send({result: result});
+    }
+    else
+    {
+        resp.status(404).send({message: "No Tasks Associated with that User ID."});
+    }
+});
+
+
 
 app.use((err, req, resp, next) => 
 {
