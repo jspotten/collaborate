@@ -134,7 +134,7 @@ secureAPIRouter.get(`/getShared/:username`, async (req, resp) =>
     }
 });
 
-secureAPIRouter.delete(`/removeShared/:username/:listName`, async (req, resp) =>
+secureAPIRouter.delete(`/removeSharedUser/:username/:listName`, async (req, resp) =>
 {
     const deleted = await database.removeShared(
         req.params.username, req.params.listName);

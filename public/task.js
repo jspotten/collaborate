@@ -5,6 +5,8 @@ const currUser = (localStorage.getItem('username'));
 document.getElementById('user-button').innerHTML = currUser;
 const currTasklist = (localStorage.getItem('currTasklist'));
 document.getElementById('nav-bar').innerHTML += currTasklist;
+const currListID = (localStorage.getItem('listID'));
+
 (async () =>
 {
     await loadTasks();
@@ -18,7 +20,7 @@ function addTask()
     }
 
     let newTask = new Task();
-    taskContainer = document.getElementById('in-progress');
+    taskContainer = document.getElementById('task-container');
     taskContainer.appendChild(newTask.taskCard);
     newTask.taskCard.getElementsByClassName('unchecked')[0].addEventListener('click', (e) => {
         const divEl = e.target.parentElement.parentElement;

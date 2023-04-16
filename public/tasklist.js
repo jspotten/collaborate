@@ -38,8 +38,8 @@ async function acceptInvitation()
     {   
         const optionText = selectEl.options[selectEl.selectedIndex].text;
         const tasklist = await getTaskList(listID);
-        const invitee = optionText.split(" ")[0];
-        await addSharedUser(invitee, tasklist.listname, listID);
+        const inviter = optionText.split(" ")[0];
+        await addSharedUser(inviter, tasklist.listname);
         loadTasklist(tasklist);
         deleteSelectOption(selectEl);
     }
@@ -192,16 +192,16 @@ document.getElementById('share-with-user').addEventListener('click', shareTaskLi
  * Adds user to the specific shared object who's listname matches the
  * the one owned and shared by the current user.
  */
-async function addSharedUser(invitee, listName, listID)
+async function addSharedUser(inviter, listName)
 {
     const endpoint = `/collaborate/addShared`;
     const response = await fetch(endpoint, {
         method: 'post',
         body: JSON.stringify(
         {
-            username: currUser,
+            username: inviter,
             listname: listName,
-            invited: invitee,
+            invited: currUser,
         }),
         headers: {'Content-type': 'application/json; charset=UTF-8'},
     });
@@ -385,7 +385,7 @@ async function loadTasklist(list, shared)
 
 async function removeSharedUser(listname)
 {
-    const endpoint = `/collaborate/removeShared/${currUser}/${listname}`;
+    const endpoint = `/collaborate/removeSharedUser/${currUser}/${listname}`;
     const response = await fetch(endpoint, {
         method: 'delete',
         headers: {'Content-type': 'application/json; charset=UTF-8'},
@@ -393,6 +393,10 @@ async function removeSharedUser(listname)
     const respBody = await response.json();
 }
 
+async function removeShared(listname)
+{
+    
+}
 
 /*
  *
@@ -406,6 +410,10 @@ function addShareListOption(listName, listID)
     dropDownContainer.appendChild(newOption);
 }
 
+
+/*
+ * 
+ */
 function deleteShareListOption(listID)
 {
     const selectEl = document.getElementById('tasklist-invites-drop-down');

@@ -235,14 +235,13 @@ input[type="text"]::placeholder
     height: 100vh - 100px;
 }
 
-#in-progress
+#task-container
 {
     display: flex;
     flex-direction: column;
     flex: 1;
     /* padding: 0 3vw 0 3.4vw; */
     /* width: 89vw; */
-    overflow-y: scroll;
     margin-bottom: 20px !important;
     margin: 10px 10px 20px 10px;
     gap: 15px;

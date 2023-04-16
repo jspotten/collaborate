@@ -35,10 +35,16 @@ const taskForm =`<form class = "d-flex tempTextBox" id = "taskForm">
                 </form>`;
 
 const dateForm =`<form class = "d-flex" id = "dateForm">
+                    <input id = "taskDate" class="form-control me-2 cursor-center 
+                    form-input" type="date"
+                    aria-label="" aria-describedby="basic-addon1"/>
+                </form>`;
+
+const dateFormLocal =`<form class = "d-flex" id = "dateForm">
                         <input id = "taskDate" class="form-control me-2 cursor-center 
                         form-input" type="datetime-local"
-                        aria-label="" aria-describedby="basic-addon1">
-                </form>`;
+                        aria-label="" aria-describedby="basic-addon1"/>
+                    </form>`;
 
 let taskSetUpComplete = true;
 
