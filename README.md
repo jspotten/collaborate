@@ -960,7 +960,12 @@ Simon React:
   .then((jsonResponse) => {
     console.log(jsonResponse);
   });
-- 
-  
+
+<h5>Service Design</h5>
+
+- Remote Procedure Calls(RPC): expose service endpoints as simple function calls. RPC usually just leverages the POST HTTP verb. The actual verb and subject of the function call are represented by the function name. The name of the function is either a whole URL path or a parameter in the POST body. Maps directly to the function calls in service but also exposes the inner workings of the service.
+- Representational State Transfer (REST): REST HTTP verbs always act on a resource. Operations on these resources alter and impact the state of the resource as it is transferred by a REST endpoint call.
+- GraphQL: focuses on data manipulation instead of function calls and resources. It is centralized on a query that specifies the desired data and how it should be joined and filtered.
+-  
   
   
