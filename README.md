@@ -966,6 +966,20 @@ Simon React:
 - Remote Procedure Calls(RPC): expose service endpoints as simple function calls. RPC usually just leverages the POST HTTP verb. The actual verb and subject of the function call are represented by the function name. The name of the function is either a whole URL path or a parameter in the POST body. Maps directly to the function calls in service but also exposes the inner workings of the service.
 - Representational State Transfer (REST): REST HTTP verbs always act on a resource. Operations on these resources alter and impact the state of the resource as it is transferred by a REST endpoint call.
 - GraphQL: focuses on data manipulation instead of function calls and resources. It is centralized on a query that specifies the desired data and how it should be joined and filtered.
--  
+
+<h5>Node.js</h5>
+  
+- It was the first successful application for deploying JavaScript outside of a browser.
+- The easiest way to install Node.js is by first installing Node Version Manager (NVM) and then install latest version of Node.js.
+- This is done by using the following two commands: 'nvm install lts' and 'nvm use lts'
+- Once installed, you can verify that is working correctly by running node with the -v parameter which will in turn display the version of node being run.
+- You can execute a line of JavaScript from your console with node -e followed by some JavaScripyt expression.
+- However, it is more useful for you to create one JavaScript file that roots everything inside of your project which you run with node [name].js.
+- 
+  
+  
+  
+  
+  
   
   
