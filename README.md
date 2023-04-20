@@ -933,7 +933,14 @@ Simon React:
 - This allows the server to remember things like the language preference of the user, or the user's authentication credentials.
 - A server can also use cookies to track, and share, everything that a user does.
 
-  
+<h5>SOP & CORS</h5>
+
+- When website architecture and browser clients were still in their infancy they allowed JavaScript to make requests from one domain while displaying a website from a different domain. These are called cross-origin requests.
+- Simply stated SOP (Same Orgin Policy) only allows JavaScript to make requests to a domain if it is the same domain that the user is currently viewing.
+- CORS (Cross Origin Resource Sharing) allows the client (e.g. browser) to specify the origin of a request & then let the server respond with what origins are allowed.
+- If the server doesn't specify what origin is allowed then the browser assumes that it must be the same origin.
+- However, if you want to make requests to a different domain than the one your web application is hosted on, then you need to make sure that domain allows requests as defined by the Access-Control-Allow-Origin header it returns.
+- Make sure they are responding with * or your calling origin. If they do not then you will not be able to use them.
   
   
   
