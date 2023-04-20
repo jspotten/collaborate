@@ -867,5 +867,21 @@ Simon React:
 - A Uniform Resource Name (URN) is a unique resource name that does not specify location information. (example: urn:isbn:10,0765350386)
 - A Uniform Resource Identifier (URI) is a general resource identifier that could refer to either a URL and URN.
 
-
-
+<h5>Port</h5>
+  
+- Port numbers allow a single device to support multiple protocols (e.g. HTTP, HTTPS, FTP, or SSH) as well as different types of services (e.g. search, document, or authentication).
+- The ports may be exposed externally, or they may only be used internally on the device.
+- For example, the HTTPS port (443) might allow the world to connect, the SSH port (22) might only allow computers at your school, and a service defined port (say 3000) may only allow access to processes running on the device.
+- Ports from 0 to 1023 represent standard protocols. Generally a web service should avoid these ports unless it is providing the protocol represented by the standard.
+- Ports from 1024 to 49151 represent ports that have been assigned to requesting entities. However, it is very common for these ports to be used by services running internally on a device.
+- Ports from 49152 to 65535 are considered dynamic and are used to create dynamic connections to a device.
+- Port - 20:	File Transfer Protocol (FTP) for data transfer
+- Port - 22:	Secure Shell (SSH) for connecting to remote devices
+- Port - 25:	Simple Mail Transfer Protocol (SMTP) for sending email
+- Port - 53:	Domain Name System (DNS) for looking up IP addresses
+- Port - 80:	Hypertext Transfer Protocol (HTTP) for web requests
+- Port - 110:	Post Office Protocol (POP3) for retrieving email
+- Port - 123:	Network Time Protocol (NTP) for managing time
+- Port - 161:	Simple Network Management Protocol (SNMP) for managing network devices such as routers or printers
+- Port - 194:	Internet Relay Chat (IRC) for chatting
+- Port - 443:	HTTP Secure (HTTPS) for secure web requests
