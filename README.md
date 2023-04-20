@@ -847,5 +847,25 @@ Simon React:
 - The await keyword wraps a call to the async function, blocks execution until the promise has resolved, and then returns the result of the promise.
 - If we prefix the call to the function with the await keyword, execution will stop until the promise has resolved, at which point the result of the promise is returned instead of the actual promise object.
 
+<h3>Web Services</h3>
+
+<h5>Introduction</h5>
+
+- To make a web service request, we supply the URL of the web service to the fetch function that is built into the browser.
+- Generally the functions provided by a web service are called endpoints, or sometimes APIs.
+
+<h5>URL</h5>
+
+- The Uniform Resource Locator (URL) represents the location of a web resource. A web resource can be anything, such as a web page, font, image, video stream, database record, or JSON object. It can also be completely ephemeral, such as a visitation counter, or gaming session.
+- <scheme>://<domain name>:<port>/<path>?<parameters>#<anchor>
+- Scheme: The protocol required to ask for the resource. For web applications, this is usually HTTPS. But it could be any internet protocol such as FTP or MAILTO.
+- Domain name: The domain name that owns the resource represented by the URL.
+- Port: The port specifies the numbered network port used to connect to the domain server. Lower number ports are reserved for common internet protocols, higher number ports can be used for any purpose. The default port is 80 if the scheme is HTTP, or 443 if the scheme is HTTPS.
+- Path: The path to the resource on the domain. The resource does not have to physically be located on the file system with this path. It can be a logical path representing endpoint parameters, a database table, or an object schema.
+- Parameters: (example: filter=names&highlight=intro,summary) The parameters represent a list of key value pairs. Usually it provides additional qualifiers on the resource represented by the path. This might be a filter on the returned resource or how to highlight the resource. The parameters are also sometimes called the query string.
+- Anchor: The anchor usually represents an sub-location in the resource. For HTML pages this represents a request for the browser to automatically scroll to the element with an ID that matches the anchor. The anchor is also sometimes called the hash, or fragment ID.
+- A Uniform Resource Name (URN) is a unique resource name that does not specify location information. (example: urn:isbn:10,0765350386)
+- A Uniform Resource Identifier (URI) is a general resource identifier that could refer to either a URL and URN.
+
 
 
