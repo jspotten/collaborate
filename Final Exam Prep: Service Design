@@ -980,7 +980,15 @@ Simon React:
 - package.json: 1) Metadata about your project such as its name and the default entry JavaScript file, 2) commands that you can execute to do things like run, test, or distribute your code, and 3) packages that this project depends upon.
 - If you decide you no longer want a package dependency you can always remove it with the npm uninstall <package name here> console command.
   
-  
+<h5>Express</h5>
+- Provides support for: 1) Routing requests for service endpoints; 2) Manipulating HTTP requests with JSON body content; 3) generating HTTP responses; 4) using middleware to add functionality.
+- // Wildcard - matches /store/x and /star/y
+- app.put('/st*/:storeName', (req, res) => res.send({ update: req.params.storeName }));
+- // Pure regular expression
+- app.delete(/\/store\/(.+)/, (req, res) => res.send({ delete: req.params[0] }));
+- That is because routing functions are also middleware functions. The only difference is that routing functions are only called if the associated pattern matches. Middleware functions are always called for every HTTP request unless a preceding middleware function does not call next.
+- As an example of writing your own middleware, you can create a function that logs out the URL of the request and then passes on processing to the next middleware function.
+- 
   
   
   
