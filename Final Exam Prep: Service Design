@@ -975,7 +975,10 @@ Simon React:
 - Once installed, you can verify that is working correctly by running node with the -v parameter which will in turn display the version of node being run.
 - You can execute a line of JavaScript from your console with node -e followed by some JavaScripyt expression.
 - However, it is more useful for you to create one JavaScript file that roots everything inside of your project which you run with node [name].js.
-- 
+- However, before you start using NPM to install packages you need to initialize you code to use NPM. This is done by creating a directory that will contain your JavaScript and then running npm init.
+- If you are always going to accept all of the defaults you can use npm init -y and skip the Q&A.
+- package.json: 1) Metadata about your project such as its name and the default entry JavaScript file, 2) commands that you can execute to do things like run, test, or distribute your code, and 3) packages that this project depends upon.
+- If you decide you no longer want a package dependency you can always remove it with the npm uninstall <package name here> console command.
   
   
   
