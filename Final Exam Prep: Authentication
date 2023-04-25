@@ -1018,7 +1018,14 @@ Simon React:
 - secure: requires HTTPS to be used when sending the cookie back to the server.
 - sameSite: will only return the cookie to the domain that generated it.
 
+<h5>WebSocket</h5>
 
-
+- The core feature of WebSocket is that it is fully duplexed. Meaning that after the initial connection is made from a client, using vanilla HTTP, and then upgraded by the server to a WebSocket connection, the relationship changes to a peer to peer connection where either party can efficiently send data at any time.
+- WebSocket connections are still only between two parties. So if you want to facilitate a conversation between a group of users the server must act as the intermediary. Each peer first connects to the server, and then the server forwards messages amongst the peers.
+- First you create a WebSocket object by specifying the port you want to communicate on.
+- You can then send messages with the send function, and register a callback using the onmessage function to receive messages.
+- he server uses the ws package to create a WebSocketServer that is listening on the same port the browser is using. By specifying a port when you create the WebSocketServer you are telling the server to listen for HTTP connections on that port and to automatically upgrade them to a WebSocket connection if the request has a connection: Upgrade header.
+- When a connection is detected it calls the server's on connection callback. The server can then send messages with the send function, and register a callback using the on message function to receive messages.
+- 
 
   
