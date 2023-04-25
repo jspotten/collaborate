@@ -1109,7 +1109,15 @@ Simon React:
 - Another incredibly powerful thing you can do with React Router is use multiple Routes components at the same time. This can be done as either two separate Routes components or as nested Routes.
 - We can use the ../ to go up a level in our navigation stack.
 
+<h5>EXTRA</h5>
 
+- Cookies allow a server to store data on the client.
+- Hashing passwords is important because it improves security by making the passwords unreadable.
+- WebSocket adds the value of peer to peer communication to HTTP rather than its standard client to server communication.
+- Purpose of JSX: inject your HTML into JS, componentize your HTML, and to allow for composability of your HTML. It doesn't combine HTML, CSS, and JS together.
+- NPM: locks the version of the websocket package for your application, adds the websocket source code to the node_modules directory, and adds a dependency to your package.json file. It doesn't adds template code for websockets to your JavaScript.
+- You can use fetch both in the front-end and back-end of a project. It may be desireable to call certain endpoints in the back-end, do something with the results, and then display those edited results.
+- LINUX Daemon: executes independent of a user, starts when the computer is rebooted, and PM2 is an example of a daemon. It cannot fork other processes.
 
 
 
