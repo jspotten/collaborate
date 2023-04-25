@@ -1026,6 +1026,91 @@ Simon React:
 - You can then send messages with the send function, and register a callback using the onmessage function to receive messages.
 - he server uses the ws package to create a WebSocketServer that is listening on the same port the browser is using. By specifying a port when you create the WebSocketServer you are telling the server to listen for HTTP connections on that port and to automatically upgrade them to a WebSocket connection if the request has a connection: Upgrade header.
 - When a connection is detected it calls the server's on connection callback. The server can then send messages with the send function, and register a callback using the on message function to receive messages.
-- 
+
+<h3>Web Frameworks</h3>
+
+<h5>React</h5>
+
+- React abstracts HTML into a JavaScript variate called JSX. JSX is converted into valid HTML and JavaScript using a preprocessor called Babel.
+- Babel will convert that into valid JavaScript.
+- The React.createElement function will then generate DOM elements and monitor the data they represent for changes. When a change is discovered React will trigger dependent changes.
+- React components allow you to modularize the functionality of your application. This allows the underlying code to directly represent the components that a user interacts with. It also enables code reuse as common application component often show up repeatedly.
+- One of the primary purposes of a component is to generate user interface. This is done with the components render function. Whatever is returned from the render function is inserted into the component HTML element.
+- React components also allow you to pass information to them in the form of element properties. The component receives the properties in its constructor and then can display them when it renders.
+- In addition to properties, a component can have internal state. Component state is created by calling the React.useState hook function. The useState function returns a variable that contains the current state and a function to update the state.
+- You should note that you can use JSX even without a function. A simple variable representing JSX will work anyplace you would otherwise provide a component.
+- A component's properties and state are used by the React framework to determine the reactivity of the interface. Reactivity controls how a component reacts to actions taken by the user or events that happen within the application. Whenever a component's state or properties change, the render function for the component and all of its dependent component render functions are called.
+- React enables reactivity with three major pieces of a React component: props, state, and render.
+- When a component's JSX is rendered, React parses the JSX and creates a list of any references to the component's state or prop objects. React then monitors those objects and if it detects that they have changed it will call the component's render function so that the impact of the change is visualized.
+- The useEffect hook allows you to represent lifecycle events. or example, if you want to run a function every time the component completes rendering, you could add React.useEffect() at the beginning with an arrow function to do something everytime the component is rendered.
+  - This is useful when you want to create side effects for things such as tracking when a component is displayed or hidden, or creating and disposing of resources.
+- You can control what triggers a useEffect hook by specifying its dependencies. In the following example we have two state variables, but we only want the useEffect hook to be called when the component is initially called and when the first variable is clicked. To accomplish this you pass an array of dependencies as a second parameter to the useEffect call.
+  - Open square brackets will cause useEffect to run only upon the first rendering of the component.
+  - Without square brackets, useEffect will be called for every render.
+  - Square brackets with states placed inside will be called once at the beginning and anytime the states of the dependencies are changed.
+- That means a hook cannot be called inside of a loop or conditional. This restriction ensures that hooks are always called in the same order when a component is rendered.
+- Code repository - Stores code in a shared, versioned, location.
+- Linter - Removes, or warns, of non-idiomatic code usage.
+- Prettier - Formats code according to a shared standard.
+- Transpiler - Compiles code into a different format. For example, from JSX to JavaScript.
+- Polyfill - Generates backward compatible code for supporting old browser versions that do not support the latest standards.
+- Bundler - Packages code into bundles for delivery to the browser. This enables compatibility (for example with ES6 module support), or performance (with lazy loading).
+- Minifier - Removes whitespace and renames variables in order to make code smaller and more efficient to deploy.
+- Testing - Automated tests at multiple levels to ensure correctness.
+- Deployment - Automated packaging and delivery of code from the development environment to the production environment.
+- A CLI is a program that runs from the console and usually provides an assortment of commands related to some specific purpose.
+- When you run create-react-app with NPX, it creates a brand new React application project based on a standard template.
+- gitignore:	Specifies files to not include in your Git commits
+- package-json:	NPM definition for included packages and script commands
+- package-lock.json:	Version constraints for included packages (do not edit this)
+- README.md:	GitHub readme for the project
+- index.html:	Primary page for the application
+- favicon.ico:	Primary application icon
+- logo*.png:	Icons used for mobile devices
+- manifest.json:	Configuration for use on mobile devices (PWA support)
+- robots.txt:	Directives for search engine crawlers like Google
+- index.js:	Entry point for code execution
+- index.css:	CSS for top level component
+- App.css:	CSS for the main application component
+- App.js:	JavaScript for the main application component
+- App.test.js:	Automated tests for the main application component
+- logo.svg:	Image displayed in the main application component
+- reportWebVitals.js:	Configuration for reporting application performance
+- setupTests.js:	Set up for automated tests
+- Install React Router using the following command: react i react-router-dom
+- Once you have the Router installed there are three things to do:
+- Set up your router.
+- Import the BrowserRouter package for the web inside index.js:
+- import {BrowserRouter} from “react-router-dom”
+- Wrap your entire application in that router by surrounding the App component declaration with <BrowserRouter></BrowserRouter>.
+- Define your routes (This is generally done at the top level of your application, such as in the App component, but can be done anywhere you want):
+- Define a single Route component for each route in your application.
+- Place them inside a Routes component.
+- Whenever your URL changes, React Router will look at the routes defined in your Routes component and then will render the content in the element prop of the Route that has a matching URL.
+- When navigating between pages, only the content inside of your Routes component will be refreshed.
+- Handle navigation(Normally you would navigate with anchor tags but React Router uses its own custom Link component):
+- This Link component is just a wrapper around an anchor tag that helps ensure all the routing and conditional re-rendering is handled properly.
+- It works just like an anchor tag.
+- Embed list tags for each page inside of an unordered list element placed inside of a nav element:
+- EX: <li><Link to = ’/books’>Books</Link><li>
+- The to prop is used in place of href.
+- Like with normal JS, we can add parameter values at the end of URLs to make them accept a wider range of inputs.
+- We do this by adding :[parameterName] to the end of the url in our Route path prop and then with the associated component, we would configure it to send a value by creating const {[name]} = useParams() .
+- Then in our return, we would include it in the HTML.
+- EX: return ( <h1>Book {id}</h1>
+- A route that contains a * will also be less specific than anything else so you will never accidentally match a * route when another route would have also matched.
+- This nesting is pretty simple to do. All you need to do is make a parent Route that has the path prop set to the shared path for all your child Route components. Then inside the parent Route you can put all the child Route components.
+- If you pass an element prop to a parent route it will render that component for every single child Route which means you can put a shared nav or other shared components on every child page with ease.
+- The Outlet component is essentially a placeholder component that will render whatever our current page's content is.
+- Now the final way you can share layouts with React Router is by wrapping child Route components in a parent Route that only defines an element prop and no path prop.
+- This technique of wrapping multiple Route components in a parent Route component with no path prop is useful if you want those routes to share a single layout even if they don't have a similar path.
+- The final important thing to know about Outlet components is they can take in a context prop which will work just like React context.
+- This is a pretty common pattern to use since often you will have shared data between all your child components which is the ideal use case for this context.
+- Another incredibly powerful thing you can do with React Router is use multiple Routes components at the same time. This can be done as either two separate Routes components or as nested Routes.
+- We can use the ../ to go up a level in our navigation stack.
+
+
+
+
 
   
